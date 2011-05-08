@@ -1,0 +1,11 @@
+knplabs_gaufrette:
+    adapters:
+        foo:
+            local:
+                directory:  %kernel.root_dir%
+                create:     true
+
+    filesystems:
+        foo:
+            adapter:        foo
+            alias:          foo_filesystem

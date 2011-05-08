@@ -1,0 +1,7 @@
+imports:
+    - { resource: config.yml }
+
+knplabs_gaufrette:
+    adapters:
+        foo:
+            in_memory:  ~
