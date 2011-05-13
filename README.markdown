@@ -3,6 +3,14 @@ Gaufrette Bundle
 
 Provides a [Gaufrette][gaufrette-homepage] integration for your Symfony projects.
 
+About Gaufrette
+---------------
+
+Gaufrette is a PHP 5.3+ library providing a filesystem abstraction layer.
+This abstraction layer permits you to develop your applications without the need to know were all their medias will be stored and how.
+
+Documentation is available the [official page of Gaufrette][gaufrette-homepage].
+
 Installation
 ------------
 
@@ -132,13 +140,13 @@ Almost as simple as the **local** adapter, but it encodes key to avoid having to
 ### Exemple
 
 ``` yaml
-    # app/config/config.yml
-    knplabs_gaufrette:
-        adapters:
-            foo:
-                safe_local:
-                    directory:  /path/to/my/filesystem
-                    create:     true
+# app/config/config.yml
+knplabs_gaufrette:
+    adapters:
+        foo:
+            safe_local:
+                directory:  /path/to/my/filesystem
+                create:     true
 ```
 
 ## Service (service)
@@ -152,12 +160,12 @@ Allows you to use a user defined adapter service.
 ### Exemple
 
 ``` yaml
-    # app/config/config.yml
-    knplabs_gaufrette:
-        adapters:
-            foo:
-                service:
-                    id:     my.adapter.service
+# app/config/config.yml
+knplabs_gaufrette:
+    adapters:
+        foo:
+            service:
+                id:     my.adapter.service
 ```
 
 ## In Memory (in\_memory)
@@ -173,17 +181,17 @@ The `files` is an array of files where each file is a sub-array having the `cont
 ### Exemple
 
 ``` yaml
-    # app/config/config.yml
-    knplabs_gaufrette:
-        adapters:
-            foo:
-                in_memory:
-                    files:
-                        'file1.txt':    ~
-                        'file2.txt':
-                            content:    Some content
-                            checksum:   abc1efg2hij3
-                            mtime:      123456890123
+# app/config/config.yml
+knplabs_gaufrette:
+    adapters:
+        foo:
+            in_memory:
+                files:
+                    'file1.txt':    ~
+                    'file2.txt':
+                        content:    Some content
+                        checksum:   abc1efg2hij3
+                        mtime:      123456890123
 ```
 
 [gaufrette-homepage]: https://github.com/knplabs/Gaufrette
