@@ -18,14 +18,10 @@ class InMemoryAdapterFactory implements AdapterFactoryInterface
      */
     public function create(ContainerBuilder $container, $id, array $config)
     {
-        $adapter = sprintf('knplabs_gaufrette.adapter.local.%s', $id);
-
         $container
-            ->setDefinition($adapter, new DefinitionDecorator('knplabs_gaufrette.adapter.in_memory'))
+            ->setDefinition($id, new DefinitionDecorator('knplabs_gaufrette.adapter.in_memory'))
             ->replaceArgument(0, $config['files'])
         ;
-
-        return $adapter;
     }
 
     /**

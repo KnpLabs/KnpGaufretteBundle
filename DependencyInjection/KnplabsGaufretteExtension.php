@@ -55,7 +55,10 @@ class KnplabsGaufretteExtension extends Extension
         $adapter = null;
         foreach ($config as $key => $adapter) {
             if (array_key_exists($key, $factories)) {
-                return $factories[$key]->create($container, $name, $adapter);
+                $id = sprintf('gaufrette.%s_adapter', $name);
+                $factories[$key]->create($container, $id, $adapter);
+
+                return $id;
             }
         }
 

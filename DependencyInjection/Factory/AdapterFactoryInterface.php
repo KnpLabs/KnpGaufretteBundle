@@ -15,11 +15,9 @@ interface AdapterFactoryInterface
     /**
      * Creates the adapter, registers it and returns its id
      *
-     * @param  ContainerBuilder $container
-     * @param  string           $id
-     * @param  array            $config
-     *
-     * @return string The Adapter service id in the DIC
+     * @param  ContainerBuilder $container  A ContainerBuilder instance
+     * @param  string           $id         The id of the service
+     * @param  array            $config     An array of configuration
      */
     function create(ContainerBuilder $container, $id, array $config);
 

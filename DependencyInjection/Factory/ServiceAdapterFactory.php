@@ -17,7 +17,7 @@ class ServiceAdapterFactory implements AdapterFactoryInterface
      */
     public function create(ContainerBuilder $container, $id, array $config)
     {
-        return $config['id'];
+        $container->setAlias($id, $config['id']);
     }
 
     /**

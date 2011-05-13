@@ -18,15 +18,11 @@ class LocalAdapterFactory implements AdapterFactoryInterface
      */
     public function create(ContainerBuilder $container, $id, array $config)
     {
-        $adapter = sprintf('knplabs_gaufrette.adapter.local.%s', $id);
-
         $container
-            ->setDefinition($adapter, new DefinitionDecorator('knplabs_gaufrette.adapter.local'))
+            ->setDefinition($id, new DefinitionDecorator('knplabs_gaufrette.adapter.local'))
             ->replaceArgument(0, $config['directory'])
             ->replaceArgument(1, $config['create'])
         ;
-
-        return $adapter;
     }
 
     /**
