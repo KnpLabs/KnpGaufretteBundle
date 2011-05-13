@@ -29,7 +29,7 @@ If the `Knplabs` namespace is not already defined in your autoloader, you must a
 
 $loader->registerNamespaces(array(
 
-    'Knplabs'                       => __DIR__.'/../vendor/bundles'
+    'Knplabs\Bundle'                => __DIR__.'/../vendor/bundles'
 
     // ...
 
@@ -93,7 +93,7 @@ knplabs_gaufrette:
 ```
 
 Each defined filesystem must have an `adapter` with the key of an adapter as value.
-The filesystem defined above with result in a service with id `gaufrette.foo_filesystem`.
+The filesystem defined above with result in a service with id `gaufrette.bar_filesystem`.
 The `alias` parameter permits to also defines an alias for it.
 
 Adapters Reference
@@ -185,3 +185,5 @@ The `files` is an array of files where each file is a sub-array having the `cont
                             checksum:   abc1efg2hij3
                             mtime:      123456890123
 ```
+
+[gaufrette-homepage]: https://github.com/knplabs/Gaufrette
