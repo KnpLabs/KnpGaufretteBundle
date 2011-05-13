@@ -15,14 +15,14 @@
         <service id="knplabs_gaufrette.filesystem" class="%knplabs_gaufrette.filesystem.class%" abstract="true">
             <argument /><!-- The Adapter -->
         </service>
-        <service id="knplabs_gaufrette.adapter.in_memory" class="%knplabs_gaufrette.adapter.in_memory.class%" abstract="true">
+        <service id="knplabs_gaufrette.adapter.in_memory" class="%knplabs_gaufrette.adapter.in_memory.class%" abstract="true" public="false">
             <argument /><!-- Files -->
         </service>
-        <service id="knplabs_gaufrette.adapter.local" class="%knplabs_gaufrette.adapter.local.class%" abstract="true">
+        <service id="knplabs_gaufrette.adapter.local" class="%knplabs_gaufrette.adapter.local.class%" abstract="true" public="false">
             <argument /><!-- Directory -->
             <argument /><!-- Create -->
         </service>
-        <service id="knplabs_gaufrette.adapter.safe_local" class="%knplabs_gaufrette.adapter.safe_local.class%" abstract="true">
+        <service id="knplabs_gaufrette.adapter.safe_local" class="%knplabs_gaufrette.adapter.safe_local.class%" abstract="true" public="false">
             <argument /><!-- Directory -->
             <argument /><!-- Create -->
         </service>
