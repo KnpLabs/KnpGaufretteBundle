@@ -26,6 +26,9 @@
             <argument /><!-- Directory -->
             <argument /><!-- Create -->
         </service>
+        <service id="knplabs_gaufrette.filesystem_map" class="Gaufrette\FilesystemMap">
+            <argument /> <!-- map of filesystems -->
+        </service>
     </services>
 
 </container>

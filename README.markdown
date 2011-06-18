@@ -14,7 +14,7 @@ Documentation is available the [official page of Gaufrette][gaufrette-homepage].
 Installation
 ------------
 
-## Prérequisites
+## Prerequisites
 
 As this bundle is an integration for Symfony of the [Gaufrette][gaufrette-homepage] library, it requires you to first install [Gaufrette][gaufrette-homepage] in a Symfony project.
 
@@ -103,6 +103,18 @@ knplabs_gaufrette:
 Each defined filesystem must have an `adapter` with the key of an adapter as value.
 The filesystem defined above with result in a service with id `gaufrette.bar_filesystem`.
 The `alias` parameter permits to also defines an alias for it.
+
+The filesystem map
+------------------
+
+You can access to all declared filesystems through the map service.
+In the previous exemple, we declared a `bar` filesystem:
+
+``` php
+$container->get('knplabs_gaufrette.filesystem_map')->get('bar');
+```
+
+Returns the instance of `Gaufrette\Filesystem` for `bar`.
 
 Adapters Reference
 ------------------
