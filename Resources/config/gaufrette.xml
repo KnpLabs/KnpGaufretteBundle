@@ -4,29 +4,22 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-    <parameters>
-        <parameter key="knplabs_gaufrette.filesystem.class">Gaufrette\Filesystem</parameter>
-        <parameter key="knplabs_gaufrette.adapter.in_memory.class">Gaufrette\Adapter\InMemory</parameter>
-        <parameter key="knplabs_gaufrette.adapter.local.class">Gaufrette\Adapter\Local</parameter>
-        <parameter key="knplabs_gaufrette.adapter.safe_local.class">Gaufrette\Adapter\SafeLocal</parameter>
-    </parameters>
-
     <services>
-        <service id="knplabs_gaufrette.filesystem" class="%knplabs_gaufrette.filesystem.class%" abstract="true">
+        <service id="knplabs_gaufrette.filesystem" class="Gaufrette\Filesystem" abstract="true">
             <argument /><!-- The Adapter -->
         </service>
-        <service id="knplabs_gaufrette.adapter.in_memory" class="%knplabs_gaufrette.adapter.in_memory.class%" abstract="true" public="false">
+        <service id="knplabs_gaufrette.adapter.in_memory" class="Gaufrette\Adapter\InMemory" abstract="true" public="false">
             <argument /><!-- Files -->
         </service>
-        <service id="knplabs_gaufrette.adapter.local" class="%knplabs_gaufrette.adapter.local.class%" abstract="true" public="false">
+        <service id="knplabs_gaufrette.adapter.local" class="Gaufrette\Adapter\Local" abstract="true" public="false">
             <argument /><!-- Directory -->
             <argument /><!-- Create -->
         </service>
-        <service id="knplabs_gaufrette.adapter.safe_local" class="%knplabs_gaufrette.adapter.safe_local.class%" abstract="true" public="false">
+        <service id="knplabs_gaufrette.adapter.safe_local" class="Gaufrette\Adapter\SafeLocal" abstract="true" public="false">
             <argument /><!-- Directory -->
             <argument /><!-- Create -->
         </service>
-        <service id="knplabs_gaufrette.filesystem_map" class="Gaufrette\FilesystemMap">
+        <service id="knplabs_gaufrette.filesystem_map" class="Knplabs\Bundle\GaufretteBundle\FilesystemMap">
             <argument /> <!-- map of filesystems -->
         </service>
     </services>
