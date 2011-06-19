@@ -4,24 +4,17 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-    <parameters>
-        <parameter key="knplabs_gaufrette.adapter.factory.in_memory.class">Knplabs\Bundle\GaufretteBundle\DependencyInjection\Factory\InMemoryAdapterFactory</parameter>
-        <parameter key="knplabs_gaufrette.adapter.factory.service.class">Knplabs\Bundle\GaufretteBundle\DependencyInjection\Factory\ServiceAdapterFactory</parameter>
-        <parameter key="knplabs_gaufrette.adapter.factory.local.class">Knplabs\Bundle\GaufretteBundle\DependencyInjection\Factory\LocalAdapterFactory</parameter>
-        <parameter key="knplabs_gaufrette.adapter.factory.safe_local.class">Knplabs\Bundle\GaufretteBundle\DependencyInjection\Factory\SafeLocalAdapterFactory</parameter>
-    </parameters>
-
     <services>
-        <service id="knplabs_gaufrette.adapter.factory.in_memory" class="%knplabs_gaufrette.adapter.factory.in_memory.class%">
+        <service id="knplabs_gaufrette.adapter.factory.in_memory" class="Knplabs\Bundle\GaufretteBundle\DependencyInjection\Factory\InMemoryAdapterFactory">
             <tag name="gaufrette.adapter.factory" />
         </service>
-        <service id="knplabs_gaufrette.adapter.factory.service" class="%knplabs_gaufrette.adapter.factory.service.class%">
+        <service id="knplabs_gaufrette.adapter.factory.service" class="Knplabs\Bundle\GaufretteBundle\DependencyInjection\Factory\ServiceAdapterFactory">
             <tag name="gaufrette.adapter.factory" />
         </service>
-        <service id="knplabs_gaufrette.adapter.factory.local" class="%knplabs_gaufrette.adapter.factory.local.class%">
+        <service id="knplabs_gaufrette.adapter.factory.local" class="Knplabs\Bundle\GaufretteBundle\DependencyInjection\Factory\LocalAdapterFactory">
             <tag name="gaufrette.adapter.factory" />
         </service>
-        <service id="knplabs_gaufrette.adapter.factory.safe_local" class="%knplabs_gaufrette.adapter.factory.safe_local.class%">
+        <service id="knplabs_gaufrette.adapter.factory.safe_local" class="Knplabs\Bundle\GaufretteBundle\DependencyInjection\Factory\SafeLocalAdapterFactory">
             <tag name="gaufrette.adapter.factory" />
         </service>
     </services>
