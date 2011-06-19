@@ -45,9 +45,13 @@ class KnplabsGaufretteExtension extends Extension
             $adapters[$name] = $this->createAdapter($name, $adapter, $container, $factories);
         }
 
+        $map = array();
         foreach ($config['filesystems'] as $name => $filesystem) {
-            $this->createFilesystem($name, $filesystem, $container, $adapters);
+            $map[$name] = $this->createFilesystem($name, $filesystem, $container, $adapters);
         }
+
+        $container->getDefinition('knplabs_gaufrette.filesystem_map')
+            ->replaceArgument(0, $map);
     }
 
     private function createAdapter($name, array $config, ContainerBuilder $container, array $factories)
@@ -65,6 +69,9 @@ class KnplabsGaufretteExtension extends Extension
         throw new \LogicException(sprintf('The adapter \'%s\' is not configured.', $name));
     }
 
+    /**
+     * @return Reference a reference to the created filesystem
+     */
     private function createFilesystem($name, array $config, ContainerBuilder $container, array $adapters)
     {
         if (!array_key_exists($config['adapter'], $adapters)) {
@@ -82,6 +89,8 @@ class KnplabsGaufretteExtension extends Extension
         if (!empty($config['alias'])) {
             $container->setAlias($config['alias'], $id);
         }
+
+        return new Reference($id);
     }
 
     /**
