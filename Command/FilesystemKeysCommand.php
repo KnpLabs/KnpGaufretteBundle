@@ -2,7 +2,7 @@
 
 namespace Knplabs\Bundle\GaufretteBundle\Command;
 
-use Symfony\Component\Console\Command\Command;
+use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -13,7 +13,7 @@ use Gaufrette\Glob;
  *
  * @author Antoine Hérault <antoine.herault@gmail.com>
  */
-class FilesystemKeysCommand extends Command
+class FilesystemKeysCommand extends ContainerAwareCommand
 {
     /**
      * {@inheritDoc}
@@ -44,7 +44,7 @@ EOT
     {
         $filesystem = $input->getArgument('filesystem');
         $glob       = $input->getArgument('glob');
-        $container  = $this->getApplication()->getKernel()->getContainer();
+        $container  = $this->getContainer();
         $serviceId  = sprintf('gaufrette.%s_filesystem', $filesystem);
 
         if (!$container->has($serviceId)) {
