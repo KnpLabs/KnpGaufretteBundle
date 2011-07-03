@@ -1,6 +1,6 @@
 <?php
 
-namespace Knplabs\Bundle\GaufretteBundle;
+namespace Knp\Bundle\GaufretteBundle;
 
 /**
  * Holds references to all declared filesystems

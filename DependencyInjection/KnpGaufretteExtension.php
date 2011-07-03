@@ -1,6 +1,6 @@
 <?php
 
-namespace Knplabs\Bundle\GaufretteBundle\DependencyInjection;
+namespace Knp\Bundle\GaufretteBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\Config\FileLocator;
@@ -15,7 +15,7 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
  *
  * @author Antoine Hérault <antoine.herault@gmail.com>
  */
-class KnplabsGaufretteExtension extends Extension
+class KnpGaufretteExtension extends Extension
 {
     private $factories = null;
 
@@ -50,7 +50,7 @@ class KnplabsGaufretteExtension extends Extension
             $map[$name] = $this->createFilesystem($name, $filesystem, $container, $adapters);
         }
 
-        $container->getDefinition('knplabs_gaufrette.filesystem_map')
+        $container->getDefinition('knp_gaufrette.filesystem_map')
             ->replaceArgument(0, $map);
     }
 
@@ -82,7 +82,7 @@ class KnplabsGaufretteExtension extends Extension
         $id      = sprintf('gaufrette.%s_filesystem', $name);
 
         $container
-            ->setDefinition($id, new DefinitionDecorator('knplabs_gaufrette.filesystem'))
+            ->setDefinition($id, new DefinitionDecorator('knp_gaufrette.filesystem'))
             ->replaceArgument(0, new Reference($adapter))
         ;
 

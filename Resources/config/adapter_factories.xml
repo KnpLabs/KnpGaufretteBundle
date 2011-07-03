@@ -5,16 +5,16 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="knplabs_gaufrette.adapter.factory.in_memory" class="Knplabs\Bundle\GaufretteBundle\DependencyInjection\Factory\InMemoryAdapterFactory">
+        <service id="knp_gaufrette.adapter.factory.in_memory" class="Knp\Bundle\GaufretteBundle\DependencyInjection\Factory\InMemoryAdapterFactory">
             <tag name="gaufrette.adapter.factory" />
         </service>
-        <service id="knplabs_gaufrette.adapter.factory.service" class="Knplabs\Bundle\GaufretteBundle\DependencyInjection\Factory\ServiceAdapterFactory">
+        <service id="knp_gaufrette.adapter.factory.service" class="Knp\Bundle\GaufretteBundle\DependencyInjection\Factory\ServiceAdapterFactory">
             <tag name="gaufrette.adapter.factory" />
         </service>
-        <service id="knplabs_gaufrette.adapter.factory.local" class="Knplabs\Bundle\GaufretteBundle\DependencyInjection\Factory\LocalAdapterFactory">
+        <service id="knp_gaufrette.adapter.factory.local" class="Knp\Bundle\GaufretteBundle\DependencyInjection\Factory\LocalAdapterFactory">
             <tag name="gaufrette.adapter.factory" />
         </service>
-        <service id="knplabs_gaufrette.adapter.factory.safe_local" class="Knplabs\Bundle\GaufretteBundle\DependencyInjection\Factory\SafeLocalAdapterFactory">
+        <service id="knp_gaufrette.adapter.factory.safe_local" class="Knp\Bundle\GaufretteBundle\DependencyInjection\Factory\SafeLocalAdapterFactory">
             <tag name="gaufrette.adapter.factory" />
         </service>
     </services>

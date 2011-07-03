@@ -1,6 +1,6 @@
 <?php
 
-namespace Knplabs\Bundle\GaufretteBundle\Command;
+namespace Knp\Bundle\GaufretteBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;

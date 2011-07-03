@@ -1,6 +1,6 @@
 <?php
 
-namespace Knplabs\Bundle\GaufretteBundle\DependencyInjection\Compiler;
+namespace Knp\Bundle\GaufretteBundle\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -15,11 +15,11 @@ class AdapterFactoryManagerPass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container)
     {
-        if (!$container->hasDefinition('knplabs_gaufrette.adapter_factory_manager')) {
+        if (!$container->hasDefinition('knp_gaufrette.adapter_factory_manager')) {
             return;
         }
 
-        $definition = $container->getDefinition('knplabs_gaufrette.adapter_factory_manager');
+        $definition = $container->getDefinition('knp_gaufrette.adapter_factory_manager');
 
         $calls = $definition->getMethodCalls();
         $definition->setMethodCalls(array());

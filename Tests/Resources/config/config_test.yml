@@ -1,7 +1,7 @@
 imports:
     - { resource: config.yml }
 
-knplabs_gaufrette:
+knp_gaufrette:
     adapters:
         foo:
             in_memory:  ~

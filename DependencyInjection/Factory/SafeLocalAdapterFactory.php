@@ -1,6 +1,6 @@
 <?php
 
-namespace Knplabs\Bundle\GaufretteBundle\DependencyInjection\Factory;
+namespace Knp\Bundle\GaufretteBundle\DependencyInjection\Factory;
 
 use Symfony\Component\Config\Definition\Builder\NodeDefinition;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -19,7 +19,7 @@ class SafeLocalAdapterFactory implements AdapterFactoryInterface
     public function create(ContainerBuilder $container, $id, array $config)
     {
         $container
-            ->setDefinition($id, new DefinitionDecorator('knplabs_gaufrette.adapter.safe_local'))
+            ->setDefinition($id, new DefinitionDecorator('knp_gaufrette.adapter.safe_local'))
             ->replaceArgument(0, $config['directory'])
             ->replaceArgument(1, $config['create'])
         ;

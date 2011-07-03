@@ -1,6 +1,6 @@
 <?php
 
-namespace Knplabs\Bundle\GaufretteBundle\DependencyInjection;
+namespace Knp\Bundle\GaufretteBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -22,7 +22,7 @@ class FactoryConfiguration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
 
         $treeBuilder
-            ->root('knplabs_gaufrette')
+            ->root('knp_gaufrette')
                 ->ignoreExtraKeys()
                 ->fixXmlConfig('factory', 'factories')
                 ->children()

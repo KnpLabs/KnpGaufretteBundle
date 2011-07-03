@@ -1,6 +1,6 @@
 <?php
 
-namespace Knplabs\Bundle\GaufretteBundle\Tests;
+namespace Knp\Bundle\GaufretteBundle\Tests;
 
 use Symfony\Component\HttpKernel\Util\Filesystem;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Knplabs\Bundle\GaufretteBundle\DependencyInjection;
+namespace Knp\Bundle\GaufretteBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
@@ -33,7 +33,7 @@ class MainConfiguration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('knplabs_gaufrette');
+        $rootNode = $treeBuilder->root('knp_gaufrette');
 
         $this->addAdaptersSection($rootNode, $this->factories);
         $this->addFilesystemsSection($rootNode);

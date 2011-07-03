@@ -20,15 +20,15 @@ As this bundle is an integration for Symfony of the [Gaufrette][gaufrette-homepa
 
 ## Download the bundle
 
-You can download an archive of the bundle and unpack it in the `vendor/bundles/Knplabs/Bundle/GaufretteBundle` directory of your application.
+You can download an archive of the bundle and unpack it in the `vendor/bundles/Knp/Bundle/GaufretteBundle` directory of your application.
 
 If you are versioning your project with git, you had better to embed it as a submodule:
 
-    $ git submodule add https://github.com/knplabs/GaufretteBundle.git vendor/bundles/Knplabs/Bundle/GaufretteBundle
+    $ git submodule add https://github.com/knplabs/KnpGaufretteBundle.git vendor/bundles/Knp/Bundle/GaufretteBundle
 
 ## Add the namespace in the autoloader
 
-If the `Knplabs` namespace is not already defined in your autoloader, you must add it:
+If the `Knp` namespace is not already defined in your autoloader, you must add it:
 
 ``` php
 <?php
@@ -37,7 +37,7 @@ If the `Knplabs` namespace is not already defined in your autoloader, you must a
 
 $loader->registerNamespaces(array(
 
-    'Knplabs\Bundle'                => __DIR__.'/../vendor/bundles'
+    'Knp\Bundle'                => __DIR__.'/../vendor/bundles'
 
     // ...
 
@@ -59,7 +59,7 @@ public function registerBundles()
 
         // ...
 
-        new Knplabs\Bundle\GaufretteBundle\KnplabsGaufretteBundle()
+        new Knp\Bundle\GaufretteBundle\KnpGaufretteBundle()
     );
 
     // ...
@@ -78,7 +78,7 @@ The configuration of the Gaufrette bundle is divided into two parts: the `adapte
 
 ``` yaml
 # app/config/config.yml
-knplabs_gaufrette:
+knp_gaufrette:
     adapters:
         foo:
             local:
@@ -91,7 +91,7 @@ The defined adapters are usable to create the filesystems.
 
 ``` yaml
 # app/config/config.yml
-knplabs_gaufrette:
+knp_gaufrette:
     adapters:
         # ...
     filesystems:
@@ -111,7 +111,7 @@ You can access to all declared filesystems through the map service.
 In the previous exemple, we declared a `bar` filesystem:
 
 ``` php
-$container->get('knplabs_gaufrette.filesystem_map')->get('bar');
+$container->get('knp_gaufrette.filesystem_map')->get('bar');
 ```
 
 Returns the instance of `Gaufrette\Filesystem` for `bar`.
@@ -132,7 +132,7 @@ A simple local filesystem based adapter.
 
 ``` yaml
 # app/config/config.yml
-knplabs_gaufrette:
+knp_gaufrette:
     adapters:
         foo:
             local:
@@ -153,7 +153,7 @@ Almost as simple as the **local** adapter, but it encodes key to avoid having to
 
 ``` yaml
 # app/config/config.yml
-knplabs_gaufrette:
+knp_gaufrette:
     adapters:
         foo:
             safe_local:
@@ -173,7 +173,7 @@ Allows you to use a user defined adapter service.
 
 ``` yaml
 # app/config/config.yml
-knplabs_gaufrette:
+knp_gaufrette:
     adapters:
         foo:
             service:
@@ -194,7 +194,7 @@ The `files` is an array of files where each file is a sub-array having the `cont
 
 ``` yaml
 # app/config/config.yml
-knplabs_gaufrette:
+knp_gaufrette:
     adapters:
         foo:
             in_memory:

@@ -1,6 +1,6 @@
 <?php
 
-namespace Knplabs\Bundle\GaufretteBundle\Tests;
+namespace Knp\Bundle\GaufretteBundle\Tests;
 
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\HttpKernel\Kernel;
@@ -15,7 +15,7 @@ class TestKernel extends Kernel
     public function registerBundles()
     {
         return array(
-            new \Knplabs\Bundle\GaufretteBundle\KnplabsGaufretteBundle(),
+            new \Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
         );
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Knplabs\Bundle\GaufretteBundle;
+namespace Knp\Bundle\GaufretteBundle;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
@@ -10,6 +10,6 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  *
  * @author Antoine Hérault <antoine.herault@gmail.com>
  */
-class KnplabsGaufretteBundle extends Bundle
+class KnpGaufretteBundle extends Bundle
 {
 }

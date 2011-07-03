@@ -1,4 +1,4 @@
-knplabs_gaufrette:
+knp_gaufrette:
     adapters:
         foo:
             local:
