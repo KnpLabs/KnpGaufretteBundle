@@ -19,6 +19,7 @@
             <argument /><!-- Directory -->
             <argument /><!-- Create -->
         </service>
+        <service id="knp_gaufrette.adapter.amazon_s3" class="Gaufrette\Adapter\AmazonS3" abstract="true" public="false" />
         <service id="knp_gaufrette.filesystem_map" class="Knp\Bundle\GaufretteBundle\FilesystemMap">
             <argument /> <!-- map of filesystems -->
         </service>
