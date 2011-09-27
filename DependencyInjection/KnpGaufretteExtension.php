@@ -87,6 +87,7 @@ class KnpGaufretteExtension extends Extension
         ;
 
         if (!empty($config['alias'])) {
+            $container->getDefinition($id)->setPublic(false);
             $container->setAlias($config['alias'], $id);
         }
 
