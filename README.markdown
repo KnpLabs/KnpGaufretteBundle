@@ -241,7 +241,7 @@ knp_gaufrette:
 In your AcmeTestBundle, add following service definitions:
 
 ``` yaml
-# src/Acme/TestBundle/services.yml
+# src/Acme/TestBundle/Resources/config/services.yml
 parameters:
     acme_test.mongo.server: "mongodb://localhost:27017"
     acme_test.mongo.options:
@@ -259,7 +259,6 @@ services:
         class: MongoGridFS
         arguments: [@acme_test.mongodb, %acme_test.gridfs.prefix%]
 ```
-
 
 
 [gaufrette-homepage]: https://github.com/knplabs/Gaufrette
