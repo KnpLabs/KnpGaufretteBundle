@@ -141,7 +141,7 @@ A simple local filesystem based adapter.
  * `directory` The directory of the filesystem *(required)*
  * `create` Whether to create the directory if it does not exist *(default true)*
 
-### Exemple
+### Example
 
 ``` yaml
 # app/config/config.yml
@@ -162,7 +162,7 @@ Almost as simple as the **local** adapter, but it encodes key to avoid having to
  * `directory` The directory of the filesystem *(required)*
  * `create` Whether to create the directory if it does not exist *(default true)*
 
-### Exemple
+### Example
 
 ``` yaml
 # app/config/config.yml
@@ -182,7 +182,7 @@ Allows you to use a user defined adapter service.
 
  * `id` The id of the service *(required)*
 
-### Exemple
+### Example
 
 ``` yaml
 # app/config/config.yml
@@ -203,7 +203,7 @@ Adapter for test purposes, it stores files in an internal array.
 
 The `files` is an array of files where each file is a sub-array having the `content`, `checksum` and `mtime` optional keys.
 
-### Exemple
+### Example
 
 ``` yaml
 # app/config/config.yml
@@ -218,5 +218,47 @@ knp_gaufrette:
                         checksum:   abc1efg2hij3
                         mtime:      123456890123
 ```
+
+## GridFS (gridfs)
+
+Allows you to use a gridfs as an adapter.
+
+### Parameters
+
+ * `mongogridfs_id` The id of the service that provides MongoGridFS object instance for adapter *(required)*
+
+### Example
+
+``` yaml
+# app/config/config.yml
+knp_gaufrette:
+    adapters:
+        foo:
+            gridfs:
+                mongogridfs_id: acme_test.gridfs
+```
+
+In your AcmeTestBundle, add following service definitions:
+
+``` yaml
+# src/Acme/TestBundle/Resources/config/services.yml
+parameters:
+    acme_test.mongo.server: "mongodb://localhost:27017"
+    acme_test.mongo.options:
+        connect: true
+    acme_test.mongodb.name: "test_database"
+    acme_test.gridfs.prefix: "fs" #Default
+services:
+    acme_test.mongo:
+        class: Mongo
+        arguments: [%acme_test.mongo.server%, %acme_test.mongo.options%]
+    acme_test.mongodb:
+        class: MongoDB
+        arguments: [@acme_test.mongo, %acme_test.mongodb.name%]
+    acme_test.gridfs:
+        class: MongoGridFS
+        arguments: [@acme_test.mongodb, %acme_test.gridfs.prefix%]
+```
+
 
 [gaufrette-homepage]: https://github.com/knplabs/Gaufrette
