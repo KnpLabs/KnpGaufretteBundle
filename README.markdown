@@ -43,7 +43,7 @@ as a submodule:
 
 ## Add the namespace in the autoloader
 
-If the `Knp` namespace is not already defined in your autoloader, you must add it:
+You must register both Gaufrette and the KnpGaufretteBundle in your autoloader:
 
 ``` php
 <?php
@@ -53,9 +53,7 @@ If the `Knp` namespace is not already defined in your autoloader, you must add i
 $loader->registerNamespaces(array(
     'Knp\Bundle'                => __DIR__.'/../vendor/bundles',
     'Gaufrette'                 => __DIR__.'/../vendor/gaufrette/src',
-
     // ...
-
 ));
 ```
 
