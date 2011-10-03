@@ -22,7 +22,22 @@ As this bundle is an integration for Symfony of the [Gaufrette][gaufrette-homepa
 
 You can download an archive of the bundle and unpack it in the `vendor/bundles/Knp/Bundle/GaufretteBundle` directory of your application.
 
-If you are versioning your project with git, you had better to embed it as a submodule:
+### Standard Edition Style
+
+If you are using the `deps` file to manage your project's dependencies,
+you must add the following lines to it:
+
+    [gaufrette]
+        git=http://github.com/knplabs/Gaufrette.git
+
+    [KnpGaufretteBundle]
+        git=http://github.com/knplabs/KnpGaufretteBundle.git
+        target=/bundles/Knp/GaufretteBundle
+
+### Git Submodule Style
+
+If you are versioning your project with git, you had better to embed it
+as a submodule:
 
     $ git submodule add https://github.com/knplabs/KnpGaufretteBundle.git vendor/bundles/Knp/Bundle/GaufretteBundle
 
@@ -36,8 +51,8 @@ If the `Knp` namespace is not already defined in your autoloader, you must add i
 // app/autoload.php
 
 $loader->registerNamespaces(array(
-
-    'Knp\Bundle'                => __DIR__.'/../vendor/bundles'
+    'Knp\Bundle'                => __DIR__.'/../vendor/bundles',
+    'Gaufrette'                 => __DIR__.'/../vendor/gaufrette/src',
 
     // ...
 
