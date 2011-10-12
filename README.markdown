@@ -260,5 +260,25 @@ services:
         arguments: [@acme_test.mongodb, %acme_test.gridfs.prefix%]
 ```
 
+## MogileFS (mogilefs)
+
+Allows you to use a mogilefs as an adapter.
+
+### Parameters
+
+ * `domain` MogileFS domain
+ * `hosts` Available trackers
+
+### Example
+
+``` yaml
+# app/config/config.yml
+knp_gaufrette:
+    adapters:
+        foo:
+            mogilefs:
+                domain: foobar
+                hosts: ["192.168.0.1:7001", "192.168.0.2:7001"]
+```
 
 [gaufrette-homepage]: https://github.com/knplabs/Gaufrette
