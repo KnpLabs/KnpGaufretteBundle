@@ -10,7 +10,7 @@ use Symfony\Component\DependencyInjection\DefinitionDecorator;
 /**
  * GridFS adapter factory
  *
- * @author Mikko Tarvainen
+ * @author Mikko Tarvainen 2011 <mtarvainen@gmail.com>
  */
 class MogileFSAdapterFactory implements AdapterFactoryInterface
 {
