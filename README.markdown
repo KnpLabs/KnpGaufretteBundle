@@ -221,7 +221,7 @@ knp_gaufrette:
 
 ## GridFS (gridfs)
 
-Allows you to use a gridfs as an adapter.
+Adapter that allows you to use a MongoDB GridFS for storing files.
 
 ### Parameters
 
@@ -262,7 +262,7 @@ services:
 
 ## MogileFS (mogilefs)
 
-Allows you to use a mogilefs as an adapter.
+Adapter that allows you to use MogileFS for storing files.
 
 ### Parameters
 
