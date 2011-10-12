@@ -260,6 +260,8 @@ services:
         arguments: [@acme_test.mongodb, %acme_test.gridfs.prefix%]
 ```
 
+Please note it is possible to prepare MongoGridFS service anyway you like. This is just one way to do it.
+
 ## MogileFS (mogilefs)
 
 Adapter that allows you to use MogileFS for storing files.
