@@ -43,7 +43,8 @@ class MogileFSAdapterFactory implements AdapterFactoryInterface
         ->children()
             ->scalarNode('domain')->isRequired()->cannotBeEmpty()->end()
             ->arrayNode('hosts')
-                ->prototype('scalar')->isRequired()->end()
+                ->requiresAtLeastOneElement()
+                ->prototype('scalar')->end()
             ->end()
         ->end()
         ;
