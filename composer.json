@@ -1,0 +1,28 @@
+{
+    "name":         "knplabs/knp-gaufrette-bundle",
+    "type":         "symfony-bundle",
+    "description":  "Allows to easily use the Gaufrette library in a Symfony project",
+    "keywords":     ["file", "filesystem", "media", "abstraction"],
+    "homepage":     "http://knplabs.com",
+    "license":      "MIT",
+    "authors":      [
+        {
+            "name":     "Antoine Hérault",
+            "email":    "antoine.herault@gmail.com"
+        },
+        {
+            "name":     "The contributors",
+            "homepage": "https://github.com/knplabs/KnpGaufretteBundle/contributors"
+        }
+    ],
+    "require":      {
+        "symfony/framework-bundle": "2.*",
+        "knplabs/gaufrette":        "*"
+    },
+    "autoload":     {
+        "psr-0": {
+            "Knp\\Bundle\\GaufretteBundle": ""
+        }
+    },
+    "target-dir":   "Knp/Bundle/GaufretteBundle"
+}
