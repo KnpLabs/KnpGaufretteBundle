@@ -61,7 +61,7 @@ class AclAwareAmazonS3AdapterFactory implements AdapterFactoryInterface
         $builder
             ->validate()
                 ->always(function($v) {
-                    if (isset($v['acl']) && isset($v['users'])) {
+                    if (!empty($v['acl']) && !empty($v['users'])) {
                         throw new \Exception('"acl", and "users" cannot be set both at the same time.');
                     }
 
@@ -77,7 +77,7 @@ class AclAwareAmazonS3AdapterFactory implements AdapterFactoryInterface
                     ->prototype('array')
                         ->validate()
                             ->always(function($v) {
-                                if (isset($v['group']) === isset($v['id'])) {
+                                if (!empty($v['group']) === !empty($v['id'])) {
                                     throw new \Exception('Either "group", or "id" must be set.');
                                 }
 
