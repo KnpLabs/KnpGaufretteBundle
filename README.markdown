@@ -221,7 +221,7 @@ knp_gaufrette:
 
 ## GridFS (gridfs)
 
-Allows you to use a gridfs as an adapter.
+Adapter that allows you to use a MongoDB GridFS for storing files.
 
 ### Parameters
 
@@ -260,5 +260,27 @@ services:
         arguments: [@acme_test.mongodb, %acme_test.gridfs.prefix%]
 ```
 
+Note that it is possible to prepare MongoGridFS service anyway you like. This is just one way to do it.
+
+## MogileFS (mogilefs)
+
+Adapter that allows you to use MogileFS for storing files.
+
+### Parameters
+
+ * `domain` MogileFS domain
+ * `hosts` Available trackers
+
+### Example
+
+``` yaml
+# app/config/config.yml
+knp_gaufrette:
+    adapters:
+        foo:
+            mogilefs:
+                domain: foobar
+                hosts: ["192.168.0.1:7001", "192.168.0.2:7001"]
+```
 
 [gaufrette-homepage]: https://github.com/knplabs/Gaufrette
