@@ -32,7 +32,7 @@ you must add the following lines to it:
 
     [KnpGaufretteBundle]
         git=http://github.com/knplabs/KnpGaufretteBundle.git
-        target=/bundles/Knp/GaufretteBundle
+        target=/bundles/Knp/Bundle/GaufretteBundle
 
 ### Git Submodule Style
 
