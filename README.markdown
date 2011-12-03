@@ -28,10 +28,10 @@ If you are using the `deps` file to manage your project's dependencies,
 you must add the following lines to it:
 
     [gaufrette]
-        git=http://github.com/knplabs/Gaufrette.git
+        git=http://github.com/KnpLabs/Gaufrette.git
 
     [KnpGaufretteBundle]
-        git=http://github.com/knplabs/KnpGaufretteBundle.git
+        git=http://github.com/KnpLabs/KnpGaufretteBundle.git
         target=/bundles/Knp/Bundle/GaufretteBundle
 
 ### Git Submodule Style
@@ -39,7 +39,7 @@ you must add the following lines to it:
 If you are versioning your project with git, you had better to embed it
 as a submodule:
 
-    $ git submodule add https://github.com/knplabs/KnpGaufretteBundle.git vendor/bundles/Knp/Bundle/GaufretteBundle
+    $ git submodule add https://github.com/KnpLabs/KnpGaufretteBundle.git vendor/bundles/Knp/Bundle/GaufretteBundle
 
 ## Add the namespace in the autoloader
 
@@ -283,4 +283,4 @@ knp_gaufrette:
                 hosts: ["192.168.0.1:7001", "192.168.0.2:7001"]
 ```
 
-[gaufrette-homepage]: https://github.com/knplabs/Gaufrette
+[gaufrette-homepage]: https://github.com/KnpLabs/Gaufrette
