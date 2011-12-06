@@ -29,6 +29,9 @@
         <service id="knp_gaufrette.adapter.factory.mogilefs" class="Knp\Bundle\GaufretteBundle\DependencyInjection\Factory\MogileFSAdapterFactory">
             <tag name="gaufrette.adapter.factory" />
         </service>
+        <service id="knp_gaufrette.adapter.factory.ftp" class="Knp\Bundle\GaufretteBundle\DependencyInjection\Factory\FtpAdapterFactory">
+            <tag name="gaufrette.adapter.factory" />
+        </service>
 
     </services>
 

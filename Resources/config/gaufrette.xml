@@ -26,6 +26,7 @@
             <argument /><!-- domain -->
             <argument /><!-- hosts -->
         </service>
+        <service id="knp_gaufrette.adapter.ftp" class="Gaufrette\Adapter\Ftp" abstract="true" public="false" />
         <service id="knp_gaufrette.filesystem_map" class="Knp\Bundle\GaufretteBundle\FilesystemMap">
             <argument /> <!-- map of filesystems -->
         </service>
