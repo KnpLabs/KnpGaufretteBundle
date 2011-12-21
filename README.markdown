@@ -7,7 +7,7 @@ About Gaufrette
 ---------------
 
 Gaufrette is a PHP 5.3+ library providing a filesystem abstraction layer.
-This abstraction layer permits you to develop your applications without the need to know were all their medias will be stored and how.
+This abstraction layer permits you to develop your applications without the need to know where all their medias will be stored and how.
 
 Documentation is available the [official page of Gaufrette][gaufrette-homepage].
 
