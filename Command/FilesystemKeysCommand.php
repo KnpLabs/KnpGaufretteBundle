@@ -61,14 +61,14 @@ EOT
 
         $count = count($keys);
 
-        $output->writeln(
-            sprintf(
+        $message = $count ? sprintf(
                 'Bellow %s the <info>%s key%s</info> that where found:',
                 $count > 1 ? 'are' : 'is',
                 $count,
                 $count > 1 ? 's': ''
-            )
-        );
+            ) : "<info>0 keys</info> were found.";
+
+        $output->writeln($message);
 
         $output->setDecorated(true);
         foreach ($keys as $key) {
