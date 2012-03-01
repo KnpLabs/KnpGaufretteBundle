@@ -24,6 +24,7 @@ class CacheAdapterFactory implements AdapterFactoryInterface
             ->addArgument(new Reference('gaufrette.' . $config['source'] . '_adapter'))
             ->addArgument(new Reference('gaufrette.' . $config['cache'] . '_adapter'))
             ->addArgument($config['ttl'])
+            ->addArgument($config['serialize'] ? new Reference('gaufrette.' . $config['serialize'] . '_adapter') : null)
         ;
     }
 
@@ -45,6 +46,7 @@ class CacheAdapterFactory implements AdapterFactoryInterface
                 ->scalarNode('source')->isRequired()->cannotBeEmpty()->end()
                 ->scalarNode('cache')->isRequired()->cannotBeEmpty()->end()
                 ->scalarNode('ttl')->defaultValue(0)->end()
+                ->scalarNode('serialize')->defaultNull()->end()
             ->end()
         ;
     }
