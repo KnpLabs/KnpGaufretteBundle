@@ -1,5 +1,5 @@
 {
-    "name":         "knplabs/knp-gaufrette-bundle",
+    "name":         "rvdv/knp-gaufrette-bundle",
     "type":         "symfony-bundle",
     "description":  "Allows to easily use the Gaufrette library in a Symfony project",
     "keywords":     ["file", "filesystem", "media", "abstraction"],
