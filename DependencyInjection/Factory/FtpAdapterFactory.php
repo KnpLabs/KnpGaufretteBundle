@@ -1,4 +1,7 @@
 <?php
+// PHPClient - Workaround otherwise 'app/console' execution failed...
+if (!defined('FTP_ASCII')) { define('FTP_ASCII', 1); }
+if (!defined('FTP_BINARY')) { define('FTP_BINARY', 2); }
 
 namespace Knp\Bundle\GaufretteBundle\DependencyInjection\Factory;
 
