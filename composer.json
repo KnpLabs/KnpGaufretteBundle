@@ -19,6 +19,9 @@
         "symfony/framework-bundle": "2.*",
         "knplabs/gaufrette":        "*"
     },
+    "require-dev": {
+        "symfony/yaml": "2.*"
+    },
     "autoload":     {
         "psr-0": {
             "Knp\\Bundle\\GaufretteBundle": ""
