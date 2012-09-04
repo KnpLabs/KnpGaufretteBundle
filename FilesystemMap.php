@@ -13,7 +13,7 @@ class FilesystemMap
      *
      * @var array
      */
-    private $map;
+    protected $map;
 
     /**
      * Instanciates a new filesystem map
