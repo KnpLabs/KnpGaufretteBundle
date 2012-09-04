@@ -12,7 +12,7 @@
          bootstrap="vendor/autoload.php"
 >
   <testsuites>
-    <testsuite name="php-github-api Test Suite">
+    <testsuite name="KnpGaufretteBundle Test Suite">
       <directory>./Tests</directory>
     </testsuite>
   </testsuites>
