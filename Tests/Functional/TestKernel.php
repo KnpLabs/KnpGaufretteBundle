@@ -1,6 +1,6 @@
 <?php
 
-namespace Knp\Bundle\GaufretteBundle\Tests;
+namespace Knp\Bundle\GaufretteBundle\Tests\Functional;
 
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\HttpKernel\Kernel;
