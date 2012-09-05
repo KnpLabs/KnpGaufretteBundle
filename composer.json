@@ -20,7 +20,8 @@
         "knplabs/gaufrette":        "*"
     },
     "require-dev": {
-        "symfony/yaml": "2.*"
+        "symfony/yaml": "2.*",
+        "symfony/console": "2.*"
     },
     "autoload":     {
         "psr-0": {
