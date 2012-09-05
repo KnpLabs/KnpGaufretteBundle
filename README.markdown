@@ -48,7 +48,7 @@ as a submodule:
 ## Add the namespace in the autoloader 
 
 You must register both Gaufrette and the KnpGaufretteBundle in your autoloader:
-You do not have to do that if you are using composer autoload system.
+(You do not have to do that if you are using composer autoload system.)
 
 ``` php
 <?php
