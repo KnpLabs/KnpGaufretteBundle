@@ -7,6 +7,7 @@ use Symfony\Component\HttpKernel\Util\Filesystem;
 class ConfigurationTest extends \PHPUnit_Framework_TestCase
 {
     private $cacheDir;
+    private $kernel;
 
     public function setUp()
     {
@@ -17,6 +18,9 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
         }
 
         mkdir($this->cacheDir, 0777, true);
+
+        $this->kernel = new TestKernel('test', false);
+        $this->kernel->boot();
     }
 
     public function tearDown()
@@ -32,12 +36,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldAllowForFilesystemAlias()
     {
-        $kernel = new TestKernel('test', false);
-        $kernel->boot();
-
-        $container = $kernel->getContainer();
-
-        $this->assertInstanceOf('Gaufrette\Filesystem', $container->get('foo_filesystem'));
+        $this->assertInstanceOf('Gaufrette\Filesystem', $this->kernel->getContainer()->get('foo_filesystem'));
     }
 
     /**
@@ -57,12 +56,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldAllowAccessToAllPublicServices()
     {
-        $kernel = new TestKernel('dev', false);
-        $kernel->boot();
-
-        $container = $kernel->getContainer();
-        $this->assertInstanceOf('Gaufrette\Filesystem', $container->get('foo_filesystem'));
-        $this->assertInstanceOf('Knp\Bundle\GaufretteBundle\FilesystemMap', $container->get('knp_gaufrette.filesystem_map'));
+        $this->assertInstanceOf('Knp\Bundle\GaufretteBundle\FilesystemMap', $this->kernel->getContainer()->get('knp_gaufrette.filesystem_map'));
     }
 
     /**
@@ -70,10 +64,30 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
      */
     public function shouldAllowAccessToFilesystemThoughFilesystemMap()
     {
-        $kernel = new TestKernel('test', false);
-        $kernel->boot();
+        $this->assertInstanceOf('Gaufrette\Filesystem', $this->kernel->getContainer()->get('knp_gaufrette.filesystem_map')->get('foo'));
+    }
 
-        $container = $kernel->getContainer();
-        $this->assertInstanceOf('Gaufrette\Filesystem', $container->get('knp_gaufrette.filesystem_map')->get('foo'));
+    /**
+     * @test
+     */
+    public function shouldAllowAccessToLocalFilesystem()
+    {
+        $this->assertInstanceOf('Gaufrette\Adapter\Local', $this->kernel->getContainer()->get('foo_filesystem')->getAdapter());
+    }
+
+    /**
+     * @test
+     */
+    public function shouldAllowAccessToCacheFilesystem()
+    {
+        $this->assertInstanceOf('Gaufrette\Adapter\Cache', $this->kernel->getContainer()->get('cache_filesystem')->getAdapter());
+    }
+
+    /**
+     * @test
+     */
+    public function shouldAllowAccessToFtpFilesystem()
+    {
+        $this->assertInstanceOf('Gaufrette\Adapter\Ftp', $this->kernel->getContainer()->get('ftp_filesystem')->getAdapter());
     }
 }
