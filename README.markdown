@@ -34,6 +34,10 @@ you must add the following lines to it:
         git=http://github.com/KnpLabs/KnpGaufretteBundle.git
         target=/bundles/Knp/Bundle/GaufretteBundle
 
+### Composer Style
+
+Bundle can be installed using composer by add to require `composer.json` part `"knplabs/knp-gaufrette-bundle": "dev-master"` line.
+
 ### Git Submodule Style
 
 If you are versioning your project with git, you had better to embed it
@@ -41,9 +45,10 @@ as a submodule:
 
     $ git submodule add https://github.com/KnpLabs/KnpGaufretteBundle.git vendor/bundles/Knp/Bundle/GaufretteBundle
 
-## Add the namespace in the autoloader
+## Add the namespace in the autoloader 
 
 You must register both Gaufrette and the KnpGaufretteBundle in your autoloader:
+(You do not have to do that if you are using composer autoload system.)
 
 ``` php
 <?php
@@ -337,4 +342,43 @@ knp_gaufrette:
             apc:
                 prefix: APC 'namespace' prefix
                 ttl: 0
+```
+
+## Cache 
+
+Adapter which allow to cache other adapters
+
+### Parameters
+
+ * `source` The source adapter that must be cached *(required)*
+ * `cache` The adapter used to cache the source *(required)*
+ * `ttl` Time to live *(default 0)*
+ * `serializer` The adapter used to cache serializations *(default null)*
+
+### Example
+
+``` yaml
+# app/config/config.yml
+knp_gaufrette:
+    adapters:
+        media_ftp:
+            ftp:
+                host: example.com
+                username: user
+                password: pass
+                directory: /example/ftp
+                create: true
+                mode: FTP_BINARY
+        media_apc:
+            apc:
+                prefix: APC 'namespace' prefix
+                ttl: 0
+        media_cache:
+            cache:
+                source: media_ftp
+                cache: media_apc
+                ttl: 7200
+    filesystems:
+        media:
+            adapter: media_cache
 ```

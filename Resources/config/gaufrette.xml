@@ -34,6 +34,7 @@
             <argument /><!-- prefix -->
             <argument /><!-- ttl -->
         </service>
+        <service id="knp_gaufrette.adapter.cache" class="Gaufrette\Adapter\Cache" abstract="true" public="false" />
         <service id="knp_gaufrette.filesystem_map" class="%knp_gaufrette.filesystem_map.class%">
             <argument /> <!-- map of filesystems -->
         </service>
