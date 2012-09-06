@@ -2,7 +2,7 @@
 
 namespace Knp\Bundle\GaufretteBundle\Tests\Functional;
 
-use Symfony\Component\HttpKernel\Util\Filesystem;
+use Symfony\Component\Filesystem\Filesystem;
 
 class ConfigurationTest extends \PHPUnit_Framework_TestCase
 {
