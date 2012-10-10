@@ -432,3 +432,95 @@ knp_gaufrette:
         media:
             adapter: media_cache
 ```
+
+## Stream Wrapper
+
+You can register filesystems with a specified domain.
+And use as a stream wrapper anywhere in your code like :
+`gaufrette://domain/file.txt`
+
+### Parameters
+
+ * `protocol` The protocol name like `gaufrette://…` *(default gaufrette)*
+ * `filesystem` An array that contains files systems that you want to register with the possibility to set the key of the array
+ as the domain like `gaufrette://mydomain/…` *(default all filesystems)*
+
+### Example 1
+The protocol is gaufrette and all filesystems will be saved
+``` yaml
+# app/config/config.yml
+knp_gaufrette:
+    adapters:
+        backup: #...
+        amazon: #...
+
+    filesystems:
+        backup1:
+            adapter: backup
+        amazonS3:
+            adapter: amazon
+
+    stream_wrapper: ~
+```
+
+```
+gaufrette://backup1/file
+gaufrette://amazonS3/file
+```
+
+### Example 2
+We define the protocl as data and all filesystem will be saved
+``` yaml
+# app/config/config.yml
+knp_gaufrette:
+    filesystems:
+        #...
+
+    stream_wrapper:
+        protocol: business
+```
+
+```
+data:///backup1/...
+data://amazonS3/...
+```
+
+### Example 3
+We define the protocol as data and define which filesystem will be used
+``` yaml
+# app/config/config.yml
+knp_gaufrette:
+    filesystems:
+        #...
+
+    stream_wrapper:
+        protocol: data
+        filesystems:
+            - backup1
+            - amazonS3
+```
+
+```
+data://backup1/...
+data://amazonS3/...
+```
+### Example 4
+We define the protocol as data and define which filesystem will be used with the domain
+
+``` yaml
+# app/config/config.yml
+knp_gaufrette:
+    filesystems:
+        #...
+
+    stream_wrapper:
+        protocol: gaufrette
+        filesystems:
+            backup: backup1
+            pictures: amazonS3
+```
+
+```
+data://backup/...
+data://pictures/...
+```

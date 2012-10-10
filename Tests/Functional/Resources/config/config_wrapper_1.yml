@@ -1,0 +1,5 @@
+imports:
+    - { resource: config.yml }
+
+knp_gaufrette:
+    stream_wrapper: ~

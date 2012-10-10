@@ -52,6 +52,11 @@ class KnpGaufretteExtension extends Extension
 
         $container->getDefinition('knp_gaufrette.filesystem_map')
             ->replaceArgument(0, $map);
+
+        if (isset($config['stream_wrapper'])) {
+            $container->setParameter('knp_gaufrette.stream_wrapper.protocol', $config['stream_wrapper']['protocol']);
+            $container->setParameter('knp_gaufrette.stream_wrapper.filesystems', $config['stream_wrapper']['filesystems']);
+        }
     }
 
     private function createAdapter($name, array $config, ContainerBuilder $container, array $factories)
