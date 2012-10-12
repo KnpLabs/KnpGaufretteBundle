@@ -469,7 +469,7 @@ gaufrette://amazonS3/file
 ```
 
 ### Example 2
-We define the protocl as data and all filesystem will be saved
+We define the protocol as data and all filesystem will be saved
 ``` yaml
 # app/config/config.yml
 knp_gaufrette:
@@ -477,7 +477,7 @@ knp_gaufrette:
         #...
 
     stream_wrapper:
-        protocol: business
+        protocol: data
 ```
 
 ```
@@ -505,7 +505,7 @@ data://backup1/...
 data://amazonS3/...
 ```
 ### Example 4
-We define the protocol as data and define which filesystem will be used with the domain
+We define the protocol as data and define which filesystem will be used with the domain aliasing
 
 ``` yaml
 # app/config/config.yml
@@ -514,7 +514,7 @@ knp_gaufrette:
         #...
 
     stream_wrapper:
-        protocol: gaufrette
+        protocol: data
         filesystems:
             backup: backup1
             pictures: amazonS3
