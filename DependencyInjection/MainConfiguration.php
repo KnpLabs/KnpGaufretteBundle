@@ -37,6 +37,7 @@ class MainConfiguration implements ConfigurationInterface
 
         $this->addAdaptersSection($rootNode, $this->factories);
         $this->addFilesystemsSection($rootNode);
+        $this->addStreamWrapperSection($rootNode);
 
         $rootNode
             // add a faux-entry for factories, so that no validation error is thrown
@@ -79,6 +80,32 @@ class MainConfiguration implements ConfigurationInterface
                     ->children()
                         ->scalarNode('adapter')->isRequired()->end()
                         ->scalarNode('alias')->defaultNull()->end()
+                    ->end()
+                ->end()
+            ->end()
+        ;
+    }
+
+    private function addStreamWrapperSection(ArrayNodeDefinition $node)
+    {
+        $node
+            ->children()
+                ->arrayNode('stream_wrapper')
+                    ->children()
+                        ->scalarNode('protocol')->defaultValue('gaufrette')->end()
+                        ->arrayNode('filesystems')
+                            ->beforeNormalization()
+                                ->ifTrue(function ($array) {
+                                    return !(bool)count(array_filter(array_keys($array), 'is_string'));
+                                })
+                                ->then(function ($array) {
+                                    return array_combine($array, $array);
+                                })
+                            ->end()
+                            ->useAttributeAsKey('key')
+                            ->prototype('scalar')
+                            ->end()
+                        ->end()
                     ->end()
                 ->end()
             ->end()

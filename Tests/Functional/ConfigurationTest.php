@@ -3,6 +3,7 @@
 namespace Knp\Bundle\GaufretteBundle\Tests\Functional;
 
 use Symfony\Component\Filesystem\Filesystem;
+use Gaufrette\StreamWrapper;
 
 class ConfigurationTest extends \PHPUnit_Framework_TestCase
 {
@@ -89,5 +90,86 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
     public function shouldAllowAccessToFtpFilesystem()
     {
         $this->assertInstanceOf('Gaufrette\Adapter\Ftp', $this->kernel->getContainer()->get('ftp_filesystem')->getAdapter());
+    }
+
+    /**
+     * @test
+     */
+    public function shouldAllowToNotConfigureStreamWrapper()
+    {
+        $this->assertFalse($this->kernel->getContainer()->hasParameter('knp_gaufrette.stream_wrapper.protocol'));
+    }
+
+    /**
+     * @test
+     */
+    public function shouldConfigureStreamWrapperWithDefaultValues()
+    {
+        $kernel = new TestKernel('wrapper_1', false);
+        $kernel->boot();
+        $container = $kernel->getContainer();
+
+        $this->assertTrue($container->hasParameter('knp_gaufrette.stream_wrapper.protocol'));
+        $this->assertEquals('gaufrette', $container->getParameter('knp_gaufrette.stream_wrapper.protocol'));
+
+        $wrapperFsMap = StreamWrapper::getFilesystemMap();
+        $fileSystems = $this->kernel->getContainer()->get('knp_gaufrette.filesystem_map');
+
+        foreach($fileSystems as $fs) {
+            $this->assertTrue($wrapperFsMap->has($fs));
+        }
+    }
+
+    /**
+     * @test
+     */
+    public function shouldAllowToDefineProtocolOfStreamWrapper()
+    {
+        $kernel = new TestKernel('wrapper_2', false);
+        $kernel->boot();
+        $container = $kernel->getContainer();
+
+        $this->assertTrue($container->hasParameter('knp_gaufrette.stream_wrapper.protocol'));
+        $this->assertEquals('tada', $container->getParameter('knp_gaufrette.stream_wrapper.protocol'));
+    }
+
+    /**
+     * @test
+     */
+    public function shouldAllowToDefineWhichFileSystemsShouldBeAddToStreamWrapper()
+    {
+        $kernel = new TestKernel('wrapper_2', false);
+        $kernel->boot();
+        $container = $kernel->getContainer();
+        $fileSystems = $container->getParameter('knp_gaufrette.stream_wrapper.filesystems');
+
+        $this->assertEquals(array('pictures' => 'cache', 'text' => 'ftp'), $fileSystems);
+
+        $wrapperFsMap = StreamWrapper::getFilesystemMap();
+
+        foreach($fileSystems as $key => $fs) {
+            $this->assertTrue($wrapperFsMap->has($key));
+        }
+    }
+
+    /**
+     * @test
+     */
+    public function shouldAllowToDefineFileSystemsWithoutDomain()
+    {
+        $kernel = new TestKernel('wrapper_3', false);
+        $kernel->boot();
+        $container = $kernel->getContainer();
+        $fileSystems = $container->getParameter('knp_gaufrette.stream_wrapper.filesystems');
+
+        $this->assertTrue($container->hasParameter('knp_gaufrette.stream_wrapper.protocol'));
+        $this->assertEquals('tada', $container->getParameter('knp_gaufrette.stream_wrapper.protocol'));
+        $this->assertEquals(array('cache' => 'cache', 'ftp' => 'ftp'), $fileSystems);
+
+        $wrapperFsMap = StreamWrapper::getFilesystemMap();
+
+        foreach($fileSystems as $key => $fs) {
+            $this->assertTrue($wrapperFsMap->has($key));
+        }
     }
 }
