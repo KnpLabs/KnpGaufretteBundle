@@ -27,12 +27,19 @@ class KnpGaufretteBundle extends Bundle
 
         $fileSystems = $this->container->getParameter('knp_gaufrette.stream_wrapper.filesystems');
 
+        /*
+         * If there are no filesystems configured to be wrapped,
+         * all filesystems within the map will be wrapped.
+         */
         if (empty($fileSystems)) {
             $fileSystems = $this->container->get('knp_gaufrette.filesystem_map');
-        }
-
-        foreach ($fileSystems as $domain => $fileSystem) {
-            $wrapperFsMap->set($domain, $this->container->get('knp_gaufrette.filesystem_map')->get($fileSystem));
+            foreach ($fileSystems as $domain => $fileSystem) {
+                $wrapperFsMap->set($domain, $fileSystem);
+            }
+        } else {
+            foreach ($fileSystems as $domain => $fileSystem) {
+                $wrapperFsMap->set($domain, $this->container->get('knp_gaufrette.filesystem_map')->get($fileSystem));
+            }
         }
     }
 }
