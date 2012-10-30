@@ -113,10 +113,15 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('gaufrette', $container->getParameter('knp_gaufrette.stream_wrapper.protocol'));
 
         $wrapperFsMap = StreamWrapper::getFilesystemMap();
-        $fileSystems = $this->kernel->getContainer()->get('knp_gaufrette.filesystem_map');
 
-        foreach($fileSystems as $fs) {
-            $this->assertTrue($wrapperFsMap->has($fs));
+        $expectedDomains = array(
+            'foo',
+            'cache',
+            'ftp',
+        );
+
+        foreach ($expectedDomains as $eachExpectedDomain) {
+            $this->assertTrue($wrapperFsMap->has($eachExpectedDomain));
         }
     }
 
