@@ -6,7 +6,7 @@ namespace Knp\Bundle\GaufretteBundle;
  * Holds references to all declared filesystems
  * and allows to access them through their name
  */
-class FilesystemMap
+class FilesystemMap implements \IteratorAggregate
 {
     /**
      * Map of filesystems indexed by their name
@@ -26,9 +26,13 @@ class FilesystemMap
     }
 
     /**
+     * Retrieves a filesystem by its name.
+     *
      * @param string $name name of a filesystem
+     *
+     * @return \Gaufrette\Filesystem
+     *
      * @throw \InvalidArgumentException if the filesystem does not exist
-     * @return Filesystem
      */
     public function get($name)
     {
@@ -37,5 +41,10 @@ class FilesystemMap
         }
 
         return $this->map[$name];
+    }
+
+    public function getIterator()
+    {
+        return new \ArrayIterator($this->map);
     }
 }
