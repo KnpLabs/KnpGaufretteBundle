@@ -17,7 +17,7 @@
     ],
     "require":      {
         "symfony/framework-bundle": "2.*",
-        "knplabs/gaufrette":        "0.1.3"
+        "knplabs/gaufrette":        "*"
     },
     "require-dev": {
         "symfony/yaml": "2.*",
@@ -26,6 +26,11 @@
     "autoload":     {
         "psr-0": {
             "Knp\\Bundle\\GaufretteBundle": ""
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.2.x-dev"
         }
     },
     "target-dir":   "Knp/Bundle/GaufretteBundle"
