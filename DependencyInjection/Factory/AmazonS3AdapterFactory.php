@@ -18,12 +18,16 @@ class AmazonS3AdapterFactory implements AdapterFactoryInterface
     */
     public function create(ContainerBuilder $container, $id, array $config)
     {
-        $container
+        $definition = $container
             ->setDefinition($id, new DefinitionDecorator('knp_gaufrette.adapter.amazon_s3'))
             ->addArgument(new Reference($config['amazon_s3_id']))
-            ->addArgument($config['bucket_name'])
-            ->addArgument($config['create'])
-        ;
+            ->addArgument($config['bucket_name']);
+
+        if (isset($config['options'])) {
+            $definition->addArgument($config['options']);
+        } elseif (isset($config['create'])) {
+            $definition->addArgument(array('create' => $config['create']));
+        }
     }
 
     /**
@@ -47,7 +51,16 @@ class AmazonS3AdapterFactory implements AdapterFactoryInterface
             ->children()
                 ->scalarNode('amazon_s3_id')->isRequired()->cannotBeEmpty()->end()
                 ->scalarNode('bucket_name')->isRequired()->cannotBeEmpty()->end()
-                ->booleanNode('create')->defaultFalse()->end()
+                ->booleanNode('create')->end()
+                ->arrayNode('options')
+                    ->children()
+                        ->booleanNode('create')
+                            ->defaultFalse()
+                        ->end()
+                        ->scalarNode('region')->end()
+                        ->scalarNode('directory')->end()
+                    ->end()
+                ->end()
             ->end()
         ;
     }
