@@ -25,6 +25,8 @@ class AmazonS3AdapterFactory implements AdapterFactoryInterface
 
         if (isset($config['options'])) {
             $definition->addArgument($config['options']);
+        } elseif (isset($config['create'])) {
+            $definition->addArgument(array('create' => $config['create']));
         }
     }
 
@@ -49,6 +51,7 @@ class AmazonS3AdapterFactory implements AdapterFactoryInterface
             ->children()
                 ->scalarNode('amazon_s3_id')->isRequired()->cannotBeEmpty()->end()
                 ->scalarNode('bucket_name')->isRequired()->cannotBeEmpty()->end()
+                ->booleanNode('create')->end()
                 ->arrayNode('options')
                     ->children()
                         ->booleanNode('create')
