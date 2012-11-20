@@ -21,12 +21,7 @@ class FtpAdapterFactory implements AdapterFactoryInterface
             ->setDefinition($id, new DefinitionDecorator('knp_gaufrette.adapter.ftp'))
             ->addArgument($config['directory'])
             ->addArgument($config['host'])
-            ->addArgument($config['username'])
-            ->addArgument($config['password'])
-            ->addArgument($config['port'])
-            ->addArgument($config['passive'])
-            ->addArgument($config['create'])
-            ->addArgument($config['mode'])
+            ->addArgument($config)
         ;
     }
 
