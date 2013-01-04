@@ -16,7 +16,7 @@ class FilesystemMap implements \IteratorAggregate
     protected $map;
 
     /**
-     * Instanciates a new filesystem map
+     * Instantiates a new filesystem map
      *
      * @param array $map
      */
