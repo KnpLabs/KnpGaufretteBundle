@@ -31,7 +31,7 @@ interface AdapterFactoryInterface
     /**
      * Adds configuration nodes for the factory
      *
-     * @param  NodeBuilder $builder
+     * @param  NodeDefinition $builder
      */
     function addConfiguration(NodeDefinition $builder);
 }
