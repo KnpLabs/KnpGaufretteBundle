@@ -1,1 +1,4 @@
 Tests/Resources/cache
+.idea/
+vendor/
+composer.lock

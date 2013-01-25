@@ -10,12 +10,8 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 class AclAwareAmazonS3AdapterFactory implements AdapterFactoryInterface
 {
     /**
-    * Creates the adapter, registers it and returns its id
-    *
-    * @param  ContainerBuilder $container  A ContainerBuilder instance
-    * @param  string           $id         The id of the service
-    * @param  array            $config     An array of configuration
-    */
+     * {@inheritDoc}
+     */
     public function create(ContainerBuilder $container, $id, array $config)
     {
         $container
@@ -42,9 +38,7 @@ class AclAwareAmazonS3AdapterFactory implements AdapterFactoryInterface
     }
 
     /**
-     * Returns the key for the factory configuration
-     *
-     * @return string
+     * {@inheritDoc}
      */
     public function getKey()
     {
@@ -52,9 +46,7 @@ class AclAwareAmazonS3AdapterFactory implements AdapterFactoryInterface
     }
 
     /**
-     * Adds configuration nodes for the factory
-     *
-     * @param  NodeBuilder $builder
+     * {@inheritDoc}
      */
     public function addConfiguration(NodeDefinition $builder)
     {
