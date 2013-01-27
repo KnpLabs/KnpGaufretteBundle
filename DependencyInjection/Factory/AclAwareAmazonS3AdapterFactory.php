@@ -16,15 +16,21 @@ class AclAwareAmazonS3AdapterFactory implements AdapterFactoryInterface
     * @param  string           $id         The id of the service
     * @param  array            $config     An array of configuration
     */
-    public function create(ContainerBuilder $container, $id, array $config)
+    public function create(ContainerBuilder $container, $id, $config)
     {
         $container
             ->setDefinition($id.'.delegate', new DefinitionDecorator('knp_gaufrette.adapter.amazon_s3'))
             ->addArgument(new Reference($config['amazon_s3_id']))
             ->addArgument($config['bucket_name'])
-            ->addArgument($config)
         ;
-
+        
+        if( is_array($config) ) { 
+            $container->addArgument($config);
+        } else { 
+            // otherwise it's a boolean value for create, which we are accepting for bc purposes 
+            $container->addArgument(array('create' => $config));
+        }
+        
         $def = $container
             ->setDefinition($id, new DefinitionDecorator('knp_gaufrette.adapter.acl_aware_amazon_s3'))
             ->addArgument(new Reference($id.'.delegate'))
