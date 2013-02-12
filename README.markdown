@@ -290,6 +290,45 @@ knp_gaufrette:
 
 [gaufrette-homepage]: https://github.com/KnpLabs/Gaufrette
 
+## Rackspace Cloudfiles (lazy)
+
+Adapter that allows you to use Rackspace Cloudfiles service to store files.
+
+### Parameters
+
+ * `rackspace_authentication_id` the name of the service used to provide Rackspace authentication
+ * `container_name` the name of the container
+ * `create` optional boolean value, if `true` will try to create the container if needed to (default `false`)
+
+### Example
+
+``` yaml
+# app/config/config.yml
+knp_gaufrette:
+    adapters:
+        foo:
+            lazy_rackspace_cloudfiles:
+                rackspace_authentication_id: rackspace_authentication
+                container_name: pictures
+```
+
+As you can see you need to define the Rackspace Authentication service in your configuration file.
+Follows a quick sample on how to define the service
+
+``` yaml
+# src/Acme/TestBundle/Resources/config/services.yml
+parameters:
+    acme_test.rackspace.username: my_rackspace_username
+    acme_test.rackspace.apikey: my_rackspace_apikey
+
+services:
+    rackspace_authentication:
+        class: CF_Authentication
+        arguments:
+            - %acme_test.rackspace.username%
+            - %acme_test.rackspace.apikey%
+```
+
 ## Ftp
 
 Adapter for FTP.
