@@ -34,6 +34,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
+     * @functional
      */
     public function shouldAllowForFilesystemAlias()
     {
@@ -42,6 +43,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
+     * @functional
      */
     public function shouldWorkForOtherEnv()
     {
@@ -54,6 +56,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
+     * @functional
      */
     public function shouldAllowAccessToAllPublicServices()
     {
@@ -70,6 +73,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
+     * @functional
      */
     public function shouldAllowAccessToLocalFilesystem()
     {
@@ -78,6 +82,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
+     * @functional
      */
     public function shouldAllowAccessToCacheFilesystem()
     {
@@ -86,6 +91,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
+     * @functional
      */
     public function shouldAllowAccessToFtpFilesystem()
     {
@@ -94,6 +100,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
+     * @functional
      */
     public function shouldAllowToNotConfigureStreamWrapper()
     {
@@ -102,6 +109,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
+     * @functional
      */
     public function shouldConfigureStreamWrapperWithDefaultValues()
     {
@@ -127,6 +135,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
+     * @functional
      */
     public function shouldAllowToDefineProtocolOfStreamWrapper()
     {
@@ -140,6 +149,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
+     * @functional
      */
     public function shouldAllowToDefineWhichFileSystemsShouldBeAddToStreamWrapper()
     {
@@ -159,6 +169,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
+     * @functional
      */
     public function shouldAllowToDefineFileSystemsWithoutDomain()
     {
