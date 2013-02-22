@@ -21,7 +21,8 @@
     },
     "require-dev": {
         "symfony/yaml": "2.*",
-        "symfony/console": "2.*"
+        "symfony/console": "2.*",
+        "phpunit/phpunit": "3.7.*"
     },
     "autoload":     {
         "psr-0": {
@@ -32,6 +33,9 @@
         "branch-alias": {
             "dev-master": "0.2.x-dev"
         }
+    },
+    "config": {
+        "bin-dir": "bin"
     },
     "target-dir":   "Knp/Bundle/GaufretteBundle"
 }
