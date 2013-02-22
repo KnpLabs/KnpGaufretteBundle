@@ -18,8 +18,13 @@ class AclAwareAmazonS3AdapterFactory implements AdapterFactoryInterface
             ->setDefinition($id.'.delegate', new DefinitionDecorator('knp_gaufrette.adapter.amazon_s3'))
             ->addArgument(new Reference($config['amazon_s3_id']))
             ->addArgument($config['bucket_name'])
-            ->addArgument($config['create'])
         ;
+
+        if (isset($config['options'])) {
+            $definition->addArgument($config['options']);
+        } elseif (isset($config['create'])) {
+            $definition->addArgument(array('create' => $config['create']));
+        }
 
         $def = $container
             ->setDefinition($id, new DefinitionDecorator('knp_gaufrette.adapter.acl_aware_amazon_s3'))
