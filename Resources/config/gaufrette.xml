@@ -24,6 +24,12 @@
         </service>
         <service id="knp_gaufrette.adapter.amazon_s3" class="Gaufrette\Adapter\AmazonS3" abstract="true" public="false" />
         <service id="knp_gaufrette.adapter.acl_aware_amazon_s3" class="Gaufrette\Adapter\AclAwareAmazonS3" abstract="true" public="false" />
+        <service id="knp_gaufrette.adapter.opencloud" class="Gaufrette\Adapter\OpenCloud" abstract="true" public="false">
+            <argument /><!-- ObjectStore -->
+            <argument /><!-- Container name -->
+            <argument /><!-- Create container -->
+            <argument /><!-- Detect content type -->
+        </service>
         <service id="knp_gaufrette.adapter.gridfs" class="Gaufrette\Adapter\GridFS" abstract="true" public="false" />
         <service id="knp_gaufrette.adapter.mogilefs" class="Gaufrette\Adapter\MogileFS" abstract="true" public="false">
             <argument /><!-- domain -->
@@ -42,3 +48,4 @@
     </services>
 
 </container>
+
