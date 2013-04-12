@@ -394,6 +394,78 @@ knp_gaufrette:
                 ttl: 0
 ```
 
+## Open Cloud (opencloud)
+
+Adapter for OpenCloud (Rackspace)
+
+### Parameters
+
+ * `object_store_id`: the id of the object store service
+ * `container_name`: the name of the container to use
+ * `create_container`: if `true` will create the container in case it's needed *(default `false`)*
+ * `detect_content_type`: if `true` will detect the content type for each file *(default `true`)*
+ 
+### Defining services
+
+To use the OpenCloud adapter you should provide a valid `ObjectStore` instance. You can retrieve an instance through the
+`OpenCloud\OpenStack` or `OpenCloud\Rackspace` instances. We can provide a comprehensive configuration through the Symfony 
+DiC configuration.
+
+#### Define OpenStack/Rackspace service
+
+Generic OpenStack:
+
+``` yaml
+# app/config/config.yml
+services:
+    opencloud.connection:
+        class: OpenCloud\OpenStack
+        arguments:
+          - %openstack_identity_url%
+          - {username: %openstack_username%, password: %openstack_password%, tenantName: %openstack_tenant_name%}
+```
+
+Rackspace:
+
+``` yaml
+# app/config/config.yml
+services:
+    opencloud.connection:
+        class: OpenCloud\Rackspace
+        arguments:
+          - 'https://identity.api.rackspacecloud.com/v2.0/'
+          - {username: %rackspace_username%, apiKey: %rackspace_apikey%}
+```
+
+#### Define ObjectStore service
+
+``` yaml
+# app/config/config.yml
+services:
+    opencloud.object_store:
+        class: OpenCloud\ObjectStoreBase
+        factory_service: opencloud.connection
+        factory_method: ObjectStore
+        arguments:
+          - 'cloudFiles' # Object storage type 
+          - 'DFW' # Object storage region
+          - 'publicURL' # url type
+```
+
+### Example
+
+Finally you can define your adapter in configuration:
+
+``` yaml
+# app/config/config.yml
+knp_gaufrette:
+    adapters:
+        foo:
+            opencloud:
+                object_store_id: opencloud.object_store
+                container_name: foo
+```
+
 ## Cache 
 
 Adapter which allow to cache other adapters
