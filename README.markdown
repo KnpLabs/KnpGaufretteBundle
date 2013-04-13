@@ -425,12 +425,25 @@ services:
           - {username: %openstack_username%, password: %openstack_password%, tenantName: %openstack_tenant_name%}
 ```
 
+HPCloud:
+
+``` yaml
+# app/config/config.yml
+services:
+    opencloud.connection.hpcloud:
+        class: OpenCloud\OpenStack
+        arguments:
+          - 'https://region-a.geo-1.identity.hpcloudsvc.com:123456/v2.0/' // check https://account.hpcloud.com/account/api_keys for identities urls
+          - {username: %hpcloud_username%, password: %hpcloud_password%, tenantName: %hpcloud_tenant_name%}
+```
+The username and password are your login credentials, not the api key. Your tenantName is your Project Name on the api keys page.
+
 Rackspace:
 
 ``` yaml
 # app/config/config.yml
 services:
-    opencloud.connection:
+    opencloud.connection.rackspace:
         class: OpenCloud\Rackspace
         arguments:
           - 'https://identity.api.rackspacecloud.com/v2.0/'
@@ -438,6 +451,23 @@ services:
 ```
 
 #### Define ObjectStore service
+
+HPCloud:
+
+``` yaml
+# app/config/config.yml
+services:
+    opencloud.object_store:
+        class: OpenCloud\ObjectStoreBase
+        factory_service: opencloud.connection.hpcloud
+        factory_method: ObjectStore
+        arguments:
+          - 'Object Storage' # Object storage type 
+          - 'region-a.geo-1' # Object storage region
+          - 'publicURL' # url type
+```
+
+Rackspace:
 
 ``` yaml
 # app/config/config.yml
