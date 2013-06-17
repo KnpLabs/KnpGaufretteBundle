@@ -7,7 +7,7 @@ About Gaufrette
 ---------------
 
 Gaufrette is a PHP 5.3+ library providing a filesystem abstraction layer.
-This abstraction layer permits you to develop your applications without the need to know where all their medias will be stored and how.
+This abstraction layer allows you to develop applications without needing to know where all their media files will be stored or how.
 
 Documentation is available the [official page of Gaufrette][gaufrette-homepage].
 
@@ -36,19 +36,25 @@ you must add the following lines to it:
 
 ### Composer Style
 
-Bundle can be installed using composer by add to require `composer.json` part `"knplabs/knp-gaufrette-bundle": "dev-master"` line.
+This bundle can be installed using composer by adding the following in the `require` section of your `composer.json` file:
+
+```
+    "require": {
+        ...
+        "knplabs/knp-gaufrette-bundle": "dev-master"
+    },
+```    
 
 ### Git Submodule Style
 
-If you are versioning your project with git, you had better to embed it
-as a submodule:
+If you are versioning your project with git and making changes to this bundle you can embed it as a submodule:
 
     $ git submodule add https://github.com/KnpLabs/KnpGaufretteBundle.git vendor/bundles/Knp/Bundle/GaufretteBundle
 
 ## Add the namespace in the autoloader 
 
 You must register both Gaufrette and the KnpGaufretteBundle in your autoloader:
-(You do not have to do that if you are using composer autoload system.)
+(You do not have to do this if you are using the composer autoload system.)
 
 ``` php
 <?php
@@ -103,7 +109,7 @@ knp_gaufrette:
                 directory: /path/to/my/filesystem
 ```
 
-The defined adapters are usable to create the filesystems.
+The defined adapters are then used to create the filesystems.
 
 ## Configuring the Filesystems
 
@@ -118,26 +124,26 @@ knp_gaufrette:
             alias:      foo_filesystem
 ```
 
-Each defined filesystem must have an `adapter` with the key of an adapter as value.
-The filesystem defined above with result in a service with id `gaufrette.bar_filesystem`.
-The `alias` parameter permits to also defines an alias for it.
+Each defined filesystem must have an `adapter` with its value set to an adapter's key.
+The filesystem defined above will result in a service with id `gaufrette.bar_filesystem`.
+The `alias` parameter allows us to define an alias for it (`foo_filesystem` in this case).
 
 The filesystem map
 ------------------
 
-You can access to all declared filesystems through the map service.
+You can access all declared filesystems through the map service.
 In the previous exemple, we declared a `bar` filesystem:
 
 ``` php
 $container->get('knp_gaufrette.filesystem_map')->get('bar');
 ```
 
-Returns the instance of `Gaufrette\Filesystem` for `bar`.
+Returns the `bar` instance of `Gaufrette\Filesystem`.
 
 Adapters Reference
 ------------------
 
-## Local Adapter
+## Local Adapter (local)
 
 A simple local filesystem based adapter.
 
@@ -265,7 +271,7 @@ services:
         arguments: [@acme_test.mongodb, %acme_test.gridfs.prefix%]
 ```
 
-Note that it is possible to prepare MongoGridFS service anyway you like. This is just one way to do it.
+Note that it is possible to prepare MongoGridFS service any way you like. This is just one way to do it.
 
 ## MogileFS (mogilefs)
 
@@ -288,15 +294,13 @@ knp_gaufrette:
                 hosts: ["192.168.0.1:7001", "192.168.0.2:7001"]
 ```
 
-[gaufrette-homepage]: https://github.com/KnpLabs/Gaufrette
-
-## Ftp
+## Ftp (ftp)
 
 Adapter for FTP.
 
 ### Parameters
 
- * `directory` The directory of the filesystem *(required)*
+ * `directory` The remote directory *(required)*
  * `host` FTP host *(required)*
  * `username` FTP username *(default null)*
  * `password` FTP password *(default null)*
@@ -321,14 +325,14 @@ knp_gaufrette:
                 mode: FTP_BINARY
 ```
 
-## Sftp
+## Sftp (sftp)
 
 Adapter for SFTP (SSH-FTP).
 
 ### Parameters
 
  * `sftp_id` The id of the service that provides SFTP access.
- * `directory* The distant directory *(default null)*.
+ * `directory` The remote directory *(default null)*.
  * `create` Whether to create the directory if it does not exist *(default false)*.
 
 ### Example
@@ -371,7 +375,7 @@ services:
         arguments: [@acme_test.ssh.session]
 ```
 
-## Apc
+## Apc (apc)
 
 Adapter for APC.
 
@@ -394,6 +398,64 @@ knp_gaufrette:
                 ttl: 0
 ```
 
+## Amazon S3 (amazon_s3)
+
+Adapter to connect to Amazon S3 instances.
+
+This adapter requires the use of amazonwebservices/aws-sdk-for-php which can be installed by adding the following line to your composer.json:
+
+```
+    "require": {
+        ...
+        "amazonwebservices/aws-sdk-for-php": "1.6.2"
+    },
+```
+
+Note that Gaufrette is not currently compatible with the v2 Amazon SDK (called "aws/aws-sdk-php").
+
+### Parameters
+
+ * `amazon_s3_id`: the id of the AmazonS3 service used for the underlying connection
+ * `bucket_name`: the name of the bucket to use
+ * `options`: additional (optional) settings
+   * `directory`: the directory to use, within the specified bucket
+   * `region`
+   * `create`
+
+### Defining services
+
+To use the Amazon S3 adapter you need to provide a valid `AmazonS3` instance (as defined in the Amazon SDK). This can 
+easily be set up as using Symfony's service configuration:
+
+``` yaml
+# app/config/config.yml
+services:
+    amazonS3:
+        class: AmazonS3
+        arguments:
+            options:
+                key:      '%aws_key%'
+                secret:   '%aws_secret_key%'
+```   
+
+### Example
+
+Once the service is set up use its key as the amazon_s3_id in the gaufrette configuration:
+
+``` yaml
+# app/config/config.yml
+knp_gaufrette:
+    adapters:
+        foo:
+            amazon_s3:
+                amazon_s3_id:   amazonS3
+                bucket_name:    foo_bucket
+                options:
+                    directory:  foo_directory
+```
+
+Note that the SDK seems to have some issues with bucket names with dots in them, e.g. "com.mycompany.bucket" seems to have issues but "com-mycompany-bucket" works.
+
 ## Open Cloud (opencloud)
 
 Adapter for OpenCloud (Rackspace)
@@ -402,14 +464,14 @@ Adapter for OpenCloud (Rackspace)
 
  * `object_store_id`: the id of the object store service
  * `container_name`: the name of the container to use
- * `create_container`: if `true` will create the container in case it's needed *(default `false`)*
+ * `create_container`: if `true` will create the container if it doesn't exist *(default `false`)*
  * `detect_content_type`: if `true` will detect the content type for each file *(default `true`)*
  
 ### Defining services
 
 To use the OpenCloud adapter you should provide a valid `ObjectStore` instance. You can retrieve an instance through the
 `OpenCloud\OpenStack` or `OpenCloud\Rackspace` instances. We can provide a comprehensive configuration through the Symfony 
-DiC configuration.
+DIC configuration.
 
 #### Define OpenStack/Rackspace service
 
@@ -496,9 +558,9 @@ knp_gaufrette:
                 container_name: foo
 ```
 
-## Cache 
+## Cache (cache)
 
-Adapter which allow to cache other adapters
+Adapter which allows you to cache other adapters
 
 ### Parameters
 
@@ -537,18 +599,20 @@ knp_gaufrette:
 
 ## Stream Wrapper
 
-You can register filesystems with a specified domain.
-And use as a stream wrapper anywhere in your code like :
+The `stream_wrapper` settings allow you to register filesystems with a specified domain and 
+then use as a stream wrapper anywhere in your code like:
 `gaufrette://domain/file.txt`
 
 ### Parameters
 
  * `protocol` The protocol name like `gaufrette://…` *(default gaufrette)*
- * `filesystem` An array that contains files systems that you want to register with the possibility to set the key of the array
- as the domain like `gaufrette://mydomain/…` *(default all filesystems)*
+ * `filesystem` An array that contains filesystems that you want to register to this stream_wrapper. 
+ If you set array keys these will be used as an alias for the filesystem (see examples below) *(default all filesystems without aliases)*
 
 ### Example 1
-The protocol is gaufrette and all filesystems will be saved
+
+Using default settings, the protocol is "gaufrette" and all filesystems will be served
+
 ``` yaml
 # app/config/config.yml
 knp_gaufrette:
@@ -566,12 +630,14 @@ knp_gaufrette:
 ```
 
 ```
-gaufrette://backup1/file
-gaufrette://amazonS3/file
+gaufrette://backup1/...
+gaufrette://amazonS3/...
 ```
 
 ### Example 2
-We define the protocol as data and all filesystem will be saved
+
+We define the protocol as "data", all filesystem will still be served (by default)
+
 ``` yaml
 # app/config/config.yml
 knp_gaufrette:
@@ -588,7 +654,9 @@ data://amazonS3/...
 ```
 
 ### Example 3
-We define the protocol as data and define which filesystem will be used
+
+We define the protocol as data and define which filesystem(s) will be available
+
 ``` yaml
 # app/config/config.yml
 knp_gaufrette:
@@ -599,15 +667,16 @@ knp_gaufrette:
         protocol: data
         filesystems:
             - backup1
-            - amazonS3
 ```
 
 ```
-data://backup1/...
-data://amazonS3/...
+data://backup1/... (works since it is defined above)
+data://amazonS3/... (will not be available)
 ```
+
 ### Example 4
-We define the protocol as data and define which filesystem will be used with the domain aliasing
+
+We define the protocol as data and define which filesystems will be available using array keys to set domain aliases
 
 ``` yaml
 # app/config/config.yml
@@ -626,3 +695,5 @@ knp_gaufrette:
 data://backup/...
 data://pictures/...
 ```
+
+[gaufrette-homepage]: https://github.com/KnpLabs/Gaufrette
