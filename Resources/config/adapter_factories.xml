@@ -26,6 +26,9 @@
         <service id="knp_gaufrette.adapter.factory.opencloud" class="Knp\Bundle\GaufretteBundle\DependencyInjection\Factory\OpenCloudAdapterFactory">
             <tag name="gaufrette.adapter.factory" />
         </service>
+        <service id="knp_gaufrette.adapter.factory.azure_blob_storage" class="Knp\Bundle\GaufretteBundle\DependencyInjection\Factory\AzureBlobStorageAdapterFactory">
+            <tag name="gaufrette.adapter.factory" />
+        </service>
         <service id="knp_gaufrette.adapter.factory.gridfs" class="Knp\Bundle\GaufretteBundle\DependencyInjection\Factory\GridFSAdapterFactory">
             <tag name="gaufrette.adapter.factory" />
         </service>
@@ -48,4 +51,3 @@
     </services>
 
 </container>
-
