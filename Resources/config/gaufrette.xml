@@ -38,6 +38,7 @@
         </service>
         <service id="knp_gaufrette.adapter.ftp" class="Gaufrette\Adapter\Ftp" abstract="true" public="false" />
         <service id="knp_gaufrette.adapter.sftp" class="Gaufrette\Adapter\Sftp" abstract="true" public="false" />
+        <service id="knp_gaufrette.adapter.phpseclibsftp" class="Knp\Bundle\GaufretteBundle\DependencyInjection\Adapter\LazyLoadedPhpseclibSftpAdapter" abstract="true" public="false" />
         <service id="knp_gaufrette.adapter.apc" class="Gaufrette\Adapter\Apc" abstract="true" public="false">
             <argument /><!-- prefix -->
             <argument /><!-- ttl -->
