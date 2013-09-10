@@ -450,8 +450,6 @@ This adapter requires the use of amazonwebservices/aws-sdk-for-php which can be 
     },
 ```
 
-Note that Gaufrette is not currently compatible with the v2 Amazon SDK (called "aws/aws-sdk-php").
-
 ### Parameters
 
  * `amazon_s3_id`: the id of the AmazonS3 service used for the underlying connection
@@ -494,6 +492,33 @@ knp_gaufrette:
 ```
 
 Note that the SDK seems to have some issues with bucket names with dots in them, e.g. "com.mycompany.bucket" seems to have issues but "com-mycompany-bucket" works.
+
+## AwsS3
+
+Adapter for Amazon S3 SDK v2.
+
+### Parameters
+
+ * `service_id` The service id of the `Aws\S3\S3Client` to use. *(required)*
+ * `bucket_name` The name of the S3 bucket to use. *(required)*
+ * `options` A list of additional options passed to the adapter.
+   * `create` Whether to create the bucket if it doesn't exist. *(default false)*
+   * `directory` A directory to operate in. *(default '')*
+   This directory will be created in the root of the bucket and all files will be read and written there.
+
+### Example
+
+``` yaml
+# app/config/config.yml
+knp_gaufrette:
+    adapters:
+        profile_photos:
+            aws_s3:
+                service_id: 'acme.aws_s3.client'
+                bucket_name: 'images'
+                options:
+                    directory: 'profile_photos'
+```
 
 ## Open Cloud (opencloud)
 
@@ -766,4 +791,3 @@ knp_gaufrette:
 ```
 
 [gaufrette-homepage]: https://github.com/KnpLabs/Gaufrette
-
