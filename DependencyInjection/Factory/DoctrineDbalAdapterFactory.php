@@ -21,7 +21,7 @@ class DoctrineDbalAdapterFactory implements AdapterFactoryInterface
     {
         $definition = $container
             ->setDefinition($id, new DefinitionDecorator('knp_gaufrette.adapter.doctrine_dbal'))
-            ->addArgument(new Reference($config['doctrine_dbal_id']))
+            ->addArgument(new Reference('doctrine.dbal.' . $config['connection_name'] . '_connection'))
             ->addArgument($config['table'])
         ;
 
@@ -45,7 +45,7 @@ class DoctrineDbalAdapterFactory implements AdapterFactoryInterface
     {
         $builder
             ->children()
-                ->scalarNode('doctrine_dbal_id')->isRequired()->cannotBeEmpty()->end()
+                ->scalarNode('connection_name')->isRequired()->cannotBeEmpty()->end()
                 ->scalarNode('table')->isRequired()->cannotBeEmpty()->end()
                 ->arrayNode('columns')
                     ->children()
