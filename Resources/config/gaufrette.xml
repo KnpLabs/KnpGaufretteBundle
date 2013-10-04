@@ -23,6 +23,8 @@
             <argument /><!-- Create -->
         </service>
         <service id="knp_gaufrette.adapter.amazon_s3" class="Gaufrette\Adapter\AmazonS3" abstract="true" public="false" />
+        <service id="knp_gaufrette.adapter.aws_s3" class="Gaufrette\Adapter\AwsS3" abstract="true" public="false" />
+        <service id="knp_gaufrette.adapter.doctrine_dbal" class="Gaufrette\Adapter\DoctrineDbal" abstract="true" public="false" />
         <service id="knp_gaufrette.adapter.acl_aware_amazon_s3" class="Gaufrette\Adapter\AclAwareAmazonS3" abstract="true" public="false" />
         <service id="knp_gaufrette.adapter.opencloud" class="Gaufrette\Adapter\OpenCloud" abstract="true" public="false">
             <argument /><!-- ObjectStore -->

@@ -43,7 +43,7 @@ This bundle can be installed using composer by adding the following in the `requ
         ...
         "knplabs/knp-gaufrette-bundle": "dev-master"
     },
-```    
+```
 
 ### Git Submodule Style
 
@@ -51,7 +51,7 @@ If you are versioning your project with git and making changes to this bundle yo
 
     $ git submodule add https://github.com/KnpLabs/KnpGaufretteBundle.git vendor/bundles/Knp/Bundle/GaufretteBundle
 
-## Add the namespace in the autoloader 
+## Add the namespace in the autoloader
 
 You must register both Gaufrette and the KnpGaufretteBundle in your autoloader:
 (You do not have to do this if you are using the composer autoload system.)
@@ -61,7 +61,7 @@ You must register both Gaufrette and the KnpGaufretteBundle in your autoloader:
 
 // app/autoload.php
 
-$loader->registerNamespaces(array(
+$loader->addClassMap(array(
     'Knp\Bundle'                => __DIR__.'/../vendor/bundles',
     'Gaufrette'                 => __DIR__.'/../vendor/gaufrette/src',
     // ...
@@ -450,8 +450,6 @@ This adapter requires the use of amazonwebservices/aws-sdk-for-php which can be 
     },
 ```
 
-Note that Gaufrette is not currently compatible with the v2 Amazon SDK (called "aws/aws-sdk-php").
-
 ### Parameters
 
  * `amazon_s3_id`: the id of the AmazonS3 service used for the underlying connection
@@ -463,7 +461,7 @@ Note that Gaufrette is not currently compatible with the v2 Amazon SDK (called "
 
 ### Defining services
 
-To use the Amazon S3 adapter you need to provide a valid `AmazonS3` instance (as defined in the Amazon SDK). This can 
+To use the Amazon S3 adapter you need to provide a valid `AmazonS3` instance (as defined in the Amazon SDK). This can
 easily be set up as using Symfony's service configuration:
 
 ``` yaml
@@ -475,7 +473,7 @@ services:
             options:
                 key:      '%aws_key%'
                 secret:   '%aws_secret_key%'
-```   
+```
 
 ### Example
 
@@ -495,6 +493,33 @@ knp_gaufrette:
 
 Note that the SDK seems to have some issues with bucket names with dots in them, e.g. "com.mycompany.bucket" seems to have issues but "com-mycompany-bucket" works.
 
+## AwsS3
+
+Adapter for Amazon S3 SDK v2.
+
+### Parameters
+
+ * `service_id` The service id of the `Aws\S3\S3Client` to use. *(required)*
+ * `bucket_name` The name of the S3 bucket to use. *(required)*
+ * `options` A list of additional options passed to the adapter.
+   * `create` Whether to create the bucket if it doesn't exist. *(default false)*
+   * `directory` A directory to operate in. *(default '')*
+   This directory will be created in the root of the bucket and all files will be read and written there.
+
+### Example
+
+``` yaml
+# app/config/config.yml
+knp_gaufrette:
+    adapters:
+        profile_photos:
+            aws_s3:
+                service_id: 'acme.aws_s3.client'
+                bucket_name: 'images'
+                options:
+                    directory: 'profile_photos'
+```
+
 ## Open Cloud (opencloud)
 
 Adapter for OpenCloud (Rackspace)
@@ -505,11 +530,11 @@ Adapter for OpenCloud (Rackspace)
  * `container_name`: the name of the container to use
  * `create_container`: if `true` will create the container if it doesn't exist *(default `false`)*
  * `detect_content_type`: if `true` will detect the content type for each file *(default `true`)*
- 
+
 ### Defining services
 
 To use the OpenCloud adapter you should provide a valid `ObjectStore` instance. You can retrieve an instance through the
-`OpenCloud\OpenStack` or `OpenCloud\Rackspace` instances. We can provide a comprehensive configuration through the Symfony 
+`OpenCloud\OpenStack` or `OpenCloud\Rackspace` instances. We can provide a comprehensive configuration through the Symfony
 DIC configuration.
 
 #### Define OpenStack/Rackspace service
@@ -563,7 +588,7 @@ services:
         factory_service: opencloud.connection.hpcloud
         factory_method: ObjectStore
         arguments:
-          - 'Object Storage' # Object storage type 
+          - 'Object Storage' # Object storage type
           - 'region-a.geo-1' # Object storage region
           - 'publicURL' # url type
 ```
@@ -578,7 +603,7 @@ services:
         factory_service: opencloud.connection
         factory_method: ObjectStore
         arguments:
-          - 'cloudFiles' # Object storage type 
+          - 'cloudFiles' # Object storage type
           - 'DFW' # Object storage region
           - 'publicURL' # url type
 ```
@@ -638,14 +663,14 @@ knp_gaufrette:
 
 ## Stream Wrapper
 
-The `stream_wrapper` settings allow you to register filesystems with a specified domain and 
+The `stream_wrapper` settings allow you to register filesystems with a specified domain and
 then use as a stream wrapper anywhere in your code like:
 `gaufrette://domain/file.txt`
 
 ### Parameters
 
  * `protocol` The protocol name like `gaufrette://…` *(default gaufrette)*
- * `filesystem` An array that contains filesystems that you want to register to this stream_wrapper. 
+ * `filesystem` An array that contains filesystems that you want to register to this stream_wrapper.
  If you set array keys these will be used as an alias for the filesystem (see examples below) *(default all filesystems without aliases)*
 
 ### Example 1
@@ -733,6 +758,36 @@ knp_gaufrette:
 ```
 data://backup/...
 data://pictures/...
+```
+
+## Doctrine DBAL (doctrine_dbal)
+
+Adapter that allows you to store data into a database.
+
+### Parameters
+
+ * `connection_name` The doctrine dbal connection name like `default`
+ * `table` The table name like `media_data`
+ * `key`: The primary key in the table
+ * `content`: The field name of the file content
+ * `mtime`: The field name of the timestamp
+ * `checksum`: The field name of the checksum
+
+### Example
+
+``` yaml
+# app/config/config.yml
+knp_gaufrette:
+    adapters:
+        database:
+            doctrine_dbal:
+                connection_name: default
+                table: data
+                columns:
+                    key: id
+                    content: text
+                    mtime: date
+                    checksum: checksum
 ```
 
 [gaufrette-homepage]: https://github.com/KnpLabs/Gaufrette
