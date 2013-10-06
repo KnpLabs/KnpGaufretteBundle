@@ -38,7 +38,7 @@ class DropboxAdapterFactory implements AdapterFactoryInterface
     {
         $builder
             ->children()
-                ->scalarNode('api_id')->isRequired()->end()
+                ->scalarNode('api_id')->cannotBeEmpty()->end()
             ->end()
         ;
     }
