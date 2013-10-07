@@ -506,7 +506,26 @@ Adapter for Amazon S3 SDK v2.
    * `directory` A directory to operate in. *(default '')*
    This directory will be created in the root of the bucket and all files will be read and written there.
 
+### Defining services
+
+An example service definition of the `Aws\S3\S3Client`:
+
+```yaml
+services:
+    acme.aws_s3.client:
+        class: Aws\S3\S3Client
+        factory_class: Aws\S3\S3Client
+        factory_method: 'factory'
+        arguments:
+            -
+                key: %amazon_s3.key%
+                secret: %amazon_s3.secret%
+                region: %amazon_s3.region%
+```
+
 ### Example
+
+Once the service is set up use its key as the `service_id` in the gaufrette configuration:
 
 ``` yaml
 # app/config/config.yml
