@@ -47,12 +47,12 @@ class FtpAdapterFactory implements AdapterFactoryInterface
                 ->scalarNode('password')->defaultNull()->end()
                 ->booleanNode('passive')->defaultFalse()->end()
                 ->booleanNode('create')->defaultFalse()->end()
+                ->booleanNode('ssl')->defaultFalse()->end()
                 ->scalarNode('mode')
                     ->defaultValue(defined('FTP_ASCII') ? FTP_ASCII : null)
                     ->beforeNormalization()
                     ->ifString()
                     ->then(function($v) { return constant($v); })
-                ->booleanNode('ssl')->defaultFalse()->end()
                 ->end()
             ->end()
         ;
