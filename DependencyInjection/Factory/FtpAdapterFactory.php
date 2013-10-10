@@ -52,6 +52,7 @@ class FtpAdapterFactory implements AdapterFactoryInterface
                     ->beforeNormalization()
                     ->ifString()
                     ->then(function($v) { return constant($v); })
+                ->booleanNode('ssl')->defaultFalse()->end()
                 ->end()
             ->end()
         ;
