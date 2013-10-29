@@ -51,6 +51,7 @@ class AmazonS3AdapterFactory implements AdapterFactoryInterface
                         ->end()
                         ->scalarNode('region')->end()
                         ->scalarNode('directory')->end()
+                        ->scalarNode('acl')->end()
                     ->end()
                 ->end()
             ->end()
