@@ -53,7 +53,9 @@
         <service id="knp_gaufrette.adapter.factory.cache" class="Knp\Bundle\GaufretteBundle\DependencyInjection\Factory\CacheAdapterFactory">
             <tag name="gaufrette.adapter.factory" />
         </service>
-
+        <service id="knp_gaufrette.adapter.factory.dropbox" class="Knp\Bundle\GaufretteBundle\DependencyInjection\Factory\DropboxAdapterFactory">
+            <tag name="gaufrette.adapter.factory" />
+        </service>
     </services>
 
 </container>

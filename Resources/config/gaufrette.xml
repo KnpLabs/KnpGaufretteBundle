@@ -48,6 +48,7 @@
         <service id="knp_gaufrette.filesystem_map" class="%knp_gaufrette.filesystem_map.class%">
             <argument /> <!-- map of filesystems -->
         </service>
+        <service id="knp_gaufrette.adapter.dropbox" class="Gaufrette\Adapter\Dropbox" abstract="true" public="false" />
     </services>
 
 </container>
