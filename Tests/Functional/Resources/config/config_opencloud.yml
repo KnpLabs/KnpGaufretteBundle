@@ -1,0 +1,15 @@
+knp_gaufrette:
+    adapters:
+        foo_opencloud:
+            opencloud:
+                object_store_id: opencloud_object_store
+                container_name: some_container
+
+    filesystems:
+        opencloud:
+            adapter: foo_opencloud
+            alias: opencloud_filesystem
+
+services:
+    opencloud_object_store:
+        class: OpenCloud\ObjectStore\Service

@@ -22,7 +22,8 @@
     "require-dev": {
         "symfony/yaml": "2.*",
         "symfony/console": "2.*",
-        "phpunit/phpunit": "3.7.*"
+        "phpunit/phpunit": "3.7.*",
+        "rackspace/php-opencloud": "1.7.*"
     },
     "autoload":     {
         "psr-0": {

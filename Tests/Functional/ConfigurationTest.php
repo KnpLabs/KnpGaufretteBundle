@@ -188,4 +188,38 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
             $this->assertTrue($wrapperFsMap->has($key));
         }
     }
+
+    /**
+     * @test
+     * @functional
+     */
+    public function shouldAllowAccessToOpenCloudFilesystem()
+    {
+        $kernel = new TestKernel('opencloud', false);
+        $kernel->boot();
+        $container = $kernel->getContainer();
+
+        $connectionFactory = $this->getMock('OpenCloud\ObjectStore\Service', array(), array(), '', false);
+
+        $container->set('opencloud_object_store', $connectionFactory);
+
+        $this->assertInstanceOf('Gaufrette\Adapter\OpenCloud', $container->get('opencloud_filesystem')->getAdapter());
+    }
+
+    /**
+     * @test
+     * @functional
+     */
+    public function shouldAllowAccessToLazyOpenCloudFilesystem()
+    {
+        $kernel = new TestKernel('lazy_opencloud', false);
+        $kernel->boot();
+        $container = $kernel->getContainer();
+
+        $connectionFactory = $this->getMock('Gaufrette\Adapter\OpenStackCloudFiles\OpenStackAuthenticationFactory', array(), array(), '', false);
+
+        $container->set('opencloud_connection_factory', $connectionFactory);
+
+        $this->assertInstanceOf('Gaufrette\Adapter\LazyOpenStackCloudFiles', $container->get('lazy_opencloud_filesystem')->getAdapter());
+    }
 }
