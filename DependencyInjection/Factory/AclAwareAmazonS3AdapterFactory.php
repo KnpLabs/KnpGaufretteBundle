@@ -89,6 +89,15 @@ class AclAwareAmazonS3AdapterFactory implements AdapterFactoryInterface
                     ->end()
                 ->end()
                 ->booleanNode('create')->defaultFalse()->end()
+                ->arrayNode('options')
+                    ->children()
+                        ->booleanNode('create')
+                            ->defaultFalse()
+                        ->end()
+                        ->scalarNode('region')->end()
+                        ->scalarNode('directory')->end()
+                    ->end()
+                ->end()
             ->end()
         ;
     }
