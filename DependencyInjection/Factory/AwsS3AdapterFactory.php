@@ -20,6 +20,7 @@ class AwsS3AdapterFactory implements AdapterFactoryInterface
             ->addArgument(new Reference($config['service_id']))
             ->addArgument($config['bucket_name'])
             ->addArgument($config['options'])
+            ->addArgument($config['detect_content_type'])
         ;
     }
 
@@ -40,6 +41,7 @@ class AwsS3AdapterFactory implements AdapterFactoryInterface
             ->children()
                 ->scalarNode('service_id')->isRequired()->cannotBeEmpty()->end()
                 ->scalarNode('bucket_name')->isRequired()->cannotBeEmpty()->end()
+                ->booleanNode('detect_content_type')->defaultFalse()->end()
                 ->arrayNode('options')
                     ->addDefaultsIfNotSet()
                     ->children()
