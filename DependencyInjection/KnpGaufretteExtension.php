@@ -28,21 +28,15 @@ class KnpGaufretteExtension extends Extension
     public function load(array $configs, ContainerBuilder $container)
     {
         $processor = new Processor();
-
-        // first assemble the adapter factories
-        $factoryConfig = new FactoryConfiguration();
-        $config        = $processor->processConfiguration($factoryConfig, $configs);
-        $factories     = $this->createAdapterFactories($config, $container);
-
-        // then normalize the configs
-        $mainConfig = new MainConfiguration($factories);
-        $config     = $processor->processConfiguration($mainConfig, $configs);
+        $config = $processor->processConfiguration($this->getConfiguration($configs, $container), $configs);
 
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('gaufrette.xml');
 
+        $adapters = array();
+
         foreach ($config['adapters'] as $name => $adapter) {
-            $adapters[$name] = $this->createAdapter($name, $adapter, $container, $factories);
+            $adapters[$name] = $this->createAdapter($name, $adapter, $container, $this->factories);
         }
 
         $map = array();
@@ -57,6 +51,19 @@ class KnpGaufretteExtension extends Extension
             $container->setParameter('knp_gaufrette.stream_wrapper.protocol', $config['stream_wrapper']['protocol']);
             $container->setParameter('knp_gaufrette.stream_wrapper.filesystems', $config['stream_wrapper']['filesystems']);
         }
+    }
+
+    public function getConfiguration(array $configs, ContainerBuilder $container)
+    {
+        $processor = new Processor();
+
+        // first assemble the adapter factories
+        $factoryConfig = new FactoryConfiguration();
+        $config        = $processor->processConfiguration($factoryConfig, $configs);
+        $factories     = $this->createAdapterFactories($config, $container);
+
+        // then normalize the configs
+        return new MainConfiguration($factories);
     }
 
     private function createAdapter($name, array $config, ContainerBuilder $container, array $factories)
