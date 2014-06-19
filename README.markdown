@@ -620,7 +620,7 @@ services:
     opencloud.object_store:
         class: OpenCloud\ObjectStoreBase
         factory_service: opencloud.connection
-        factory_method: ObjectStore
+        factory_method: objectStoreService
         arguments:
           - 'cloudFiles' # Object storage type
           - 'DFW' # Object storage region
