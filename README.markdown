@@ -18,54 +18,15 @@ Installation
 
 As this bundle is an integration for Symfony of the [Gaufrette][gaufrette-homepage] library, it requires you to first install [Gaufrette][gaufrette-homepage] in a Symfony project.
 
-## Download the bundle
+## With composer
 
-You can download an archive of the bundle and unpack it in the `vendor/bundles/Knp/Bundle/GaufretteBundle` directory of your application.
+This bundle can be installed using [composer](http://getcomposer.org) by adding the following in the `require` section of your `composer.json` file:
 
-### Standard Edition Style
-
-If you are using the `deps` file to manage your project's dependencies,
-you must add the following lines to it:
-
-    [gaufrette]
-        git=http://github.com/KnpLabs/Gaufrette.git
-
-    [KnpGaufretteBundle]
-        git=http://github.com/KnpLabs/KnpGaufretteBundle.git
-        target=/bundles/Knp/Bundle/GaufretteBundle
-
-### Composer Style
-
-This bundle can be installed using composer by adding the following in the `require` section of your `composer.json` file:
-
-```
+``` json
     "require": {
         ...
-        "knplabs/knp-gaufrette-bundle": "dev-master"
+        "knplabs/knp-gaufrette-bundle": "*@dev"
     },
-```
-
-### Git Submodule Style
-
-If you are versioning your project with git and making changes to this bundle you can embed it as a submodule:
-
-    $ git submodule add https://github.com/KnpLabs/KnpGaufretteBundle.git vendor/bundles/Knp/Bundle/GaufretteBundle
-
-## Add the namespace in the autoloader
-
-You must register both Gaufrette and the KnpGaufretteBundle in your autoloader:
-(You do not have to do this if you are using the composer autoload system.)
-
-``` php
-<?php
-
-// app/autoload.php
-
-$loader->addClassMap(array(
-    'Knp\Bundle'                => __DIR__.'/../vendor/bundles',
-    'Gaufrette'                 => __DIR__.'/../vendor/gaufrette/src',
-    // ...
-));
 ```
 
 ## Register the bundle
