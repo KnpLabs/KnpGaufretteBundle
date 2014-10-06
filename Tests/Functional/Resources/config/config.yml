@@ -4,27 +4,8 @@ knp_gaufrette:
             local:
                 directory:  %kernel.root_dir%
                 create:     true
-        foo_ftp:
-            ftp:
-                host: example.com
-                username: user
-                password: pass
-                directory: /example/ftp
-                create: true
-                mode: FTP_BINARY
-        foo_cache:
-            cache:
-                source: foo_ftp
-                cache: foo_local
-                ttl: 7200
 
     filesystems:
         foo:
             adapter:        foo_local
             alias:          foo_filesystem
-        cache:
-            adapter:        foo_cache
-            alias:          cache_filesystem
-        ftp:
-            adapter:        foo_ftp
-            alias:          ftp_filesystem

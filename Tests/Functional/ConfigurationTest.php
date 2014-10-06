@@ -100,6 +100,25 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
+     * @group functional
+     */
+    public function shouldAllowAccessToRedisFilesystem()
+    {
+        $kernel = new TestKernel('redis', false);
+        $kernel->boot();
+        $container = $kernel->getContainer();
+
+        $redisClientInterface = $this->getMock('Predis\ClientInterface');
+        $container->set('redis_client', $redisClientInterface);
+
+        $this->assertInstanceOf(
+            'Uniplaces\Library\Gaufrette\Adapter',
+            $container->get('redis_filesystem')->getAdapter()
+        );
+    }
+
+    /**
+     * @test
      * @functional
      */
     public function shouldAllowToNotConfigureStreamWrapper()

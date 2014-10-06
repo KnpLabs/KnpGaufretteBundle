@@ -15,7 +15,7 @@ class TestKernel extends Kernel
     public function registerBundles()
     {
         return array(
-            new \Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
+            new \Knp\Bundle\GaufretteBundle\KnpGaufretteBundle()
         );
     }
 
