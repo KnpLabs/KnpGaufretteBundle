@@ -102,6 +102,15 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
      * @test
      * @functional
      */
+    public function shouldAllowAccessToRedisFilesystem()
+    {
+        $this->assertInstanceOf('Uniplaces\Library\Gaufrette\Adapter\Redis', $this->kernel->getContainer()->get('redis_filesystem')->getAdapter());
+    }
+
+    /**
+     * @test
+     * @functional
+     */
     public function shouldAllowToNotConfigureStreamWrapper()
     {
         $this->assertFalse($this->kernel->getContainer()->hasParameter('knp_gaufrette.stream_wrapper.protocol'));

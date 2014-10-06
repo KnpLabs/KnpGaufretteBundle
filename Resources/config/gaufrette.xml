@@ -49,6 +49,12 @@
             <argument /> <!-- map of filesystems -->
         </service>
         <service id="knp_gaufrette.adapter.dropbox" class="Gaufrette\Adapter\Dropbox" abstract="true" public="false" />
+        <!--<service id="knp_gaufrette.adapter.redis" class="%uniplaces.redis.gaufrette.class%" abstract="true" public="false">-->
+        <service id="knp_gaufrette.adapter.redis" class="Uniplaces\Library\Gaufrette\Adapter\Redis" abstract="true" public="false">
+            <argument /><!-- client -->
+            <argument /><!-- hash -->
+        </service>
+
     </services>
 
 </container>

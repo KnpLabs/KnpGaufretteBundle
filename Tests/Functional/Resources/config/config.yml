@@ -17,6 +17,10 @@ knp_gaufrette:
                 source: foo_ftp
                 cache: foo_local
                 ttl: 7200
+        foo_redis:
+            redis:
+                client: redis_client
+                hash: test
 
     filesystems:
         foo:
@@ -28,3 +32,6 @@ knp_gaufrette:
         ftp:
             adapter:        foo_ftp
             alias:          ftp_filesystem
+        redis:
+            adapter:        foo_redis
+            alias:          redis_filesystem
