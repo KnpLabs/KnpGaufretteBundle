@@ -1,0 +1,15 @@
+knp_gaufrette:
+    adapters:
+        foo_redis:
+            redis:
+                client: redis_client
+                hash: test
+
+    filesystems:
+        redis:
+            adapter:        foo_redis
+            alias:          redis_filesystem
+
+services:
+    redis_client:
+        class: Predis\ClientInterface

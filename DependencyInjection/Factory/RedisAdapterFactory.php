@@ -19,8 +19,8 @@ class RedisAdapterFactory implements AdapterFactoryInterface
     {
         $container
             ->setDefinition($id, new DefinitionDecorator('knp_gaufrette.adapter.redis'))
-            ->addArgument(new Reference($config['client']))
-            ->addArgument($config['hash'])
+            ->replaceArgument(0, new Reference($config['client']))
+            ->replaceArgument(1, $config['hash'])
         ;
     }
 

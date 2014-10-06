@@ -17,7 +17,8 @@
     ],
     "require":      {
         "symfony/framework-bundle": "2.*",
-        "knplabs/gaufrette":        "0.2.*@dev"
+        "knplabs/gaufrette": "0.2.*@dev",
+        "snc/redis-bundle": "~1.1"
     },
     "require-dev": {
         "symfony/yaml": "2.*",

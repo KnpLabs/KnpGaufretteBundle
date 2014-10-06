@@ -100,11 +100,21 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @functional
+     * @group functional
      */
     public function shouldAllowAccessToRedisFilesystem()
     {
-        $this->assertInstanceOf('Uniplaces\Library\Gaufrette\Adapter\Redis', $this->kernel->getContainer()->get('redis_filesystem')->getAdapter());
+        $kernel = new TestKernel('redis', false);
+        $kernel->boot();
+        $container = $kernel->getContainer();
+
+        $redisClientInterface = $this->getMock('Predis\ClientInterface');
+        $container->set('redis_client', $redisClientInterface);
+
+        $this->assertInstanceOf(
+            'Uniplaces\Library\Gaufrette\Adapter',
+            $container->get('redis_filesystem')->getAdapter()
+        );
     }
 
     /**
