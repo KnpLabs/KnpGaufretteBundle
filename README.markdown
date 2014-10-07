@@ -466,6 +466,7 @@ Adapter for Amazon S3 SDK v2.
    * `create` Whether to create the bucket if it doesn't exist. *(default false)*
    * `directory` A directory to operate in. *(default '')*
    This directory will be created in the root of the bucket and all files will be read and written there.
+   * `acl` Default ACL to apply to the objects
 
 ### Defining services
 
