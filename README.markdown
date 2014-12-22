@@ -307,7 +307,7 @@ Adapter for FTP.
  * `port` FTP port *(default 21)*
  * `passive` FTP passive mode *(default false)*
  * `create` Whether to create the directory if it does not exist *(default false)*
- * `mode` FTP transfer mode *(defaut FTP_ASCII)*
+ * `mode` FTP transfer mode *(defaut FTP_BINARY)*
 
 ### Example
 
