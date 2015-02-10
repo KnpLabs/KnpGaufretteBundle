@@ -47,6 +47,9 @@
         <service id="knp_gaufrette.adapter.factory.sftp" class="Knp\Bundle\GaufretteBundle\DependencyInjection\Factory\SftpAdapterFactory">
             <tag name="gaufrette.adapter.factory" />
         </service>
+        <service id="knp_gaufrette.adapter.factory.phpseclib_sftp" class="Knp\Bundle\GaufretteBundle\DependencyInjection\Factory\PhpseclibSftpAdapterFactory">
+            <tag name="gaufrette.adapter.factory" />
+        </service>
         <service id="knp_gaufrette.adapter.factory.apc" class="Knp\Bundle\GaufretteBundle\DependencyInjection\Factory\ApcAdapterFactory">
             <tag name="gaufrette.adapter.factory" />
         </service>
