@@ -32,6 +32,12 @@
             <argument /><!-- Create container -->
             <argument /><!-- Detect content type -->
         </service>
+        <service id="knp_gaufrette.adapter.lazy_opencloud" class="Gaufrette\Adapter\LazyOpenStackCloudFiles" abstract="true" public="false">
+            <argument /><!-- ConnectionFactory -->
+            <argument /><!-- Container name -->
+            <argument /><!-- Create container -->
+            <argument /><!-- Detect content type -->
+        </service>
         <service id="knp_gaufrette.adapter.azure_blob_storage" class="Gaufrette\Adapter\AzureBlobStorage" abstract="true" public="false" />
         <service id="knp_gaufrette.adapter.gridfs" class="Gaufrette\Adapter\GridFS" abstract="true" public="false" />
         <service id="knp_gaufrette.adapter.mogilefs" class="Gaufrette\Adapter\MogileFS" abstract="true" public="false">

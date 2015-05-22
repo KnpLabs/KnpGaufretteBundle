@@ -1,0 +1,15 @@
+knp_gaufrette:
+    adapters:
+        foo_lazy_opencloud:
+            opencloud:
+                connection_factory_id: opencloud_connection_factory
+                container_name: some_container
+
+    filesystems:
+        opencloud:
+            adapter: foo_lazy_opencloud
+            alias: lazy_opencloud_filesystem
+
+services:
+    opencloud_connection_factory:
+        class: Gaufrette\Adapter\OpenStackCloudFiles\OpenStackAuthenticationFactory
