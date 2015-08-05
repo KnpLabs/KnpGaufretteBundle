@@ -17,16 +17,16 @@
     ],
     "require":      {
         "symfony/framework-bundle": "2.*",
-        "knplabs/gaufrette":        "0.2.*@dev"
+        "knplabs/gaufrette":        "~0.1.7|0.2.*@dev"
     },
     "require-dev": {
         "symfony/yaml": "2.*",
         "symfony/console": "2.*",
-        "phpunit/phpunit": "3.7.*"
+        "phpunit/phpunit": "~4.2"
     },
     "autoload":     {
-        "psr-0": {
-            "Knp\\Bundle\\GaufretteBundle": ""
+        "psr-4": {
+            "Knp\\Bundle\\GaufretteBundle\\": ""
         }
     },
     "extra": {
@@ -36,6 +36,5 @@
     },
     "config": {
         "bin-dir": "bin"
-    },
-    "target-dir":   "Knp/Bundle/GaufretteBundle"
+    }
 }
