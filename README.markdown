@@ -813,7 +813,7 @@ knp_gaufrette:
 
 ## Dropbox (dropbox)
 
-Adapter for Dropbox.
+Adapter for Dropbox. In order to use it, you should add `dropbox-php/dropbox-php` as your composer dependency.
 
 ### Parameters
 
