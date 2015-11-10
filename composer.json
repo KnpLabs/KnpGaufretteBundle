@@ -16,12 +16,12 @@
         }
     ],
     "require":      {
-        "symfony/framework-bundle": "2.*",
+        "symfony/framework-bundle": "2.*|~3.0",
         "knplabs/gaufrette":        "~0.1.7|0.2.*@dev"
     },
     "require-dev": {
-        "symfony/yaml": "2.*",
-        "symfony/console": "2.*",
+        "symfony/yaml": "2.*|~3.0",
+        "symfony/console": "2.*|~3.0",
         "phpunit/phpunit": "~4.2"
     },
     "autoload":     {
