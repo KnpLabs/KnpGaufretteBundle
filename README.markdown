@@ -707,7 +707,7 @@ In your app add the following service definition:
 ```yaml
 services:
     app.backblaze_b2_storage.service:
-        class: \B2Backblaze\B2Service
+        class: B2Backblaze\B2Service
         arguments: [%b2_account_id%, %b2_account_key%, %b2_timeout%]
 ```
 

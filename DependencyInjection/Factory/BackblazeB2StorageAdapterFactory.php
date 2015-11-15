@@ -28,7 +28,7 @@ class BackblazeB2StorageAdapterFactory implements AdapterFactoryInterface
      */
     public function getKey()
     {
-        return 'google_cloud_storage';
+        return 'backblaze_b2_storage';
     }
 
     /**

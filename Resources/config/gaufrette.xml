@@ -51,7 +51,7 @@
             <argument /> <!-- map of filesystems -->
         </service>
         <service id="knp_gaufrette.adapter.dropbox" class="Gaufrette\Adapter\Dropbox" abstract="true" public="false" />
-        <service id="knp_gaufrette.adapter.backblaze_b2_storage" class="Gaufrette\Adapter\BlackblazeB2Storage" abstract="true" public="false" />
+        <service id="knp_gaufrette.adapter.backblaze_b2_storage" class="Gaufrette\Adapter\BackblazeB2Storage" abstract="true" public="false" />
     </services>
 
 </container>
