@@ -2,3 +2,4 @@ Tests/Resources/cache
 .idea/
 vendor/
 composer.lock
+KnpGaufretteBundle.iml

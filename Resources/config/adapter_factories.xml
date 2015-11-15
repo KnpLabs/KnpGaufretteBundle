@@ -62,6 +62,9 @@
         <service id="knp_gaufrette.adapter.factory.dropbox" class="Knp\Bundle\GaufretteBundle\DependencyInjection\Factory\DropboxAdapterFactory">
             <tag name="gaufrette.adapter.factory" />
         </service>
+        <service id="knp_gaufrette.adapter.factory.backblaze_b2_storage" class="Knp\Bundle\GaufretteBundle\DependencyInjection\Factory\BackblazeB2StorageAdapterFactory">
+            <tag name="gaufrette.adapter.factory" />
+        </service>
     </services>
 
 </container>
