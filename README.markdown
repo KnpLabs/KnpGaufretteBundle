@@ -497,7 +497,7 @@ Note that the SDK seems to have some issues with bucket names with dots in them,
 
 ## AwsS3
 
-Adapter for Amazon S3 SDK v2.
+Adapter for Amazon S3 SDK v3.
 
 ### Parameters
 
@@ -520,9 +520,11 @@ services:
         factory_method: 'factory'
         arguments:
             -
-                key: %amazon_s3.key%
-                secret: %amazon_s3.secret%
+                credentials:
+                    key: %amazon_s3.key%
+                    secret: %amazon_s3.secret%
                 region: %amazon_s3.region%
+                version: 'latest'
 ```
 
 ### Example
