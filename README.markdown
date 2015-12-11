@@ -688,6 +688,46 @@ knp_gaufrette:
                     directory: 'profile_photos'
 ```
 
+## Backblaze B2 Cloud Storage
+
+Adapter for BackblazeB2 APIs Client Library for PHP.
+
+### Parameters
+
+ * `service_id` The service id of the `\B2Backblaze\B2Service` to use. *(required)*
+ * `bucket_id` The id of the B2 bucket to use. *(required)*
+ * `options` A list of additional options passed to the adapter.
+   * `directory` A directory to operate in. *(default '')*
+   * `private` if `true` ensures to all download request authenticated *(default `false`)*
+
+### Defining services
+
+In your app add the following service definition:
+
+```yaml
+services:
+    app.backblaze_b2_storage.service:
+        class: B2Backblaze\B2Service
+        arguments: [%b2_account_id%, %b2_account_key%, %b2_timeout%]
+```
+
+### Example
+
+Once the service is set up use its key as the `service_id` in the gaufrette configuration:
+
+``` yaml
+# app/config/config.yml
+knp_gaufrette:
+    adapters:
+        profile_photos:
+            backblaze_b2_storage:
+                service_id: 'app.backblaze_b2_storage.service'
+                bucket_id: 'xxxxxxxxxxxxxxxxxxxx'
+                options:
+                    directory: 'profile_photos'
+                    private: false
+```
+
 ## Cache (cache)
 
 Adapter which allows you to cache other adapters
