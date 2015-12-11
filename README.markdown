@@ -870,11 +870,16 @@ Adapter for Dropbox. In order to use it, you should add `dropbox-php/dropbox-php
 
 ``` yaml
 # app/config/config.yml
+parameters:
+    acme_test.dropbox.path: shared/photos
+
 knp_gaufrette:
     adapters:
         foo:
             dropbox:
                 api_id: acme_test.dropbox.api
+                path: %acme_test.dropbox.path%
+                limit: 25000
 ```
 
 In your AcmeTestBundle, add following service definitions:
@@ -895,7 +900,7 @@ services:
             - [setToken, ["%acme_test.dropbox.token%", "%acme_test.dropbox.token_secret%"]]
     acme_test.dropbox.api:
         class: Dropbox_API
-        arguments: [@acme_test.dropbox.oauth, "sandbox"]
+        arguments: [@acme_test.dropbox.oauth, "sandbox"] # auto, sandbox, dropbox
 ```
 
 [gaufrette-homepage]: https://github.com/KnpLabs/Gaufrette
