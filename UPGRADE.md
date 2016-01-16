@@ -1,3 +1,8 @@
+UPGRADE FROM 0.2 to 0.3
+=======================
+
+No known BC breaks.
+
 UPGRADE FROM 0.1 to 0.2
 =======================
 
