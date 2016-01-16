@@ -27,7 +27,7 @@ This bundle can be installed using [composer](http://getcomposer.org) by adding 
 ``` json
     "require": {
         ...
-        "knplabs/knp-gaufrette-bundle": "*@dev"
+        "knplabs/knp-gaufrette-bundle": "~0.3"
     },
 ```
 
