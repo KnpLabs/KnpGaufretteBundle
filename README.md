@@ -1,6 +1,8 @@
 Gaufrette Bundle
 ================
 
+[![Build Status](https://travis-ci.org/KnpLabs/KnpGaufretteBundle.svg?branch=master)](https://travis-ci.org/KnpLabs/KnpGaufretteBundle)
+
 Provides a [Gaufrette][gaufrette-homepage] integration for your Symfony projects.
 
 About Gaufrette
