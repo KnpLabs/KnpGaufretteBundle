@@ -3,7 +3,7 @@ UPGRADE FROM 0.1 to 0.2
 
 ### AmazonS3 
 
-* In 0.2 we pass additional options for AmazonS3 Gaufrette provider AmazonS3 config was changed (old way is DEPRECIATED)
+* In 0.2 we pass additional options for AmazonS3 Gaufrette provider AmazonS3 config was changed (old way is DEPRECATED)
 
 before:
 
