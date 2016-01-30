@@ -43,6 +43,16 @@ class FilesystemMap implements \IteratorAggregate
         return $this->map[$name];
     }
 
+    /**
+     * @param string $name name of a filesystem
+     *
+     * @return bool
+     */
+    public function has($name)
+    {
+        return isset($this->map[$name]);
+    }
+
     public function getIterator()
     {
         return new \ArrayIterator($this->map);
