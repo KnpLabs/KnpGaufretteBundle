@@ -4,25 +4,25 @@ namespace Knp\Bundle\GaufretteBundle;
 
 /**
  * Holds references to all declared filesystems
- * and allows to access them through their name
+ * and allows to access them through their name.
  */
 class FilesystemMap implements \IteratorAggregate
 {
     /**
-     * Map of filesystems indexed by their name
+     * Map of filesystems indexed by their name.
      *
      * @var array
      */
-    protected $map;
+    protected $maps;
 
     /**
-     * Instantiates a new filesystem map
+     * Instantiates a new filesystem map.
      *
-     * @param array $map
+     * @param array $maps
      */
-    public function __construct(array $map)
+    public function __construct(array $maps)
     {
-        $this->map = $map;
+        $this->maps = $maps;
     }
 
     /**
@@ -36,11 +36,11 @@ class FilesystemMap implements \IteratorAggregate
      */
     public function get($name)
     {
-        if (!isset($this->map[$name])) {
-            throw new \InvalidArgumentException(sprintf('No filesystem register for name "%s"', $name));
+        if (!$this->has($name)) {
+            throw new \InvalidArgumentException(sprintf('No filesystem is registered for name "%s"', $name));
         }
 
-        return $this->map[$name];
+        return $this->maps[$name];
     }
 
     /**
@@ -50,11 +50,11 @@ class FilesystemMap implements \IteratorAggregate
      */
     public function has($name)
     {
-        return isset($this->map[$name]);
+        return isset($this->maps[$name]);
     }
 
     public function getIterator()
     {
-        return new \ArrayIterator($this->map);
+        return new \ArrayIterator($this->maps);
     }
 }
