@@ -17,7 +17,7 @@
     ],
     "require":      {
         "symfony/framework-bundle": "~2.0|~3.0",
-        "knplabs/gaufrette":        "~0.1.7|~0.2"
+        "knplabs/gaufrette":        "https://github.com/IWAtech/Gaufrette/archive/0.2.2.tar.gz"
     },
     "require-dev": {
         "symfony/yaml": "~2.0|~3.0",
