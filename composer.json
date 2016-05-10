@@ -15,9 +15,15 @@
             "homepage": "https://github.com/knplabs/KnpGaufretteBundle/contributors"
         }
     ],
+	"repositories": [
+		{
+			"type": "vcs",
+			"url": "https://github.com/IWAtech/Gaufrette"
+		}
+	],
     "require":      {
         "symfony/framework-bundle": "~2.0|~3.0",
-        "knplabs/gaufrette":        "https://github.com/IWAtech/Gaufrette/archive/0.2.2.tar.gz"
+        "knplabs/gaufrette":        "dev-utf8-mode as dev-master"
     },
     "require-dev": {
         "symfony/yaml": "~2.0|~3.0",
