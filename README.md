@@ -450,7 +450,7 @@ This adapter requires the use of amazonwebservices/aws-sdk-for-php which can be 
 ```
     "require": {
         ...
-        "amazonwebservices/aws-sdk-for-php": "1.6.2"
+        "aws/aws-sdk-php": "1.6.2"
     },
 ```
 
