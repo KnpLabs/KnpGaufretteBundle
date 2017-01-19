@@ -48,6 +48,7 @@ class FtpAdapterFactory implements AdapterFactoryInterface
                 ->booleanNode('passive')->defaultFalse()->end()
                 ->booleanNode('create')->defaultFalse()->end()
                 ->booleanNode('ssl')->defaultFalse()->end()
+                ->booleanNode('utf8')->defaultFalse()->end()
                 ->scalarNode('mode')
                     ->defaultValue(defined('FTP_ASCII') ? FTP_ASCII : null)
                     ->beforeNormalization()
