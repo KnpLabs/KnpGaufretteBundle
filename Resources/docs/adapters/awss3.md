@@ -37,6 +37,7 @@ services:
         factory_method: 'factory'
         arguments:
             -
+                version: latest
                 region: %amazon_s3.region%
                 credentials:
                     key: %amazon_s3.key%
