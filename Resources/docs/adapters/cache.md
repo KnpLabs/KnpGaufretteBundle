@@ -6,7 +6,7 @@ Adapter which allows you to cache other adapters
 
  * `source` The source adapter that must be cached *(required)*
  * `cache` The adapter used to cache the source *(required)*
- * `ttl` Time to live *(default 0)*
+ * `ttl` Time to live, in seconds *(default 0)*
  * `serializer` The adapter used to cache serializations *(default null)*
 
 ## Example
