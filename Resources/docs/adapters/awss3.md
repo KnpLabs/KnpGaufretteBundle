@@ -28,6 +28,21 @@ services:
                 region: %amazon_s3.region%
 ```
 
+Note that the definition changes slightly when using aws-sdk-php 3:
+```yaml
+services:
+    acme.aws_s3.client:
+        class: Aws\S3\S3Client
+        factory_class: Aws\S3\S3Client
+        factory_method: 'factory'
+        arguments:
+            -
+                region: %amazon_s3.region%
+                credentials:
+                    key: %amazon_s3.key%
+                    secret: %amazon_s3.secret%
+```
+
 ## Example
 
 Once the service is set up use its key as the `service_id` in the gaufrette configuration:
