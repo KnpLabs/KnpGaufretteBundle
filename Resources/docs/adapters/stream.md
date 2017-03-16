@@ -7,7 +7,7 @@ then use as a stream wrapper anywhere in your code like:
 ## Parameters
 
  * `protocol` The protocol name like `gaufrette://…` *(default gaufrette)*
- * `filesystem` An array that contains filesystems that you want to register to this stream_wrapper.
+ * `filesystems` An array that contains filesystems that you want to register to this stream_wrapper.
  If you set array keys these will be used as an alias for the filesystem (see examples below) *(default all filesystems without aliases)*
 
 ## Example 1
