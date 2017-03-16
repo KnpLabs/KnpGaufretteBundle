@@ -91,7 +91,7 @@ You can use on of these adapters:
 * [Open Cloud](Resources/docs/adapters/opencloud.md)
 * [GoogleCloudStorage](Resources/docs/adapters/googlecloud.md)
 * [Cache](Resources/docs/adapters/cache.md)
-* [Stream Wrapper](Resources/docs/adapters/stream.md)
+* [Stream Wrapper](Resources/docs/stream.md)
 * [Doctrine DBAL](Resources/docs/adapters/doctrine_dbal.md)
 * [Dropbox](Resources/docs/adapters/dropbox.md)
 
