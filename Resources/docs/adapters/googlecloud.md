@@ -20,7 +20,7 @@ and then returns a `\Google_Service_Storage` class connected to the client class
 services:
     app.google_cloud_storage.service:
         class: \Google_Service_Storage
-        factory_class: App\Factory\GoogleCloudStorageServiceFactory
+        factory: [App\Factory\GoogleCloudStorageServiceFactory
         factory_method: 'createService'
         arguments:
             -
