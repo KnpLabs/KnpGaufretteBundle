@@ -92,7 +92,7 @@ class MainConfiguration implements ConfigurationInterface
             ->children()
                 ->arrayNode('stream_wrapper')
                     ->children()
-                        ->scalarNode('protocol')->defaultValue('gaufrette')->end()
+                        ->scalarNode('protocol')->defaultValue('gaufrette')->treatNullLike('gaufrette')->end()
                         ->arrayNode('filesystems')
                             ->beforeNormalization()
                                 ->ifTrue(function ($array) {
