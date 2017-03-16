@@ -30,4 +30,4 @@ before_install:
 install: composer install
 
 script:
-  - php bin/phpunit --coverage-text
+  - php vendor/bin/phpunit --coverage-text
