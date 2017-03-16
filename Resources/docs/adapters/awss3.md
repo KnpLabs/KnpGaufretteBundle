@@ -43,6 +43,9 @@ services:
                     secret: %amazon_s3.secret%
 ```
 
+Also note that when you create a bucket it [is located in a specific region](http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html). 
+The full list of region is available [here](http://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region).
+
 ## Example
 
 Once the service is set up use its key as the `service_id` in the gaufrette configuration:
