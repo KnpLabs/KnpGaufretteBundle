@@ -20,7 +20,7 @@ An example service definition of the `Aws\S3\S3Client`:
 services:
     acme.aws_s3.client:
         class: Aws\S3\S3Client
-        factory: [Aws\S3\S3Client 'factory']
+        factory: [Aws\S3\S3Client, 'factory']
         arguments:
             -
                 key: %amazon_s3.key%
@@ -33,7 +33,7 @@ Note that the definition changes slightly when using aws-sdk-php 3:
 services:
     acme.aws_s3.client:
         class: Aws\S3\S3Client
-        factory: [Aws\S3\S3Client 'factory']
+        factory: [Aws\S3\S3Client, 'factory']
         arguments:
             -
                 version: latest
