@@ -2,6 +2,12 @@
 
 Adapter for Amazon S3 SDK v2.
 
+## Installation
+
+```
+composer require aws/aws-sdk-php
+```
+
 ## Parameters
 
  * `service_id` The service id of the `Aws\S3\S3Client` to use. *(required)*
