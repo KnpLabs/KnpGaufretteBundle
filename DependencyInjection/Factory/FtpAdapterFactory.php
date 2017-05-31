@@ -1,11 +1,14 @@
 <?php
-
 namespace Knp\Bundle\GaufretteBundle\DependencyInjection\Factory;
 
 use Symfony\Component\Config\Definition\Builder\NodeDefinition;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\DefinitionDecorator;
+
+// PHPClient - Workaround otherwise 'app/console' execution failed...
+if (!defined('FTP_ASCII')) { define('FTP_ASCII', 1); }
+if (!defined('FTP_BINARY')) { define('FTP_BINARY', 2); }
 
 /**
  * Ftp Adapter Factory
