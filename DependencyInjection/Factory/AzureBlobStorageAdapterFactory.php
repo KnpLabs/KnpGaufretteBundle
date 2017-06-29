@@ -37,11 +37,18 @@ class AzureBlobStorageAdapterFactory implements AdapterFactoryInterface
     public function addConfiguration(NodeDefinition $builder)
     {
         $builder
+            ->validate()
+            ->ifTrue(function ($v) {
+                return empty($v['container_name']) && !$v['multi_container_mode'];
+            })
+                ->thenInvalid('You should either provide a container name or enable the multi container mode.')
+            ->end()
             ->children()
                 ->scalarNode('blob_proxy_factory_id')->isRequired()->cannotBeEmpty()->end()
-                ->scalarNode('container_name')->isRequired()->cannotBeEmpty()->end()
+                ->scalarNode('container_name')->isRequired()->end()
                 ->booleanNode('create_container')->defaultValue(false)->end()
                 ->booleanNode('detect_content_type')->defaultValue(true)->end()
+                ->booleanNode('multi_container_mode')->defaultFalse()->end()
             ->end()
         ;
     }

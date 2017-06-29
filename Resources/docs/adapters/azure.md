@@ -15,14 +15,16 @@ services:
 ```
 
 You must set the parameter `azure_blob_storage_connection_string` to contain your windows azure blob storage connection
-string. You can retrieve your connection string in your [Windows Azure management console](https://manage.windowsazure.com).
+string. You can retrieve your connection string in your [Windows Azure management console](https://manage.windowsazure.com). 
+It looks like this: `BlobEndpoint=http://<AccountName>.blob.core.windows.net/;AccountName=<AccountName>;AccountKey=<AccountKey>`.
 
 ## Parameters
 
  * `blob_proxy_factory_id` Reference to the blob proxy factory service
- * `container_name` The name of the container
+ * `container_name` The name of the container (*optional if the `multi_container_mode` is enabled*)
  * `create_container` Boolean value that indicates whether to create the container if it does not exists (*optional*: default *false*)
  * `detect_content_type` Boolean value that indicates whether to auto determinate and set the content type on new blobs (*optional*: default *true*)
+ * `multi_container_mode` Boolean value that indicates whether multi-container mode is enabled (the container will be determined using the first part of the file key) (*optional*: default *false*) 
 
 ## Example
 
@@ -35,4 +37,17 @@ knp_gaufrette:
                 blob_proxy_factory_id: azure_blob_proxy_factory
                 container_name: my_container
                 create_container: true
+```
+
+With multi-container mode enabled:
+
+``` yaml
+# app/config/config.yml
+knp_gaufrette:
+    adapters:
+        foo:
+            azure_blob_storage:
+                blob_proxy_factory_id: azure_blob_proxy_factory
+                container_name: ~
+                mult_container_mode: true
 ```
