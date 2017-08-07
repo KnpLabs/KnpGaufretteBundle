@@ -125,3 +125,8 @@ $container->get('knp_gaufrette.filesystem_map')->get('bar');
 Returns the `bar` instance of `Gaufrette\Filesystem`.
 
 [gaufrette-homepage]: https://github.com/KnpLabs/Gaufrette
+
+## Maintainers
+
+- [@NiR-](https://github.com/NiR-)
+- [@nicolasmure](https://github.com/nicolasmure)
