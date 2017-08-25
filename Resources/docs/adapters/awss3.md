@@ -6,6 +6,7 @@ Adapter for Amazon S3 SDK v2.
 
  * `service_id` The service id of the `Aws\S3\S3Client` to use. *(required)*
  * `bucket_name` The name of the S3 bucket to use. *(required)*
+ * `detect_content_type` Auto detect the content type. *(default false)*
  * `options` A list of additional options passed to the adapter.
    * `create` Whether to create the bucket if it doesn't exist. *(default false)*
    * `directory` A directory to operate in. *(default '')*
@@ -58,6 +59,7 @@ knp_gaufrette:
             aws_s3:
                 service_id: 'acme.aws_s3.client'
                 bucket_name: 'images'
+                detect_content_type: true
                 options:
                     directory: 'profile_photos'
 ```
