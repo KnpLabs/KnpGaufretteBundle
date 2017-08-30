@@ -72,6 +72,11 @@ class KnpGaufretteExtension extends Extension
         foreach ($config as $key => $adapter) {
             if (array_key_exists($key, $factories)) {
                 $id = sprintf('gaufrette.%s_adapter', $name);
+                // If version of Symfony equal or more than 3.2, it might have an runtime environment variables,
+                // so we need process them also, otherwize it provides wrong parameters
+                if (Kernel::MAJOR_VERSION >= 3 && Kernel::MINOR_VERSION >= 2) {
+                   $adapter = $container->resolveEnvPlaceholders($adapter, true);
+                }
                 $factories[$key]->create($container, $id, $adapter);
 
                 return $id;
