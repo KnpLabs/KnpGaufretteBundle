@@ -75,7 +75,7 @@ class KnpGaufretteExtension extends Extension
                 $id = sprintf('gaufrette.%s_adapter', $name);
                 // If version of Symfony equal or more than 3.2, it might have an runtime environment variables,
                 // so we need process them also, otherwize it provides wrong parameters
-                if (Kernel::MAJOR_VERSION >= 3 && Kernel::MINOR_VERSION >= 2 || Kernel::MAJOR_VERSION >= 4) {
+                if (Kernel::VERSION_ID >= 30200) {
                    $adapter = $container->resolveEnvPlaceholders($adapter, true);
                 }
                 $factories[$key]->create($container, $id, $adapter);
