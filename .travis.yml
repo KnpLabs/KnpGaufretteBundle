@@ -2,6 +2,8 @@ language: php
 
 sudo: false
 
+dist: precise
+
 php:
   - 5.3
   - 5.4
@@ -23,8 +25,6 @@ matrix:
       env: SYMFONY_VERSION='~3.0'
     - php: 5.6
       env: SYMFONY_VERSION='~3.2'
-    - php: 7.0
-      env: SYMFONY_VERSION='~4.0'
 
 
 before_install:
