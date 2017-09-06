@@ -4,34 +4,24 @@ sudo: false
 
 dist: precise
 
-php:
-  - 5.3
-  - 5.4
-  - 5.5
-  - 5.6
-  - 7.0
-
 cache:
   directories:
     - $HOME/.composer/cache
 
 matrix:
   include:
-    - php: 5.6
-      env: SYMFONY_VERSION='~2.3'
-    - php: 5.6
-      env: SYMFONY_VERSION='~2.8'
-    - php: 5.6
-      env: SYMFONY_VERSION='~3.0'
-    - php: 5.6
-      env: SYMFONY_VERSION='~3.2'
+    - php: '5.3'
+    - php: '5.3'
+      env: deps='low'
+    - php: '5.4'
+    - php: '5.5'
+    - php: '5.6'
+    - php: '7.0'
+    - php: '7.1'
 
-
-before_install:
-  - composer self-update
-  - sh -c 'if [ "$SYMFONY_VERSION" != "" ]; then composer require --no-update symfony/symfony=$SYMFONY_VERSION; fi;'
-
-install: composer install
+install:
+  - if [[ ! $deps ]]; then composer update --prefer-dist --no-progress --no-suggest --ansi; fi
+  - if [[ $deps = 'low' ]]; then composer update --prefer-dist --no-progress --no-suggest --prefer-stable --prefer-lowest --ansi; fi
 
 script:
-  - php vendor/bin/phpunit --coverage-text
+  - vendor/bin/phpunit --coverage-text
