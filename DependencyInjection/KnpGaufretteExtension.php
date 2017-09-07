@@ -4,6 +4,7 @@ namespace Knp\Bundle\GaufretteBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\Config\FileLocator;
+use Symfony\Component\DependencyInjection\ChildDefinition;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\DefinitionDecorator;
 use Symfony\Component\DependencyInjection\Reference;
@@ -99,8 +100,12 @@ class KnpGaufretteExtension extends Extension
         $adapter = $adapters[$config['adapter']];
         $id      = sprintf('gaufrette.%s_filesystem', $name);
 
+        $definition = class_exists('\Symfony\Component\DependencyInjection\ChildDefinition')
+            ? new ChildDefinition('knp_gaufrette.filesystem')
+            : new DefinitionDecorator('knp_gaufrette.filesystem');
+
         $container
-            ->setDefinition($id, new DefinitionDecorator('knp_gaufrette.filesystem'))
+            ->setDefinition($id, $definition)
             ->replaceArgument(0, new Reference($adapter))
         ;
 

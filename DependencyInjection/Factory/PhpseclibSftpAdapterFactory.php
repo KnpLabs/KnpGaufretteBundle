@@ -3,9 +3,10 @@
 namespace Knp\Bundle\GaufretteBundle\DependencyInjection\Factory;
 
 use Symfony\Component\Config\Definition\Builder\NodeDefinition;
-use Symfony\Component\DependencyInjection\Reference;
+use Symfony\Component\DependencyInjection\ChildDefinition;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\DefinitionDecorator;
+use Symfony\Component\DependencyInjection\Reference;
 
 /**
  * Phpseclib Sftp Adapter Factory
@@ -15,10 +16,14 @@ class PhpseclibSftpAdapterFactory implements AdapterFactoryInterface
     /**
      * {@inheritDoc}
      */
-    function create(ContainerBuilder $container, $id, array $config)
+    public function create(ContainerBuilder $container, $id, array $config)
     {
+        $childDefinition = class_exists('\Symfony\Component\DependencyInjection\ChildDefinition')
+            ? new ChildDefinition('knp_gaufrette.adapter.phpseclib_sftp')
+            : new DefinitionDecorator('knp_gaufrette.adapter.phpseclib_sftp');
+
         $container
-            ->setDefinition($id, new DefinitionDecorator('knp_gaufrette.adapter.phpseclib_sftp'))
+            ->setDefinition($id, $childDefinition)
             ->addArgument(new Reference($config['phpseclib_sftp_id']))
             ->addArgument($config['directory'])
             ->addArgument($config['create'])
@@ -28,7 +33,7 @@ class PhpseclibSftpAdapterFactory implements AdapterFactoryInterface
     /**
      * {@inheritDoc}
      */
-    function getKey()
+    public function getKey()
     {
         return 'phpseclib_sftp';
     }
@@ -36,7 +41,7 @@ class PhpseclibSftpAdapterFactory implements AdapterFactoryInterface
     /**
      * {@inheritDoc}
      */
-    function addConfiguration(NodeDefinition $builder)
+    public function addConfiguration(NodeDefinition $builder)
     {
         $builder
             ->children()

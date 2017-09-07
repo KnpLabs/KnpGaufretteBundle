@@ -2,10 +2,11 @@
 
 namespace Knp\Bundle\GaufretteBundle\DependencyInjection\Factory;
 
+use Symfony\Component\Config\Definition\Builder\NodeDefinition;
+use Symfony\Component\DependencyInjection\ChildDefinition;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\DefinitionDecorator;
 use Symfony\Component\DependencyInjection\Reference;
-use Symfony\Component\Config\Definition\Builder\NodeDefinition;
 
 
 class AzureBlobStorageAdapterFactory implements AdapterFactoryInterface
@@ -15,8 +16,12 @@ class AzureBlobStorageAdapterFactory implements AdapterFactoryInterface
      */
     public function create(ContainerBuilder $container, $id, array $config)
     {
-        $definition = $container
-            ->setDefinition($id, new DefinitionDecorator('knp_gaufrette.adapter.azure_blob_storage'))
+        $definition = class_exists('\Symfony\Component\DependencyInjection\ChildDefinition')
+            ? new ChildDefinition('knp_gaufrette.adapter.azure_blob_storage')
+            : new DefinitionDecorator('knp_gaufrette.adapter.azure_blob_storage');
+
+        $container
+            ->setDefinition($id, $definition)
             ->addArgument(new Reference($config['blob_proxy_factory_id']))
             ->addArgument($config['container_name'])
             ->addArgument($config['create_container'])
