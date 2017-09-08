@@ -3,9 +3,10 @@
 namespace Knp\Bundle\GaufretteBundle\DependencyInjection\Factory;
 
 use Symfony\Component\Config\Definition\Builder\NodeDefinition;
-use Symfony\Component\DependencyInjection\Reference;
-use Symfony\Component\DependencyInjection\DefinitionDecorator;
+use Symfony\Component\DependencyInjection\ChildDefinition;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\DefinitionDecorator;
+use Symfony\Component\DependencyInjection\Reference;
 
 class AmazonS3AdapterFactory implements AdapterFactoryInterface
 {
@@ -14,8 +15,12 @@ class AmazonS3AdapterFactory implements AdapterFactoryInterface
      */
     public function create(ContainerBuilder $container, $id, array $config)
     {
+        $childDefinition = class_exists('\Symfony\Component\DependencyInjection\ChildDefinition')
+            ? new ChildDefinition('knp_gaufrette.adapter.amazon_s3')
+            : new DefinitionDecorator('knp_gaufrette.adapter.amazon_s3');
+
         $definition = $container
-            ->setDefinition($id, new DefinitionDecorator('knp_gaufrette.adapter.amazon_s3'))
+            ->setDefinition($id, $childDefinition)
             ->addArgument(new Reference($config['amazon_s3_id']))
             ->addArgument($config['bucket_name']);
 
