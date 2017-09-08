@@ -2,14 +2,12 @@
 
 namespace Knp\Bundle\GaufretteBundle\DependencyInjection;
 
-use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\DefinitionDecorator;
-use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
+use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
-use Symfony\Component\HttpKernel\Kernel;
 
 /**
  * The Gaufrette DIC extension
@@ -18,7 +16,7 @@ use Symfony\Component\HttpKernel\Kernel;
  */
 class KnpGaufretteExtension extends Extension
 {
-    private $factories = null;
+    private $factories;
 
     /**
      * Loads the extension
@@ -28,8 +26,7 @@ class KnpGaufretteExtension extends Extension
      */
     public function load(array $configs, ContainerBuilder $container)
     {
-        $processor = new Processor();
-        $config = $processor->processConfiguration($this->getConfiguration($configs, $container), $configs);
+        $config = $this->processConfiguration($this->getConfiguration($configs, $container), $configs);
 
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('gaufrette.xml');
@@ -56,11 +53,9 @@ class KnpGaufretteExtension extends Extension
 
     public function getConfiguration(array $configs, ContainerBuilder $container)
     {
-        $processor = new Processor();
-
         // first assemble the adapter factories
         $factoryConfig = new FactoryConfiguration();
-        $config        = $processor->processConfiguration($factoryConfig, $configs);
+        $config        = $this->processConfiguration($factoryConfig, $configs);
         $factories     = $this->createAdapterFactories($config, $container);
 
         // then normalize the configs
@@ -73,11 +68,6 @@ class KnpGaufretteExtension extends Extension
         foreach ($config as $key => $adapter) {
             if (array_key_exists($key, $factories)) {
                 $id = sprintf('gaufrette.%s_adapter', $name);
-                // If version of Symfony equal or more than 3.2, it might have an runtime environment variables,
-                // so we need process them also, otherwize it provides wrong parameters
-                if (Kernel::VERSION_ID >= 30200) {
-                   $adapter = $container->resolveEnvPlaceholders($adapter, true);
-                }
                 $factories[$key]->create($container, $id, $adapter);
 
                 return $id;
