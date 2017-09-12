@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<phpunit backupGlobals="false"
-         backupStaticAttributes="false"
-         colors="true"
-         convertErrorsToExceptions="true"
-         convertNoticesToExceptions="true"
-         convertWarningsToExceptions="true"
-         processIsolation="false"
-         stopOnFailure="false"
-         syntaxCheck="false"
+<!-- http://phpunit.de/manual/4.1/en/appendixes.configuration.html -->
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.6/phpunit.xsd"
+         backupGlobals="false"
          bootstrap="vendor/autoload.php"
+         colors="true"
 >
+  <php>
+    <ini name="error_reporting" value="-1" />
+    <ini name="memory_limit" value="-1" />
+    <server name="KERNEL_DIR" value="Tests/Functional/" />
+  </php>
   <testsuites>
     <testsuite name="KnpGaufretteBundle Test Suite">
-      <directory>./Tests</directory>
+      <directory>Tests</directory>
     </testsuite>
   </testsuites>
 
@@ -21,9 +22,9 @@
     <whitelist>
       <directory suffix=".php">.</directory>
       <exclude>
-        <directory>./Resources</directory>
-        <directory>./Tests</directory>
-        <directory>./vendor</directory>
+        <directory>Resources</directory>
+        <directory>Tests</directory>
+        <directory>vendor</directory>
       </exclude>
     </whitelist>
   </filter>
