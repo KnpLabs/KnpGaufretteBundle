@@ -76,7 +76,7 @@ The defined adapters are then used to create the filesystems.
 
 You can use on of these adapters:
 * [Local Adapter](Resources/docs/adapters/local.md)
-* [Safe Local Adapter](docs/safe_local.md)
+* [Safe Local Adapter](Resources/docs/adapters/safe_local.md)
 * [Service](Resources/docs/adapters/service.md)
 * [In Memory](Resources/docs/adapters/memory.md)
 * [Azure Blob Storage](Resources/docs/adapters/azure.md)
