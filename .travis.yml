@@ -17,10 +17,13 @@ matrix:
     - php: '7.1'
     - php: '7.1'
       env: deps='low'
+    - php: '7.1'
+      env: deps='beta'
 
 install:
   - if [[ ! $deps ]]; then composer update --prefer-dist --no-progress --no-suggest --ansi; fi
   - if [[ $deps = 'low' ]]; then composer update --prefer-dist --no-progress --no-suggest --prefer-stable --prefer-lowest --ansi; fi
+  - if [[ $deps = 'beta' ]]; then composer config minimum-stability beta && composer update --prefer-dist --no-progress --no-suggest --ansi; fi
 
 script:
   - vendor/bin/phpunit --coverage-text
