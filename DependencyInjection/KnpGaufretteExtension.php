@@ -45,6 +45,7 @@ class KnpGaufretteExtension extends Extension
         }
 
         $container->getDefinition('knp_gaufrette.filesystem_map')
+            ->setPublic(true)
             ->replaceArgument(0, $map);
 
         if (isset($config['stream_wrapper'])) {
