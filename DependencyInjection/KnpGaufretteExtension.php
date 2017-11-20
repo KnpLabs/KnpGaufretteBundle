@@ -3,6 +3,7 @@
 namespace Knp\Bundle\GaufretteBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
+use Symfony\Component\DependencyInjection\Alias;
 use Symfony\Component\DependencyInjection\ChildDefinition;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\DefinitionDecorator;
@@ -44,6 +45,7 @@ class KnpGaufretteExtension extends Extension
         }
 
         $container->getDefinition('knp_gaufrette.filesystem_map')
+            ->setPublic(true)
             ->replaceArgument(0, $map);
 
         if (isset($config['stream_wrapper'])) {
@@ -101,7 +103,7 @@ class KnpGaufretteExtension extends Extension
 
         if (!empty($config['alias'])) {
             $container->getDefinition($id)->setPublic(false);
-            $container->setAlias($config['alias'], $id);
+            $container->setAlias($config['alias'], new Alias($id, true));
         }
 
         return new Reference($id);
