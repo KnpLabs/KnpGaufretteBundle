@@ -3,8 +3,9 @@
 namespace Knp\Bundle\GaufretteBundle\Tests;
 
 use Knp\Bundle\GaufretteBundle\FilesystemMap;
+use PHPUnit\Framework\TestCase;
 
-class FilesystemMapTest extends \PHPUnit_Framework_TestCase
+class FilesystemMapTest extends TestCase
 {
     private $filesystemMap;
 
