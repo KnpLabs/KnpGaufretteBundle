@@ -19,8 +19,8 @@ class FilesystemMapTest extends TestCase
      */
     public function shouldGetFilesystemByKey()
     {
-        $this->assertInstanceOf('Gaufrette\Filesystem', $this->filesystemMap->get('amazon_fs'), 'should get filesystem object by key');
-        $this->assertInstanceOf('Gaufrette\Filesystem', $this->filesystemMap->get('local_fs'), 'should get filesystem object by key');
+        $this->assertInstanceOf('Gaufrette\FilesystemInterface', $this->filesystemMap->get('amazon_fs'), 'should get filesystem object by key');
+        $this->assertInstanceOf('Gaufrette\FilesystemInterface', $this->filesystemMap->get('local_fs'), 'should get filesystem object by key');
     }
 
     /**
