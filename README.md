@@ -124,6 +124,11 @@ $container->get('knp_gaufrette.filesystem_map')->get('bar');
 
 Returns the `bar` instance of `Gaufrette\Filesystem`.
 
+Use cases
+==================
+
+[Check out](https://github.com/KnpLabs/KnpGaufretteBundle/blob/master/Resources/docs/use-case-examples.md) basic examples of the library.
+
 [gaufrette-homepage]: https://github.com/KnpLabs/Gaufrette
 
 ## Maintainers
