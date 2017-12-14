@@ -31,6 +31,10 @@ This bundle can be installed using [composer](http://getcomposer.org) by adding 
     },
 ```
 
+We also recommend to install your adapter with Gaufrette's
+[metapackages](https://github.com/KnpLabs/Gaufrette#metapackages-for-adapters)
+(find the complete list on [packagist](https://packagist.org/packages/gaufrette/)).
+
 ## Register the bundle
 
 You must register the bundle in your kernel:
