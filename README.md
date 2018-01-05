@@ -8,7 +8,7 @@ Provides a [Gaufrette][gaufrette-homepage] integration for your Symfony projects
 About Gaufrette
 ===============
 
-Gaufrette is a PHP 5.3+ library providing a filesystem abstraction layer.
+Gaufrette is a PHP 5.6+ library providing a filesystem abstraction layer.
 This abstraction layer allows you to develop applications without needing to know where all their media files will be stored or how.
 
 Documentation is available the [official page of Gaufrette][gaufrette-homepage].
