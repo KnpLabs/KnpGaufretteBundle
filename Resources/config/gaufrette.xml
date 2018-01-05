@@ -8,7 +8,7 @@
         <parameter key="knp_gaufrette.filesystem_map.class">Knp\Bundle\GaufretteBundle\FilesystemMap</parameter>
     </parameters>
     <services>
-        <service id="knp_gaufrette.filesystem" class="Gaufrette\Filesystem" abstract="true">
+        <service id="knp_gaufrette.filesystem" class="Gaufrette\Filesystem" abstract="true" public="true">
             <argument /><!-- The Adapter -->
         </service>
         <service id="knp_gaufrette.adapter.in_memory" class="Gaufrette\Adapter\InMemory" abstract="true" public="false">
@@ -47,7 +47,7 @@
             <argument /><!-- ttl -->
         </service>
         <service id="knp_gaufrette.adapter.cache" class="Gaufrette\Adapter\Cache" abstract="true" public="false" />
-        <service id="knp_gaufrette.filesystem_map" class="%knp_gaufrette.filesystem_map.class%">
+        <service id="knp_gaufrette.filesystem_map" class="%knp_gaufrette.filesystem_map.class%" public="true">
             <argument /> <!-- map of filesystems -->
         </service>
         <service id="knp_gaufrette.adapter.dropbox" class="Gaufrette\Adapter\Dropbox" abstract="true" public="false" />
