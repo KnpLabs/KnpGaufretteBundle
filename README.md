@@ -18,22 +18,16 @@ Installation
 
 ## Prerequisites
 
-As this bundle is an integration for Symfony of the [Gaufrette][gaufrette-homepage] library, it requires you to first install [Gaufrette][gaufrette-homepage] in a Symfony project.
+As this bundle is an integration for Symfony of the [Gaufrette][gaufrette-homepage] library, it requires you to first install [Gaufrette][gaufrette-homepage] in your project.
+
+Note that, you need to install separately the adapters you want to use. You can find more details about these packages [here](https://github.com/KnpLabs/Gaufrette#metapackages-for-adapters), 
+and the full list adapters [on packagist](https://packagist.org/packages/gaufrette/).
 
 ## With composer
 
-This bundle can be installed using [composer](http://getcomposer.org) by adding the following in the `require` section of your `composer.json` file:
-
-``` json
-    "require": {
-        ...
-        "knplabs/knp-gaufrette-bundle": "~0.4"
-    },
+```bash
+composer require knplabs/knp-gaufrette-bundle:~0.5
 ```
-
-We also recommend to install your adapter with Gaufrette's
-[metapackages](https://github.com/KnpLabs/Gaufrette#metapackages-for-adapters)
-(find the complete list on [packagist](https://packagist.org/packages/gaufrette/)).
 
 ## Register the bundle
 
