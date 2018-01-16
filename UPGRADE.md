@@ -1,3 +1,8 @@
+UPGRADE FROM 0.5 TO 1.0
+=======================
+
+Nothing to do: the project is stable 👍
+
 UPGRADE FROM 0.2 to 0.3
 =======================
 

@@ -1,3 +1,8 @@
+v1.0.0
+======
+
+Just a release to respect Semver as the project is stable 👍.
+
 v0.5.0
 ======
 

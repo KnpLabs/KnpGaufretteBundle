@@ -26,7 +26,7 @@ and the full list adapters [on packagist](https://packagist.org/packages/gaufret
 ## With composer
 
 ```bash
-composer require knplabs/knp-gaufrette-bundle:~0.5
+composer require knplabs/knp-gaufrette-bundle
 ```
 
 ## Register the bundle
