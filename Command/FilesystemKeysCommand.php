@@ -62,7 +62,7 @@ EOT
         $count = count($keys);
 
         $message = $count ? sprintf(
-                'Bellow %s the <info>%s key%s</info> that where found:',
+                'Bellow %s the <info>%s key%s</info> that were found:',
                 $count > 1 ? 'are' : 'is',
                 $count,
                 $count > 1 ? 's': ''
