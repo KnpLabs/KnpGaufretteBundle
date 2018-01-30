@@ -11,6 +11,7 @@
         <service id="knp_gaufrette.filesystem" class="Gaufrette\Filesystem" abstract="true" public="true">
             <argument /><!-- The Adapter -->
         </service>
+
         <service id="knp_gaufrette.adapter.in_memory" class="Gaufrette\Adapter\InMemory" abstract="true" public="false">
             <argument /><!-- Files -->
         </service>
@@ -51,6 +52,10 @@
             <argument /> <!-- map of filesystems -->
         </service>
         <service id="knp_gaufrette.adapter.dropbox" class="Gaufrette\Adapter\Dropbox" abstract="true" public="false" />
+
+        <service id="knp_gaufrette.command.filesystem_keys" class="Knp\Bundle\GaufretteBundle\Command\FilesystemKeysCommand">
+            <tag name="console.command" command="gaufrette:filesystem:keys" />
+        </service>
     </services>
 
 </container>
