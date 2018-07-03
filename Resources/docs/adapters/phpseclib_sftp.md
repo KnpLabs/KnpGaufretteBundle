@@ -32,7 +32,7 @@ parameters:
 
 services:
     acme_test.sftp:
-        class: Net_SFTP
+        class: phpseclib\Net\SFTP #for phpseclib 1.x you need to use Net_SFTP
         arguments: [%acme_test.ssh.host%]
         calls:
             - [login, [%acme_test.ssh.username%, %acme_test.ssh.password%]]
