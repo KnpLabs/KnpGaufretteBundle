@@ -13,7 +13,7 @@ Then, once you fetch the associated adapter, you are able to perform the desired
 
 In the case of the `AwsS3` adapter:
 
-```
+```php
 /** @var AwsS3 $adapter */
 $adapter = $this->filesystem->getAdapter();
 
@@ -33,7 +33,7 @@ Another common need would be to download a file from a filesystem. Instead of lo
 
 Gaufrette provides a default stream wrapper and you could use it easily in a response for example:
 
-```
+```php
 public function downloadAction()
 {
     $fileStream = sprintf('gaufrette://your_defined_fs/%s', 'absolute/path/to/file.pdf');
