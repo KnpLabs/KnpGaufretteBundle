@@ -8,7 +8,7 @@ Provides a [Gaufrette][gaufrette-homepage] integration for your Symfony projects
 About Gaufrette
 ===============
 
-Gaufrette is a PHP 5.6+ library providing a filesystem abstraction layer.
+Gaufrette is a PHP library providing a filesystem abstraction layer.
 This abstraction layer allows you to develop applications without needing to know where all their media files will be stored or how.
 
 Documentation is available the [official page of Gaufrette][gaufrette-homepage].
@@ -20,13 +20,13 @@ Installation
 
 As this bundle is an integration for Symfony of the [Gaufrette][gaufrette-homepage] library, it requires you to first install [Gaufrette][gaufrette-homepage] in your project.
 
-Note that, you need to install separately the adapters you want to use. You can find more details about these packages [here](https://github.com/KnpLabs/Gaufrette#metapackages-for-adapters), 
+Note that, you need to install separately the adapters you want to use. You can find more details about these packages [here](https://github.com/KnpLabs/Gaufrette#metapackages-for-adapters),
 and the full list adapters [on packagist](https://packagist.org/packages/gaufrette/).
 
 ## With composer
 
 ```bash
-composer require knplabs/knp-gaufrette-bundle:^0.5
+composer require knplabs/knp-gaufrette-bundle
 ```
 
 ## Register the bundle

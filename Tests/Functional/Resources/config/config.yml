@@ -2,7 +2,7 @@ knp_gaufrette:
     adapters:
         foo_local:
             local:
-                directory:  %kernel.root_dir%
+                directory:  "%kernel.root_dir%"
                 create:     true
         foo_ftp:
             ftp:
