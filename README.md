@@ -36,19 +36,10 @@ You must register the bundle in your kernel:
 ``` php
 <?php
 
-// app/AppKernel.php
-
-public function registerBundles()
-{
-    $bundles = array(
-
-        // ...
-
-        new Knp\Bundle\GaufretteBundle\KnpGaufretteBundle()
-    );
-
+return [
     // ...
-}
+    Knp\Bundle\GaufretteBundle\KnpGaufretteBundle::class                       => ['all' => true],
+];
 ```
 
 Configuration
@@ -62,7 +53,7 @@ The configuration of the Gaufrette bundle is divided into two parts: the `adapte
 ## Configuring the Adapters
 
 ``` yaml
-# app/config/config.yml
+# config/packages/knp_gaufrette.yaml
 knp_gaufrette:
     adapters:
         foo:
@@ -95,7 +86,7 @@ You can use on of these adapters:
 ## Configuring the Filesystems
 
 ``` yaml
-# app/config/config.yml
+# config/packages/knp_gaufrette.yaml
 knp_gaufrette:
     adapters:
         # ...
