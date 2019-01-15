@@ -18,6 +18,7 @@ class FactoryConfiguration implements ConfigurationInterface
      * @return TreeBuilder
      */
     public function getConfigTreeBuilder()
+    {
         if(method_exists(TreeBuilder::class, 'getRootNode')) {
             $treeBuilder = new TreeBuilder('knp_gaufrette');
             $rootNode    = $treeBuilder->getRootNode();
