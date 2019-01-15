@@ -18,19 +18,24 @@ class FactoryConfiguration implements ConfigurationInterface
      * @return TreeBuilder
      */
     public function getConfigTreeBuilder()
-    {
-        $treeBuilder = new TreeBuilder();
+        if(method_exists(TreeBuilder::class, 'getRootNode')) {
+            $treeBuilder = new TreeBuilder('knp_gaufrette');
+            $rootNode    = $treeBuilder->getRootNode();
+        }
+        else {
+            $treeBuilder = new TreeBuilder();
+            $rootNode    = $treeBuilder->root('knp_gaufrette');
+        }
 
-        $treeBuilder
-            ->root('knp_gaufrette')
-                ->ignoreExtraKeys()
-                ->fixXmlConfig('factory', 'factories')
-                ->children()
-                    ->arrayNode('factories')
-                        ->prototype('scalar')->end()
-                    ->end()
+        $rootNode
+            ->ignoreExtraKeys()
+            ->fixXmlConfig('factory', 'factories')
+            ->children()
+                ->arrayNode('factories')
+                    ->prototype('scalar')->end()
                 ->end()
             ->end()
+        ->end()
         ;
 
         return $treeBuilder;
