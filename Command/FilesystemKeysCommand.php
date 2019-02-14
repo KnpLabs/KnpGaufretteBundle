@@ -2,7 +2,7 @@
 
 namespace Knp\Bundle\GaufretteBundle\Command;
 
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -13,7 +13,7 @@ use Gaufrette\Glob;
  *
  * @author Antoine Hérault <antoine.herault@gmail.com>
  */
-class FilesystemKeysCommand extends ContainerAwareCommand
+class FilesystemKeysCommand extends Command
 {
     /**
      * {@inheritDoc}
