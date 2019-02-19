@@ -6,6 +6,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Output\OutputInterface;
+use Gaufrette\FilesystemMapInterface;
 use Gaufrette\Glob;
 
 /**
@@ -15,6 +16,17 @@ use Gaufrette\Glob;
  */
 class FilesystemKeysCommand extends Command
 {
+    /**
+     * @var FilesystemMapInterface
+     */
+    private $filesystemMap;
+
+    public function __construct(FilesystemMapInterface $filesystemMap)
+    {
+        $this->filesystemMap = $filesystemMap;
+
+        parent::__construct();
+    }
     /**
      * {@inheritDoc}
      */
@@ -42,16 +54,14 @@ EOT
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $filesystem = $input->getArgument('filesystem');
-        $glob       = $input->getArgument('glob');
-        $container  = $this->getContainer();
-        $serviceId  = sprintf('gaufrette.%s_filesystem', $filesystem);
+        $filesystemName = $input->getArgument('filesystem');
+        $glob = $input->getArgument('glob');
 
-        if (!$container->has($serviceId)) {
+        if (!$this->filesystemMap->has($filesystemName)) {
             throw new \RuntimeException(sprintf('There is no \'%s\' filesystem defined.', $filesystem));
         }
 
-        $filesystem = $container->get($serviceId);
+        $filesystem = $this->filesystemMap->get($filesystemName);
         $keys       = $filesystem->keys();
 
         if (!empty($glob)) {
