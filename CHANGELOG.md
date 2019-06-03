@@ -1,10 +1,24 @@
 v0.6.0
 ======
 
+Changes:
 - Require PHP 7.1 as minimum (previous php versions are EOL) (#204)
 - PHP 7.3 support (#204)
 - Update Gaufrette dep to v0.8 (#204)
 - Update Symfony deps to v4 (#204)
+
+Fixes:
+- Make composer respects semver versioning (#196)
+- Update README for Symfony 4 directory structure (#206)
+- Remove TreeBuilder deprecations (#207)
+
+Documentation fixes:
+- Fixed documentation for phpseclib 2.0 (#189)
+- Simplified aws s3 docs (#193)
+- Pretty print doc block (#195)
+
+Thanks to @aaronadal, @Awkan, @Nek-, @nicolasmure and @OskarStark for their
+contributions!
 
 v0.5.3
 ======
