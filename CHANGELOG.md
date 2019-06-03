@@ -1,3 +1,27 @@
+v0.6.0
+======
+
+- Require PHP 7.1 as minimum (previous php versions are EOL) (#204)
+- PHP 7.3 support (#204)
+- Update Gaufrette dep to v0.8 (#204)
+- Update Symfony deps to v4 (#204)
+
+v0.5.3
+======
+
+- Fix composer.json validity (#184)
+- Be able to install Gaufrette v0.6 (#185)
+
+v0.5.2
+======
+
+- Declare command as service to fix sf3.4 deprecation (#183)
+
+v0.5.1
+======
+
+- Be able to install Gaufrette 0.5 (#178)
+
 v0.5.0
 ======
 
@@ -12,9 +36,9 @@ v0.5.0
 * Fix doc link (#169)
 * Adding Symfony 4 support (#171)
 * Use PHPUnit\Framework\TestCase instead of PHPUnit_Framework_TestCase (#172)
-* Bump Gaufrette version (#173) 
+* Bump Gaufrette version (#173)
 * Add use cases documentation (#175)
 * Declare filesystem services as public (#176)
-* Drop support for old PHP versions 5.3, 5.4, 5.5 (#177) 
+* Drop support for old PHP versions 5.3, 5.4, 5.5 (#177)
 
-Thanks to: @000panther, @NiR-, @jspizziri, @kesslerdev, @vyacheslavk, @Lctrs, @nicolasmure, @silvioq, @bocharsky-bw, @carusogabriel, @7thcubic, @aguidis, @bluntelk, @rjd22.      
+Thanks to: @000panther, @NiR-, @jspizziri, @kesslerdev, @vyacheslavk, @Lctrs, @nicolasmure, @silvioq, @bocharsky-bw, @carusogabriel, @7thcubic, @aguidis, @bluntelk, @rjd22.
