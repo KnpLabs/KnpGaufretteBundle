@@ -32,13 +32,13 @@ class MainConfiguration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        // Solves Symfony 4.2 TreeBuilder deprecation
+        $treeBuilder = new TreeBuilder('knp_gaufrette');
+
         if (method_exists(TreeBuilder::class, 'getRootNode')) {
-            $treeBuilder = new TreeBuilder('knp_gaufrette');
-            $rootNode    = $treeBuilder->getRootNode();
+            $rootNode = $treeBuilder->getRootNode();
         } else {
-            $treeBuilder = new TreeBuilder();
-            $rootNode    = $treeBuilder->root('knp_gaufrette');
+            // BC layer for symfony/config 4.1 and older
+            $rootNode = $treeBuilder->root('knp_gaufrette');
         }
 
         $this->addAdaptersSection($rootNode, $this->factories);
