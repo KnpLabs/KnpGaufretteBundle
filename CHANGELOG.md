@@ -1,3 +1,14 @@
+v0.6.1
+======
+
+## Fixes
+
+- Keep compatibility with Symfony 3.4 as it is LTS (#221)
+- Fix Symfony 4.2 command deprecation about services usage (#210)
+- Fix Symfony 3.4 deprecation: Autowiring based on types (#215)
+
+Thank you @ahilke, @nicolasmure and @timgregg for your contributions ! 
+
 v0.6.0
 ======
 
