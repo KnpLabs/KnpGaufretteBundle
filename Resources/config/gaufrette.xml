@@ -51,6 +51,7 @@
         <service id="knp_gaufrette.filesystem_map" class="%knp_gaufrette.filesystem_map.class%" public="true">
             <argument /> <!-- map of filesystems -->
         </service>
+        <service id="%knp_gaufrette.filesystem_map.class%" alias="knp_gaufrette.filesystem_map" public="false"/>
         <service id="knp_gaufrette.adapter.dropbox" class="Gaufrette\Adapter\Dropbox" abstract="true" public="false" />
 
         <service id="knp_gaufrette.command.filesystem_keys" class="Knp\Bundle\GaufretteBundle\Command\FilesystemKeysCommand">
