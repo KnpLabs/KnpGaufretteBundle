@@ -54,6 +54,7 @@
         <service id="knp_gaufrette.adapter.dropbox" class="Gaufrette\Adapter\Dropbox" abstract="true" public="false" />
 
         <service id="knp_gaufrette.command.filesystem_keys" class="Knp\Bundle\GaufretteBundle\Command\FilesystemKeysCommand">
+            <argument type="service" id="knp_gaufrette.filesystem_map" />
             <tag name="console.command" command="gaufrette:filesystem:keys" />
         </service>
     </services>
