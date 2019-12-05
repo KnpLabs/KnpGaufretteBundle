@@ -1,8 +1,17 @@
-v0.6.2
+v0.7.0
 ======
 
+Changes :
+
+- Bump minimum Symfony 4 version to 4.2 to fix vulnerability issue (#228)
 - Symfony 5 support (#227)
 - PHP 7.4 support (#227)
+
+Fixes :
+
+- Symplify TreeBuilder usage backward compatibility (#223)
+
+Thank you @flug, @nm2107 and @p365labs for your contributions ! 
 
 v0.6.1
 ======
