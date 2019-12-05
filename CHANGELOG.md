@@ -1,3 +1,9 @@
+v0.6.2
+======
+
+- Symfony 5 support (#227)
+- PHP 7.4 support (#227)
+
 v0.6.1
 ======
 
