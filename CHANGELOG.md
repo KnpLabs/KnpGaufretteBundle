@@ -1,3 +1,11 @@
+v0.7.1
+======
+
+Fixes :
+
+- Be able to install Gaufrette [v0.9.0](https://github.com/KnpLabs/Gaufrette/releases/tag/v0.9.0)
+(#233).
+
 v0.7.0
 ======
 
