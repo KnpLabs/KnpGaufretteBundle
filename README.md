@@ -38,7 +38,7 @@ You must register the bundle in your kernel:
 
 return [
     // ...
-    Knp\Bundle\GaufretteBundle\KnpGaufretteBundle::class                       => ['all' => true],
+    Knp\Bundle\GaufretteBundle\KnpGaufretteBundle::class => ['all' => true],
 ];
 ```
 
