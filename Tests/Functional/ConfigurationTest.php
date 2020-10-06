@@ -11,7 +11,7 @@ class ConfigurationTest extends TestCase
     private $cacheDir;
     private $kernel;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->cacheDir = __DIR__.'/Resources/cache';
         if (file_exists($this->cacheDir)) {
@@ -25,7 +25,7 @@ class ConfigurationTest extends TestCase
         $this->kernel->boot();
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         if (file_exists($this->cacheDir)) {
             $filesystem = new Filesystem();
