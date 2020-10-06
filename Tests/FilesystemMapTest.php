@@ -9,7 +9,7 @@ class FilesystemMapTest extends TestCase
 {
     private $filesystemMap;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->filesystemMap = new FilesystemMap(array('amazon_fs' => $this->getFilesystem(), 'local_fs' => $this->getFilesystem()));
     }
