@@ -11,10 +11,10 @@ matrix:
     - php: '7.1'
     - php: '7.2'
     - php: '7.3'
-    - php: '7.4snapshot'
+    - php: '7.4'
 
 install:
   - composer update --prefer-dist --no-progress --no-suggest --ansi
 
 script:
-  - vendor/bin/phpunit --coverage-text
+  - vendor/bin/simple-phpunit --coverage-text
