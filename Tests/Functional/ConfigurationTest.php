@@ -85,15 +85,6 @@ class ConfigurationTest extends TestCase
      * @test
      * @functional
      */
-    public function shouldAllowAccessToCacheFilesystem()
-    {
-        $this->assertInstanceOf('Gaufrette\Adapter\Cache', $this->kernel->getContainer()->get('cache_filesystem')->getAdapter());
-    }
-
-    /**
-     * @test
-     * @functional
-     */
     public function shouldAllowAccessToFtpFilesystem()
     {
         $this->assertInstanceOf('Gaufrette\Adapter\Ftp', $this->kernel->getContainer()->get('ftp_filesystem')->getAdapter());
@@ -125,7 +116,6 @@ class ConfigurationTest extends TestCase
 
         $expectedDomains = array(
             'foo',
-            'cache',
             'ftp',
         );
 
@@ -159,7 +149,7 @@ class ConfigurationTest extends TestCase
         $container = $kernel->getContainer();
         $fileSystems = $container->getParameter('knp_gaufrette.stream_wrapper.filesystems');
 
-        $this->assertEquals(array('pictures' => 'cache', 'text' => 'ftp'), $fileSystems);
+        $this->assertEquals(array('pictures' => 'foo', 'text' => 'ftp'), $fileSystems);
 
         $wrapperFsMap = StreamWrapper::getFilesystemMap();
 
@@ -181,7 +171,7 @@ class ConfigurationTest extends TestCase
 
         $this->assertTrue($container->hasParameter('knp_gaufrette.stream_wrapper.protocol'));
         $this->assertEquals('tada', $container->getParameter('knp_gaufrette.stream_wrapper.protocol'));
-        $this->assertEquals(array('cache' => 'cache', 'ftp' => 'ftp'), $fileSystems);
+        $this->assertEquals(array('ftp' => 'ftp'), $fileSystems);
 
         $wrapperFsMap = StreamWrapper::getFilesystemMap();
 
