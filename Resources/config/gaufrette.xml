@@ -23,6 +23,7 @@
             <argument /><!-- Directory -->
             <argument /><!-- Create -->
         </service>
+        <service id="knp_gaufrette.adapter.async_aws_s3" class="Gaufrette\Adapter\AsyncAwsS3" abstract="true" public="false" />
         <service id="knp_gaufrette.adapter.aws_s3" class="Gaufrette\Adapter\AwsS3" abstract="true" public="false" />
         <service id="knp_gaufrette.adapter.doctrine_dbal" class="Gaufrette\Adapter\DoctrineDbal" abstract="true" public="false" />
         <service id="knp_gaufrette.adapter.opencloud" class="Gaufrette\Adapter\OpenCloud" abstract="true" public="false">

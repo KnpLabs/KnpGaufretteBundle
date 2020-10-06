@@ -75,6 +75,7 @@ You can use on of these adapters:
 * [Sftp](Resources/docs/adapters/sftp.md)
 * [Phpseclib Sftp](Resources/docs/adapters/phpseclib_sftp.md)
 * [Apc](Resources/docs/adapters/apc.md)
+* [AsyncAws S3](Resources/docs/adapters/async-aws-s3.md)
 * [AWS S3](Resources/docs/adapters/awss3.md)
 * [Open Cloud](Resources/docs/adapters/opencloud.md)
 * [GoogleCloudStorage](Resources/docs/adapters/googlecloud.md)
