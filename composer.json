@@ -20,7 +20,7 @@
         "knplabs/gaufrette": "^0.10",
         "symfony/config": "^4.4|^5.0",
         "symfony/dependency-injection": "^4.4|^5.0",
-        "symfony/framework-bundle": "^4.4|^5.0"
+        "symfony/http-kernel": "^4.4|^5.0"
     },
     "require-dev": {
         "symfony/phpunit-bridge": "^5.1",
