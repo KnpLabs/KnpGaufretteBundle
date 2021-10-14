@@ -1,41 +1,53 @@
 {
-    "name":         "knplabs/knp-gaufrette-bundle",
-    "type":         "symfony-bundle",
-    "description":  "Allows to easily use the Gaufrette library in a Symfony project",
-    "keywords":     ["file", "filesystem", "media", "abstraction"],
-    "homepage":     "http://knplabs.com",
-    "license":      "MIT",
-    "authors":      [
-        {
-            "name":     "Antoine Hérault",
-            "email":    "antoine.herault@gmail.com"
-        },
-        {
-            "name":     "The contributors",
-            "homepage": "https://github.com/knplabs/KnpGaufretteBundle/contributors"
-        }
-    ],
-    "require":      {
-        "php": ">=7.1",
-        "knplabs/gaufrette": "^0.10",
-        "symfony/config": "^4.4|^5.0",
-        "symfony/dependency-injection": "^4.4|^5.0",
-        "symfony/framework-bundle": "^4.4|^5.0"
+  "name": "knplabs/knp-gaufrette-bundle",
+  "type": "symfony-bundle",
+  "description": "Allows to easily use the Gaufrette library in a Symfony project",
+  "keywords": [
+    "file",
+    "filesystem",
+    "media",
+    "abstraction"
+  ],
+  "homepage": "http://knplabs.com",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Antoine Hérault",
+      "email": "antoine.herault@gmail.com"
     },
-    "require-dev": {
-        "symfony/phpunit-bridge": "^5.1",
-        "symfony/console": "^4.4|^5.0",
-        "symfony/filesystem": "^4.0|^5.0",
-        "symfony/yaml": "^4.0|^5.0"
-    },
-    "autoload":     {
-        "psr-4": {
-            "Knp\\Bundle\\GaufretteBundle\\": ""
-        }
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "0.7.x-dev"
-        }
+    {
+      "name": "The contributors",
+      "homepage": "https://github.com/knplabs/KnpGaufretteBundle/contributors"
     }
+  ],
+  "repositories": [
+    {
+      "name": "knplabs/gaufrette",
+      "type": "vcs",
+      "url": "git@gitlab.com:gbls/composer-package/Gaufrette.git"
+    }
+  ],
+  "require": {
+    "php": ">=7.1",
+    "knplabs/gaufrette": "dev-master",
+    "symfony/config": "^4.4|^5.0",
+    "symfony/dependency-injection": "^4.4|^5.0",
+    "symfony/framework-bundle": "^4.4|^5.0"
+  },
+  "require-dev": {
+    "symfony/phpunit-bridge": "^5.1",
+    "symfony/console": "^4.4|^5.0",
+    "symfony/filesystem": "^4.0|^5.0",
+    "symfony/yaml": "^4.0|^5.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Knp\\Bundle\\GaufretteBundle\\": ""
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "0.7.x-dev"
+    }
+  }
 }
