@@ -12,7 +12,7 @@ class TestKernel extends Kernel
         return __DIR__.'/Resources';
     }
 
-    public function registerBundles()
+    public function registerBundles(): iterable
     {
         return array(
             new \Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
