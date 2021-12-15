@@ -19,22 +19,22 @@ class FilesystemMapTest extends TestCase
      */
     public function shouldGetFilesystemByKey()
     {
-        if(class_exists('Gaufrette\FilesystemInterface')) {
+        if (class_exists('Gaufrette\FilesystemInterface')) {
             $this->assertInstanceOf('Gaufrette\FilesystemInterface', $this->filesystemMap->get('amazon_fs'), 'should get filesystem object by key');
             $this->assertInstanceOf('Gaufrette\FilesystemInterface', $this->filesystemMap->get('local_fs'), 'should get filesystem object by key');
         } else {
             $this->assertInstanceOf('Gaufrette\Filesystem', $this->filesystemMap->get('amazon_fs'), 'should get filesystem object by key');
             $this->assertInstanceOf('Gaufrette\Filesystem', $this->filesystemMap->get('local_fs'), 'should get filesystem object by key');
         }
-
     }
 
     /**
      * @test
-     * @expectedException \InvalidArgumentException
      */
     public function shouldNotGetFilesystemWhenKeyWasNotSet()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $this->filesystemMap->get('test');
     }
 

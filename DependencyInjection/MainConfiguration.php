@@ -30,7 +30,7 @@ class MainConfiguration implements ConfigurationInterface
      *
      * @return TreeBuilder
      */
-    public function getConfigTreeBuilder()
+    public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder('knp_gaufrette');
         if (method_exists($treeBuilder, 'getRootNode')) {

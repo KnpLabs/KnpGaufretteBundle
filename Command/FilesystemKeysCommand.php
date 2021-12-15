@@ -37,7 +37,8 @@ class FilesystemKeysCommand extends Command
             ->setDescription('List all the file keys of a filesystem')
             ->addArgument('filesystem', InputArgument::REQUIRED, 'The filesystem to use')
             ->addArgument('glob', InputArgument::OPTIONAL, 'An optional glob pattern')
-            ->setHelp(<<<EOT
+            ->setHelp(
+                <<<EOT
 The <info>gaufrette:filesystem:list</info> command lists all the file keys of the specified filesystem:
 
     <info>./app/console gaufrette:filesystem:list my_filesystem</info>
@@ -52,7 +53,7 @@ EOT
     /**
      * {@inheritDoc}
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $filesystemName = $input->getArgument('filesystem');
         $glob = $input->getArgument('glob');
@@ -72,11 +73,11 @@ EOT
         $count = count($keys);
 
         $message = $count ? sprintf(
-                'Bellow %s the <info>%s key%s</info> that were found:',
-                $count > 1 ? 'are' : 'is',
-                $count,
-                $count > 1 ? 's': ''
-            ) : "<info>0 keys</info> were found.";
+            'Bellow %s the <info>%s key%s</info> that were found:',
+            $count > 1 ? 'are' : 'is',
+            $count,
+            $count > 1 ? 's': ''
+        ) : "<info>0 keys</info> were found.";
 
         $output->writeln($message);
 
