@@ -2,6 +2,8 @@
 
 namespace Knp\Bundle\GaufretteBundle\DependencyInjection;
 
+use Exception;
+use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Alias;
 use Symfony\Component\DependencyInjection\ChildDefinition;
@@ -23,8 +25,10 @@ class KnpGaufretteExtension extends Extension
     /**
      * Loads the extension
      *
-     * @param  array            $configs
-     * @param  ContainerBuilder $container
+     * @param array $configs
+     * @param ContainerBuilder $container
+     *
+     * @throws Exception
      */
     public function load(array $configs, ContainerBuilder $container)
     {
@@ -54,7 +58,7 @@ class KnpGaufretteExtension extends Extension
         }
     }
 
-    public function getConfiguration(array $configs, ContainerBuilder $container)
+    public function getConfiguration(array $configs, ContainerBuilder $container): ?ConfigurationInterface
     {
         // first assemble the adapter factories
         $factoryConfig = new FactoryConfiguration();

@@ -52,7 +52,7 @@ EOT
     /**
      * {@inheritDoc}
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $filesystemName = $input->getArgument('filesystem');
         $glob = $input->getArgument('glob');
