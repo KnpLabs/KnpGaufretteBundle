@@ -1,34 +1,39 @@
 {
-    "name":         "knplabs/knp-gaufrette-bundle",
-    "type":         "symfony-bundle",
-    "description":  "Allows to easily use the Gaufrette library in a Symfony project",
-    "keywords":     ["file", "filesystem", "media", "abstraction"],
-    "homepage":     "http://knplabs.com",
-    "license":      "MIT",
-    "authors":      [
+    "name": "knplabs/knp-gaufrette-bundle",
+    "type": "symfony-bundle",
+    "description": "Allows to easily use the Gaufrette library in a Symfony project",
+    "keywords": [
+        "file",
+        "filesystem",
+        "media",
+        "abstraction"
+    ],
+    "homepage": "http://knplabs.com",
+    "license": "MIT",
+    "authors": [
         {
-            "name":     "Antoine Hérault",
-            "email":    "antoine.herault@gmail.com"
+            "name": "Antoine Hérault",
+            "email": "antoine.herault@gmail.com"
         },
         {
-            "name":     "The contributors",
+            "name": "The contributors",
             "homepage": "https://github.com/knplabs/KnpGaufretteBundle/contributors"
         }
     ],
-    "require":      {
-        "php": ">=7.1",
+    "require": {
+        "php": ">=7.4",
         "knplabs/gaufrette": "^0.10",
-        "symfony/config": "^4.4|^5.0",
-        "symfony/dependency-injection": "^4.4|^5.0",
-        "symfony/framework-bundle": "^4.4|^5.0"
+        "symfony/config": "^4.4|^5.0|^6.0",
+        "symfony/dependency-injection": "^4.4|^5.0|^6.0",
+        "symfony/framework-bundle": "^4.4|^5.0|^6.0"
     },
     "require-dev": {
-        "symfony/phpunit-bridge": "^5.1",
-        "symfony/console": "^4.4|^5.0",
-        "symfony/filesystem": "^4.0|^5.0",
-        "symfony/yaml": "^4.0|^5.0"
+        "symfony/phpunit-bridge": "^5.4",
+        "symfony/console": "^4.4|^5.0|^6.0",
+        "symfony/filesystem": "^4.0|^5.0|^6.0",
+        "symfony/yaml": "^4.0|^5.0|^6.0"
     },
-    "autoload":     {
+    "autoload": {
         "psr-4": {
             "Knp\\Bundle\\GaufretteBundle\\": ""
         }
