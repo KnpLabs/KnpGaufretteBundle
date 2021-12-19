@@ -31,10 +31,11 @@ class FilesystemMapTest extends TestCase
 
     /**
      * @test
-     * @expectedException \InvalidArgumentException
      */
     public function shouldNotGetFilesystemWhenKeyWasNotSet()
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $this->filesystemMap->get('test');
     }
 
