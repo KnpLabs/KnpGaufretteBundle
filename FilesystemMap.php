@@ -55,6 +55,7 @@ class FilesystemMap implements \IteratorAggregate, FilesystemMapInterface
         return isset($this->maps[$name]);
     }
 
+    #[\ReturnTypeWillChange]
     public function getIterator()
     {
         return new \ArrayIterator($this->maps);
