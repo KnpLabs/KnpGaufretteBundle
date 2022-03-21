@@ -1,3 +1,10 @@
+Unreleased
+==========
+
+Fixes:
+
+- Command documentation now print the right informations (#242)
+
 v0.7.2
 ======
 
