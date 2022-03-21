@@ -38,13 +38,13 @@ class FilesystemKeysCommand extends Command
             ->addArgument('filesystem', InputArgument::REQUIRED, 'The filesystem to use')
             ->addArgument('glob', InputArgument::OPTIONAL, 'An optional glob pattern')
             ->setHelp(<<<EOT
-The <info>gaufrette:filesystem:list</info> command lists all the file keys of the specified filesystem:
+The <info>%command.name%</info> command lists all the file keys of the specified filesystem:
 
-    <info>./app/console gaufrette:filesystem:list my_filesystem</info>
+    <info>php %command.full_name% my_filesystem</info>
 
 You can also optionaly specify a glob pattern to filter the results:
 
-    <info>./app/console gaufrette:filesystem:list my_filesystem media_*</info>
+    <info>php %command.full_name% my_filesystem media_*</info>
 EOT
             );
     }
