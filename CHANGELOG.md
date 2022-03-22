@@ -1,3 +1,17 @@
+Unreleased
+==========
+
+Fixes:
+
+- Command documentation now print the right informations (#242)
+
+v0.7.2
+======
+
+Fixes:
+
+- Add support for PHP 8.1 (#256)
+
 v0.7.1
 ======
 

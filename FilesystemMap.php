@@ -55,6 +55,10 @@ class FilesystemMap implements \IteratorAggregate, FilesystemMapInterface
         return isset($this->maps[$name]);
     }
 
+    /**
+     * @return \Traversable
+     */
+    #[\ReturnTypeWillChange]
     public function getIterator(): \Traversable
     {
         return new \ArrayIterator($this->maps);
