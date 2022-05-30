@@ -2,6 +2,7 @@
 
 namespace Knp\Bundle\GaufretteBundle\DependencyInjection;
 
+use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Alias;
 use Symfony\Component\DependencyInjection\ChildDefinition;
@@ -54,6 +55,9 @@ class KnpGaufretteExtension extends Extension
         }
     }
 
+    /**
+     * @return ConfigurationInterface|null
+     */
     public function getConfiguration(array $configs, ContainerBuilder $container)
     {
         // first assemble the adapter factories
