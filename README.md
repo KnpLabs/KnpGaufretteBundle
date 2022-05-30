@@ -1,7 +1,7 @@
 Gaufrette Bundle
 ================
 
-[![Build Status](https://travis-ci.org/KnpLabs/KnpGaufretteBundle.svg?branch=master)](https://travis-ci.org/KnpLabs/KnpGaufretteBundle)
+[![Build Status](https://github.com/KnpLabs/KnpGaufretteBundle/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/KnpLabs/KnpGaufretteBundle/actions/workflows/ci.yml)
 
 Provides a [Gaufrette][gaufrette-homepage] integration for your Symfony projects.
 
