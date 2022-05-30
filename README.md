@@ -124,5 +124,4 @@ Use cases
 
 ## Maintainers
 
-- [@NiR-](https://github.com/NiR-)
-- [@nicolasmure](https://github.com/nicolasmure)
+- [@Nek-](https://github.com/Nek-)
