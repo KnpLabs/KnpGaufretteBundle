@@ -1,9 +1,13 @@
-Unreleased
+Unreleased (v0.8.0)
 ==========
 
-Fixes:
+Fixe:
 
 - Command documentation now print the right informations (#242)
+
+Remove:
+
+- Support for PHP < 7.4
 
 v0.7.2
 ======
