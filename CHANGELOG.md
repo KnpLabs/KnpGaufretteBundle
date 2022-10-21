@@ -1,11 +1,17 @@
 Unreleased (v0.8.0)
 ==========
 
-Fixe:
+Adds :
 
-- Command documentation now print the right informations (#242)
+- BC Break: Adding Types (remove deprecation notices triggered by Symfony)
+  _Please notice that the v0.8.0 is a major version, therefore if you extended any class or interface, you MUST implement it with types now._ 
 
-Remove:
+
+Fixes :
+
+- Command documentation now print the right information (#242)
+
+Removes :
 
 - Support for PHP < 7.4
 

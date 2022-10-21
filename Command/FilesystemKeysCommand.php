@@ -30,7 +30,7 @@ class FilesystemKeysCommand extends Command
     /**
      * {@inheritDoc}
      */
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setName('gaufrette:filesystem:keys')
@@ -52,7 +52,7 @@ EOT
     /**
      * {@inheritDoc}
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $filesystemName = $input->getArgument('filesystem');
         $glob = $input->getArgument('glob');
@@ -84,5 +84,7 @@ EOT
         foreach ($keys as $key) {
             $output->writeln(' - <info>' . $key . '</info>');
         }
+
+        return 0;
     }
 }
