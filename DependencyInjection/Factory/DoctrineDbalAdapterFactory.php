@@ -18,7 +18,7 @@ class DoctrineDbalAdapterFactory implements AdapterFactoryInterface
     /**
      * {@inheritDoc}
      */
-    public function create(ContainerBuilder $container, $id, array $config)
+    public function create(ContainerBuilder $container, $id, array $config): void
     {
         $childDefinition = class_exists('\Symfony\Component\DependencyInjection\ChildDefinition')
             ? new ChildDefinition('knp_gaufrette.adapter.doctrine_dbal')
@@ -38,7 +38,7 @@ class DoctrineDbalAdapterFactory implements AdapterFactoryInterface
     /**
      * {@inheritDoc}
      */
-    public function getKey()
+    public function getKey(): string
     {
         return 'doctrine_dbal';
     }
@@ -46,7 +46,7 @@ class DoctrineDbalAdapterFactory implements AdapterFactoryInterface
     /**
      * {@inheritDoc}
      */
-    public function addConfiguration(NodeDefinition $builder)
+    public function addConfiguration(NodeDefinition $builder): void
     {
         $builder
             ->children()

@@ -15,7 +15,7 @@ class ServiceAdapterFactory implements AdapterFactoryInterface
     /**
      * {@inheritDoc}
      */
-    public function create(ContainerBuilder $container, $id, array $config)
+    public function create(ContainerBuilder $container, $id, array $config): void
     {
         $container->setAlias($id, $config['id']);
     }
@@ -23,7 +23,7 @@ class ServiceAdapterFactory implements AdapterFactoryInterface
     /**
      * {@inheritDoc}
      */
-    public function getKey()
+    public function getKey(): string
     {
         return 'service';
     }
@@ -31,7 +31,7 @@ class ServiceAdapterFactory implements AdapterFactoryInterface
     /**
      * {@inheritDoc}
      */
-    public function addConfiguration(NodeDefinition $builder)
+    public function addConfiguration(NodeDefinition $builder): void
     {
         $builder
             ->children()

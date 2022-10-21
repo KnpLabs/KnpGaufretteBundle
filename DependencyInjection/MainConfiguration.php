@@ -30,7 +30,7 @@ class MainConfiguration implements ConfigurationInterface
      *
      * @return TreeBuilder
      */
-    public function getConfigTreeBuilder()
+    public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder('knp_gaufrette');
         if (method_exists($treeBuilder, 'getRootNode')) {
@@ -55,7 +55,7 @@ class MainConfiguration implements ConfigurationInterface
         return $treeBuilder;
     }
 
-    private function addAdaptersSection(ArrayNodeDefinition $node, array $factories)
+    private function addAdaptersSection(ArrayNodeDefinition $node, array $factories): void
     {
         $adapterNodeBuilder = $node
             ->fixXmlConfig('adapter')
@@ -74,7 +74,7 @@ class MainConfiguration implements ConfigurationInterface
         }
     }
 
-    private function addFilesystemsSection(ArrayNodeDefinition $node)
+    private function addFilesystemsSection(ArrayNodeDefinition $node): void
     {
         $node
             ->fixXmlConfig('filesystem')
@@ -91,7 +91,7 @@ class MainConfiguration implements ConfigurationInterface
         ;
     }
 
-    private function addStreamWrapperSection(ArrayNodeDefinition $node)
+    private function addStreamWrapperSection(ArrayNodeDefinition $node): void
     {
         $node
             ->children()

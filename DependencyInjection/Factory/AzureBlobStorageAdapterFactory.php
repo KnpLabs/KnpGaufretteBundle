@@ -14,7 +14,7 @@ class AzureBlobStorageAdapterFactory implements AdapterFactoryInterface
 /**
      * {@inheritDoc}
      */
-    public function create(ContainerBuilder $container, $id, array $config)
+    public function create(ContainerBuilder $container, $id, array $config): void
     {
         $definition = class_exists('\Symfony\Component\DependencyInjection\ChildDefinition')
             ? new ChildDefinition('knp_gaufrette.adapter.azure_blob_storage')
@@ -31,7 +31,7 @@ class AzureBlobStorageAdapterFactory implements AdapterFactoryInterface
     /**
      * {@inheritDoc}
      */
-    public function getKey()
+    public function getKey(): string
     {
         return 'azure_blob_storage';
     }
@@ -39,7 +39,7 @@ class AzureBlobStorageAdapterFactory implements AdapterFactoryInterface
     /**
      * {@inheritDoc}
      */
-    public function addConfiguration(NodeDefinition $builder)
+    public function addConfiguration(NodeDefinition $builder): void
     {
         $builder
             ->validate()
