@@ -2,6 +2,7 @@
 
 namespace Knp\Bundle\GaufretteBundle\DependencyInjection;
 
+use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Alias;
 use Symfony\Component\DependencyInjection\ChildDefinition;
@@ -25,6 +26,8 @@ class KnpGaufretteExtension extends Extension
      *
      * @param  array            $configs
      * @param  ContainerBuilder $container
+     * 
+     * @return void
      */
     public function load(array $configs, ContainerBuilder $container)
     {
@@ -54,7 +57,10 @@ class KnpGaufretteExtension extends Extension
         }
     }
 
-    public function getConfiguration(array $configs, ContainerBuilder $container)
+    /**
+     * @return ConfigurationInterface|null
+     */
+    public function getConfiguration(array $configs, ContainerBuilder $container): ?ConfigurationInterface
     {
         // first assemble the adapter factories
         $factoryConfig = new FactoryConfiguration();
@@ -65,9 +71,8 @@ class KnpGaufretteExtension extends Extension
         return new MainConfiguration($factories);
     }
 
-    private function createAdapter($name, array $config, ContainerBuilder $container, array $factories)
+    private function createAdapter($name, array $config, ContainerBuilder $container, array $factories): string
     {
-        $adapter = null;
         foreach ($config as $key => $adapter) {
             if (array_key_exists($key, $factories)) {
                 $id = sprintf('gaufrette.%s_adapter', $name);
@@ -83,7 +88,7 @@ class KnpGaufretteExtension extends Extension
     /**
      * @return Reference a reference to the created filesystem
      */
-    private function createFilesystem($name, array $config, ContainerBuilder $container, array $adapters)
+    private function createFilesystem($name, array $config, ContainerBuilder $container, array $adapters): Reference
     {
         if (!array_key_exists($config['adapter'], $adapters)) {
             throw new \LogicException(sprintf('The adapter \'%s\' is not defined.', $config['adapter']));
@@ -115,7 +120,7 @@ class KnpGaufretteExtension extends Extension
      * @param  array            $config
      * @param  ContainerBuilder $container
      */
-    private function createAdapterFactories($config, ContainerBuilder $container)
+    private function createAdapterFactories($config, ContainerBuilder $container): array
     {
         if (null !== $this->factories) {
             return $this->factories;
@@ -134,7 +139,7 @@ class KnpGaufretteExtension extends Extension
         }
 
         $services  = $tempContainer->findTaggedServiceIds('gaufrette.adapter.factory');
-        $factories = array();
+        $factories = [];
         foreach (array_keys($services) as $id) {
             $factory = $tempContainer->get($id);
             $factories[str_replace('-', '_', $factory->getKey())] = $factory;

@@ -2,6 +2,7 @@
 
 namespace Knp\Bundle\GaufretteBundle;
 
+use Gaufrette\FilesystemInterface;
 use Gaufrette\FilesystemMapInterface;
 
 /**
@@ -32,11 +33,9 @@ class FilesystemMap implements \IteratorAggregate, FilesystemMapInterface
      *
      * @param string $name name of a filesystem
      *
-     * @return \Gaufrette\Filesystem
-     *
      * @throw \InvalidArgumentException if the filesystem does not exist
      */
-    public function get($name)
+    public function get($name): FilesystemInterface
     {
         if (!$this->has($name)) {
             throw new \InvalidArgumentException(sprintf('No filesystem is registered for name "%s"', $name));
@@ -50,12 +49,12 @@ class FilesystemMap implements \IteratorAggregate, FilesystemMapInterface
      *
      * @return bool
      */
-    public function has($name)
+    public function has($name): bool
     {
         return isset($this->maps[$name]);
     }
 
-    public function getIterator()
+    public function getIterator(): \Traversable
     {
         return new \ArrayIterator($this->maps);
     }

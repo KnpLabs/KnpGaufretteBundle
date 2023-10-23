@@ -19,7 +19,6 @@ An example service definition of the `AsyncAws\SimpleS3\SimpleS3Client`:
 services:
     acme.async_aws_s3.client:
         class: AsyncAws\SimpleS3\SimpleS3Client
-        factory: [Aws\S3\S3Client, 'factory']
         arguments:
             - region: '%amazon_s3.region%'
               accessKeyId: '%amazon_s3.key%'

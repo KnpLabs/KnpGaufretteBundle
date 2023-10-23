@@ -1,3 +1,28 @@
+v0.8.0 - 2022-10-21
+===================
+
+Adds :
+
+- BC Break: Adding Types (remove deprecation notices triggered by Symfony)
+  _Please notice that the v0.8.0 is a major version, therefore if you extended any class or interface, you MUST implement it with types now._ 
+- Support for Gaufrette 0.11
+  - With support for the new version of Google Client (compatible with PHP 8.0+)
+
+Fixes :
+
+- Command documentation now print the right information (#242)
+
+Removes :
+
+- Support for PHP < 7.4
+
+v0.7.2
+======
+
+Fixes:
+
+- Add support for PHP 8.1 (#256)
+
 v0.7.1
 ======
 

@@ -1,9 +1,11 @@
 Gaufrette Bundle
 ================
 
-[![Build Status](https://travis-ci.org/KnpLabs/KnpGaufretteBundle.svg?branch=master)](https://travis-ci.org/KnpLabs/KnpGaufretteBundle)
+[![Build Status](https://github.com/KnpLabs/KnpGaufretteBundle/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/KnpLabs/KnpGaufretteBundle/actions/workflows/ci.yml)
 
 Provides a [Gaufrette][gaufrette-homepage] integration for your Symfony projects.
+
+[![SWUbanner](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2-direct.svg)](https://github.com/vshymanskyy/StandWithUkraine/blob/main/docs/README.md)
 
 About Gaufrette
 ===============
@@ -122,5 +124,8 @@ Use cases
 
 ## Maintainers
 
-- [@NiR-](https://github.com/NiR-)
-- [@nicolasmure](https://github.com/nicolasmure)
+KNPLabs is looking for maintainers ([see why](https://knplabs.com/en/blog/news-for-our-foss-projects-maintenance)).
+
+If you are interested, feel free to open a PR to ask to be added as a maintainer.
+
+We’ll be glad to hear from you :)

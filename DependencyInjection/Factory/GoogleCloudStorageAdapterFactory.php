@@ -14,7 +14,7 @@ class GoogleCloudStorageAdapterFactory implements AdapterFactoryInterface
     /**
      * {@inheritDoc}
      */
-    public function create(ContainerBuilder $container, $id, array $config)
+    public function create(ContainerBuilder $container, $id, array $config): void
     {
         $childDefinition = class_exists('\Symfony\Component\DependencyInjection\ChildDefinition')
             ? new ChildDefinition('knp_gaufrette.adapter.google_cloud_storage')
@@ -32,7 +32,7 @@ class GoogleCloudStorageAdapterFactory implements AdapterFactoryInterface
     /**
      * {@inheritDoc}
      */
-    public function getKey()
+    public function getKey(): string
     {
         return 'google_cloud_storage';
     }
@@ -40,7 +40,7 @@ class GoogleCloudStorageAdapterFactory implements AdapterFactoryInterface
     /**
      * {@inheritDoc}
      */
-    public function addConfiguration(NodeDefinition $builder)
+    public function addConfiguration(NodeDefinition $builder): void
     {
         $builder
             ->children()
@@ -52,6 +52,9 @@ class GoogleCloudStorageAdapterFactory implements AdapterFactoryInterface
                     ->children()
                         ->scalarNode('directory')->defaultValue('')->end()
                         ->scalarNode('acl')->defaultValue('private')->end()
+                        ->scalarNode('project_id')->end()
+                        ->scalarNode('bucket_location')->end()
+                        ->booleanNode('create')->defaultFalse()->end()
                     ->end()
                 ->end()
             ->end()
