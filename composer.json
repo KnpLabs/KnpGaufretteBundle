@@ -33,7 +33,7 @@
             "Knp\\Bundle\\GaufretteBundle\\": ""
         }
     },
-    "extra":        {
+    "extra": {
         "branch-alias": {
             "dev-master": "0.8.x-dev"
         }
