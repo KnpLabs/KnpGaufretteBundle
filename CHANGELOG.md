@@ -1,3 +1,10 @@
+v0.7.3
+======
+
+Fixes:
+
+- Restore removed class (#283)
+
 v0.7.2
 ======
 
