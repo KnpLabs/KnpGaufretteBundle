@@ -13,6 +13,9 @@ use Gaufrette\StreamWrapper;
  */
 class KnpGaufretteBundle extends Bundle
 {
+    /**
+     * @return void
+     */
     public function boot()
     {
         parent::boot();
