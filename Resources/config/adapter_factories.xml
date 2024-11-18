@@ -17,6 +17,9 @@
         <service id="knp_gaufrette.adapter.factory.safe_local" class="Knp\Bundle\GaufretteBundle\DependencyInjection\Factory\SafeLocalAdapterFactory">
             <tag name="gaufrette.adapter.factory" />
         </service>
+        <service id="knp_gaufrette.adapter.factory.amazon_s3" class="Knp\Bundle\GaufretteBundle\DependencyInjection\Factory\AclAwareAmazonS3AdapterFactory">
+            <tag name="gaufrette.adapter.factory" />
+        </service>
         <service id="knp_gaufrette.adapter.factory.async_aws_s3" class="Knp\Bundle\GaufretteBundle\DependencyInjection\Factory\AsyncAwsS3AdapterFactory">
             <tag name="gaufrette.adapter.factory" />
         </service>

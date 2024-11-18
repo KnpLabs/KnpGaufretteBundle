@@ -19,6 +19,9 @@ class TestKernel extends Kernel
         );
     }
 
+    /**
+     * @return void
+     */
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
         $loader->load(__DIR__.'/Resources/config/config_'.$this->getEnvironment().'.yml');
