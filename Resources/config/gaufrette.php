@@ -116,6 +116,6 @@ return function (ContainerConfigurator $configurator) {
 
     $services
         ->set('knp_gaufrette.command.filesystem_keys', FilesystemKeysCommand::class)
-        ->arg(0, service('knp_gaufrette.filesystem_map'))
+        ->arg(0, new ReferenceConfigurator('knp_gaufrette.filesystem_map'))
         ->tag('console.command', ['command' => 'gaufrette:filesystem:keys']);
 };
