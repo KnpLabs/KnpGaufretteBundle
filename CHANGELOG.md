@@ -1,3 +1,27 @@
+v0.10.0
+=======
+
+Adds :
+
+- Symfony 8 support (#290)
+
+v0.9.0 - 2023-12-18
+===================
+
+Adds :
+
+- Symfony 7 support (#282)
+
+Fixes :
+
+- Remove Symfony deprecation notice about `ExtensionInterface::load()` return type (#279)
+- Fix Symfony 6.3 return type deprecations (#278)
+- Fix void as a native return type for PHP 8.2 (#280)
+
+Removes :
+
+- Unused `symfony/framework-bundle` dependency (#243)
+
 v0.8.0 - 2022-10-21
 ===================
 
