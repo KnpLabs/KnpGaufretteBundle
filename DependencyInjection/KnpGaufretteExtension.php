@@ -9,7 +9,7 @@ use Symfony\Component\DependencyInjection\ChildDefinition;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\DefinitionDecorator;
 use Symfony\Component\DependencyInjection\Extension\Extension;
-use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
+use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 use Symfony\Component\DependencyInjection\Reference;
 
 /**
@@ -33,8 +33,8 @@ class KnpGaufretteExtension extends Extension
     {
         $config = $this->processConfiguration($this->getConfiguration($configs, $container), $configs);
 
-        $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-        $loader->load('gaufrette.xml');
+        $loader = new PhpFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader->load('gaufrette.php');
 
         $adapters = array();
 
@@ -129,9 +129,9 @@ class KnpGaufretteExtension extends Extension
         // load bundled adapter factories
         $tempContainer = new ContainerBuilder();
         $parameterBag  = $container->getParameterBag();
-        $loader        = new XmlFileLoader($tempContainer, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader        = new PhpFileLoader($tempContainer, new FileLocator(__DIR__.'/../Resources/config'));
 
-        $loader->load('adapter_factories.xml');
+        $loader->load('adapter_factories.php');
 
         // load user-created adapter factories
         foreach ($config['factories'] as $factory) {
