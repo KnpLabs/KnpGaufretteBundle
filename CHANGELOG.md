@@ -1,3 +1,12 @@
+# Changelog
+
+## [0.9.1](https://github.com/KnpLabs/KnpGaufretteBundle/compare/v0.9.0...v0.9.1) (2026-07-18)
+
+
+### Miscellaneous Chores
+
+* update Symfony dependency injection requirement to ^5.1 ([682c6f5](https://github.com/KnpLabs/KnpGaufretteBundle/commit/682c6f516f56cd8e5e830e3ff438378ec4f9f8ca))
+
 v0.8.0 - 2022-10-21
 ===================
 
