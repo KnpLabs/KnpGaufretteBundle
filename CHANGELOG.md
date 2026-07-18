@@ -1,6 +1,10 @@
 # Changelog
 
-## [0.9.1](https://github.com/KnpLabs/KnpGaufretteBundle/compare/v0.9.0...v0.9.1) (2026-07-18)
+## [0.10.0](https://github.com/KnpLabs/KnpGaufretteBundle/compare/v0.9.0...v0.10.0) (2026-07-18)
+
+### Features
+
+* Allow Symfony 8 (#290) ([7981baf](https://github.com/KnpLabs/KnpGaufretteBundle/commit/7981baf0327895f285a005e2a0ef1c0b9d8d87ce))
 
 
 ### Miscellaneous Chores
