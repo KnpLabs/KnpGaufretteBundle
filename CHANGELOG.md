@@ -1,3 +1,16 @@
+# Changelog
+
+## [0.10.0](https://github.com/KnpLabs/KnpGaufretteBundle/compare/v0.9.0...v0.10.0) (2026-07-18)
+
+### Features
+
+* Allow Symfony 8 (#290) ([7981baf](https://github.com/KnpLabs/KnpGaufretteBundle/commit/7981baf0327895f285a005e2a0ef1c0b9d8d87ce))
+
+
+### Miscellaneous Chores
+
+* update Symfony dependency injection requirement to ^5.1 ([682c6f5](https://github.com/KnpLabs/KnpGaufretteBundle/commit/682c6f516f56cd8e5e830e3ff438378ec4f9f8ca))
+
 v0.8.0 - 2022-10-21
 ===================
 
