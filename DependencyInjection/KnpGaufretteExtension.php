@@ -7,7 +7,6 @@ use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Alias;
 use Symfony\Component\DependencyInjection\ChildDefinition;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\DefinitionDecorator;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 use Symfony\Component\DependencyInjection\Reference;
@@ -19,7 +18,7 @@ use Symfony\Component\DependencyInjection\Reference;
  */
 class KnpGaufretteExtension extends Extension
 {
-    private $factories;
+    private ?array $factories = null;
 
     /**
      * Loads the extension
@@ -36,13 +35,13 @@ class KnpGaufretteExtension extends Extension
         $loader = new PhpFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('gaufrette.php');
 
-        $adapters = array();
+        $adapters = [];
 
         foreach ($config['adapters'] as $name => $adapter) {
             $adapters[$name] = $this->createAdapter($name, $adapter, $container, $this->factories);
         }
 
-        $map = array();
+        $map = [];
         foreach ($config['filesystems'] as $name => $filesystem) {
             $map[$name] = $this->createFilesystem($name, $filesystem, $container, $adapters);
         }

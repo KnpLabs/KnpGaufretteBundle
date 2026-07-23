@@ -14,7 +14,7 @@ class GoogleCloudStorageAdapterFactory implements AdapterFactoryInterface
     /**
      * {@inheritDoc}
      */
-    public function create(ContainerBuilder $container, $id, array $config): void
+    public function create(ContainerBuilder $container, string $id, array $config): void
     {
         $childDefinition = class_exists('\Symfony\Component\DependencyInjection\ChildDefinition')
             ? new ChildDefinition('knp_gaufrette.adapter.google_cloud_storage')

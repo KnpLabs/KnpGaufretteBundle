@@ -16,7 +16,7 @@ class FilesystemMap implements \IteratorAggregate, FilesystemMapInterface
      *
      * @var array
      */
-    protected $maps;
+    protected array $maps;
 
     /**
      * Instantiates a new filesystem map.

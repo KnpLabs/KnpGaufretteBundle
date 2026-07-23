@@ -16,10 +16,7 @@ use Gaufrette\Glob;
  */
 class FilesystemKeysCommand extends Command
 {
-    /**
-     * @var FilesystemMapInterface
-     */
-    private $filesystemMap;
+    private FilesystemMapInterface $filesystemMap;
 
     public function __construct(FilesystemMapInterface $filesystemMap)
     {
