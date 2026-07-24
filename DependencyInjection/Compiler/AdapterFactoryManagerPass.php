@@ -26,7 +26,7 @@ class AdapterFactoryManagerPass implements CompilerPassInterface
 
         foreach ($container->findTaggedServiceIds('gaufrette.adapter_factory') as $id => $attributes) {
             if (!empty($attributes['type'])) {
-                $definition->addMethodCall('set', array($attributes['type'], new Reference($id)));
+                $definition->addMethodCall('set', [$attributes['type'], new Reference($id)]);
             }
         }
 

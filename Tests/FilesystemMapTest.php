@@ -11,7 +11,7 @@ class FilesystemMapTest extends TestCase
 
     public function setUp(): void
     {
-        $this->filesystemMap = new FilesystemMap(array('amazon_fs' => $this->getFilesystem(), 'local_fs' => $this->getFilesystem()));
+        $this->filesystemMap = new FilesystemMap(['amazon_fs' => $this->getFilesystem(), 'local_fs' => $this->getFilesystem()]);
     }
 
     /**
@@ -19,12 +19,12 @@ class FilesystemMapTest extends TestCase
      */
     public function shouldGetFilesystemByKey()
     {
-        if(class_exists('Gaufrette\FilesystemInterface')) {
-            $this->assertInstanceOf('Gaufrette\FilesystemInterface', $this->filesystemMap->get('amazon_fs'), 'should get filesystem object by key');
-            $this->assertInstanceOf('Gaufrette\FilesystemInterface', $this->filesystemMap->get('local_fs'), 'should get filesystem object by key');
+        if(class_exists(\Gaufrette\FilesystemInterface::class)) {
+            $this->assertInstanceOf(\Gaufrette\FilesystemInterface::class, $this->filesystemMap->get('amazon_fs'), 'should get filesystem object by key');
+            $this->assertInstanceOf(\Gaufrette\FilesystemInterface::class, $this->filesystemMap->get('local_fs'), 'should get filesystem object by key');
         } else {
-            $this->assertInstanceOf('Gaufrette\Filesystem', $this->filesystemMap->get('amazon_fs'), 'should get filesystem object by key');
-            $this->assertInstanceOf('Gaufrette\Filesystem', $this->filesystemMap->get('local_fs'), 'should get filesystem object by key');
+            $this->assertInstanceOf(\Gaufrette\Filesystem::class, $this->filesystemMap->get('amazon_fs'), 'should get filesystem object by key');
+            $this->assertInstanceOf(\Gaufrette\Filesystem::class, $this->filesystemMap->get('local_fs'), 'should get filesystem object by key');
         }
 
     }
@@ -44,7 +44,7 @@ class FilesystemMapTest extends TestCase
      */
     private function getFilesystem()
     {
-        return $this->getMockBuilder('Gaufrette\Filesystem')
+        return $this->getMockBuilder(\Gaufrette\Filesystem::class)
             ->disableOriginalConstructor()
             ->getMock();
     }

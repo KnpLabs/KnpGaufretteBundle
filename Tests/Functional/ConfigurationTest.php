@@ -39,7 +39,7 @@ class ConfigurationTest extends TestCase
      */
     public function shouldAllowForFilesystemAlias()
     {
-        $this->assertInstanceOf('Gaufrette\Filesystem', $this->kernel->getContainer()->get('foo_filesystem'));
+        $this->assertInstanceOf(\Gaufrette\Filesystem::class, $this->kernel->getContainer()->get('foo_filesystem'));
     }
 
     /**
@@ -52,7 +52,7 @@ class ConfigurationTest extends TestCase
         $kernel->boot();
 
         $container = $kernel->getContainer();
-        $this->assertInstanceOf('Gaufrette\Filesystem', $container->get('foo_filesystem'));
+        $this->assertInstanceOf(\Gaufrette\Filesystem::class, $container->get('foo_filesystem'));
     }
 
     /**
@@ -61,7 +61,7 @@ class ConfigurationTest extends TestCase
      */
     public function shouldAllowAccessToAllPublicServices()
     {
-        $this->assertInstanceOf('Knp\Bundle\GaufretteBundle\FilesystemMap', $this->kernel->getContainer()->get('knp_gaufrette.filesystem_map'));
+        $this->assertInstanceOf(\Knp\Bundle\GaufretteBundle\FilesystemMap::class, $this->kernel->getContainer()->get('knp_gaufrette.filesystem_map'));
     }
 
     /**
@@ -69,7 +69,7 @@ class ConfigurationTest extends TestCase
      */
     public function shouldAllowAccessToFilesystemThoughFilesystemMap()
     {
-        $this->assertInstanceOf('Gaufrette\Filesystem', $this->kernel->getContainer()->get('knp_gaufrette.filesystem_map')->get('foo'));
+        $this->assertInstanceOf(\Gaufrette\Filesystem::class, $this->kernel->getContainer()->get('knp_gaufrette.filesystem_map')->get('foo'));
     }
 
     /**
@@ -78,7 +78,7 @@ class ConfigurationTest extends TestCase
      */
     public function shouldAllowAccessToLocalFilesystem()
     {
-        $this->assertInstanceOf('Gaufrette\Adapter\Local', $this->kernel->getContainer()->get('foo_filesystem')->getAdapter());
+        $this->assertInstanceOf(\Gaufrette\Adapter\Local::class, $this->kernel->getContainer()->get('foo_filesystem')->getAdapter());
     }
 
     /**
@@ -87,7 +87,7 @@ class ConfigurationTest extends TestCase
      */
     public function shouldAllowAccessToFtpFilesystem()
     {
-        $this->assertInstanceOf('Gaufrette\Adapter\Ftp', $this->kernel->getContainer()->get('ftp_filesystem')->getAdapter());
+        $this->assertInstanceOf(\Gaufrette\Adapter\Ftp::class, $this->kernel->getContainer()->get('ftp_filesystem')->getAdapter());
     }
 
     /**
@@ -114,10 +114,7 @@ class ConfigurationTest extends TestCase
 
         $wrapperFsMap = StreamWrapper::getFilesystemMap();
 
-        $expectedDomains = array(
-            'foo',
-            'ftp',
-        );
+        $expectedDomains = ['foo', 'ftp'];
 
         foreach ($expectedDomains as $eachExpectedDomain) {
             $this->assertTrue($wrapperFsMap->has($eachExpectedDomain));
@@ -149,7 +146,7 @@ class ConfigurationTest extends TestCase
         $container = $kernel->getContainer();
         $fileSystems = $container->getParameter('knp_gaufrette.stream_wrapper.filesystems');
 
-        $this->assertEquals(array('pictures' => 'foo', 'text' => 'ftp'), $fileSystems);
+        $this->assertEquals(['pictures' => 'foo', 'text' => 'ftp'], $fileSystems);
 
         $wrapperFsMap = StreamWrapper::getFilesystemMap();
 
@@ -171,7 +168,7 @@ class ConfigurationTest extends TestCase
 
         $this->assertTrue($container->hasParameter('knp_gaufrette.stream_wrapper.protocol'));
         $this->assertEquals('tada', $container->getParameter('knp_gaufrette.stream_wrapper.protocol'));
-        $this->assertEquals(array('ftp' => 'ftp'), $fileSystems);
+        $this->assertEquals(['ftp' => 'ftp'], $fileSystems);
 
         $wrapperFsMap = StreamWrapper::getFilesystemMap();
 

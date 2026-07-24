@@ -16,7 +16,7 @@ class AzureBlobStorageAdapterFactory implements AdapterFactoryInterface
      */
     public function create(ContainerBuilder $container, string $id, array $config): void
     {
-        $definition = class_exists('\Symfony\Component\DependencyInjection\ChildDefinition')
+        $definition = class_exists(\Symfony\Component\DependencyInjection\ChildDefinition::class)
             ? new ChildDefinition('knp_gaufrette.adapter.azure_blob_storage')
             : new DefinitionDecorator('knp_gaufrette.adapter.azure_blob_storage');
 
@@ -43,9 +43,7 @@ class AzureBlobStorageAdapterFactory implements AdapterFactoryInterface
     {
         $builder
             ->validate()
-            ->ifTrue(function ($v) {
-                return empty($v['container_name']) && !$v['multi_container_mode'];
-            })
+            ->ifTrue(fn($v) => empty($v['container_name']) && !$v['multi_container_mode'])
                 ->thenInvalid('You should either provide a container name or enable the multi container mode.')
             ->end()
             ->children()

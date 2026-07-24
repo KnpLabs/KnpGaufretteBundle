@@ -12,20 +12,17 @@ use Gaufrette\FilesystemMapInterface;
 class FilesystemMap implements \IteratorAggregate, FilesystemMapInterface
 {
     /**
-     * Map of filesystems indexed by their name.
-     *
-     * @var array
-     */
-    protected array $maps;
-
-    /**
      * Instantiates a new filesystem map.
      *
      * @param array $maps
      */
-    public function __construct(array $maps)
+    public function __construct(
+        /**
+         * Map of filesystems indexed by their name.
+         */
+        protected array $maps
+    )
     {
-        $this->maps = $maps;
     }
 
     /**

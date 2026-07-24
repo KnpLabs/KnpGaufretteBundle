@@ -19,7 +19,7 @@ class InMemoryAdapterFactory implements AdapterFactoryInterface
      */
     public function create(ContainerBuilder $container, string $id, array $config): void
     {
-        $childDefinition = class_exists('\Symfony\Component\DependencyInjection\ChildDefinition')
+        $childDefinition = class_exists(\Symfony\Component\DependencyInjection\ChildDefinition::class)
             ? new ChildDefinition('knp_gaufrette.adapter.in_memory')
             : new DefinitionDecorator('knp_gaufrette.adapter.in_memory');
 

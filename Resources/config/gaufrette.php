@@ -34,14 +34,14 @@ return function (ContainerConfigurator $configurator) {
     $services
         ->set('knp_gaufrette.adapter.in_memory', InMemory::class)
         ->abstract()
-        ->public(false)
+        ->private()
         ->arg(0, null) // Files
     ;
 
     $services
         ->set('knp_gaufrette.adapter.local', Local::class)
         ->abstract()
-        ->public(false)
+        ->private()
         ->arg(0, null)  // Directory
         ->arg(1, null)  // Create
     ;
@@ -49,7 +49,7 @@ return function (ContainerConfigurator $configurator) {
     $services
         ->set('knp_gaufrette.adapter.safe_local', SafeLocal::class)
         ->abstract()
-        ->public(false)
+        ->private()
         ->arg(0, null)  // Directory
         ->arg(1, null)  // Create
     ;
@@ -57,22 +57,22 @@ return function (ContainerConfigurator $configurator) {
     $services
         ->set('knp_gaufrette.adapter.async_aws_s3', AsyncAwsS3::class)
         ->abstract()
-        ->public(false);
+        ->private();
 
     $services
         ->set('knp_gaufrette.adapter.aws_s3', AwsS3::class)
         ->abstract()
-        ->public(false);
+        ->private();
 
     $services
         ->set('knp_gaufrette.adapter.doctrine_dbal', DoctrineDbal::class)
         ->abstract()
-        ->public(false);
+        ->private();
 
     $services
         ->set('knp_gaufrette.adapter.opencloud', OpenCloud::class)
         ->abstract()
-        ->public(false)
+        ->private()
         ->arg(0, null)  // ObjectStore
         ->arg(1, null)  // Container name
         ->arg(2, null)  // Create container
@@ -82,27 +82,27 @@ return function (ContainerConfigurator $configurator) {
     $services
         ->set('knp_gaufrette.adapter.azure_blob_storage', AzureBlobStorage::class)
         ->abstract()
-        ->public(false);
+        ->private();
 
     $services
         ->set('knp_gaufrette.adapter.google_cloud_storage', GoogleCloudStorage::class)
         ->abstract()
-        ->public(false);
+        ->private();
 
     $services
         ->set('knp_gaufrette.adapter.gridfs', GridFS::class)
         ->abstract()
-        ->public(false);
+        ->private();
 
     $services
         ->set('knp_gaufrette.adapter.ftp', Ftp::class)
         ->abstract()
-        ->public(false);
+        ->private();
 
     $services
         ->set('knp_gaufrette.adapter.phpseclib_sftp', PhpseclibSftp::class)
         ->abstract()
-        ->public(false);
+        ->private();
 
     $services
         ->set('knp_gaufrette.filesystem_map', '%knp_gaufrette.filesystem_map.class%')
@@ -112,7 +112,7 @@ return function (ContainerConfigurator $configurator) {
 
     $services
         ->alias(FilesystemMap::class, 'knp_gaufrette.filesystem_map')
-        ->public(false);
+        ->private();
 
     $services
         ->set('knp_gaufrette.command.filesystem_keys', FilesystemKeysCommand::class)

@@ -17,7 +17,7 @@ class FtpAdapterFactory implements AdapterFactoryInterface
      */
     public function create(ContainerBuilder $container, string $id, array $config): void
     {
-        $childDefinition = class_exists('\Symfony\Component\DependencyInjection\ChildDefinition')
+        $childDefinition = class_exists(\Symfony\Component\DependencyInjection\ChildDefinition::class)
             ? new ChildDefinition('knp_gaufrette.adapter.ftp')
             : new DefinitionDecorator('knp_gaufrette.adapter.ftp');
 
@@ -58,7 +58,7 @@ class FtpAdapterFactory implements AdapterFactoryInterface
                     ->defaultValue(defined('FTP_ASCII') ? FTP_ASCII : null)
                     ->beforeNormalization()
                     ->ifString()
-                    ->then(function($v) { return constant($v); })
+                    ->then(fn($v) => constant($v))
                 ->end()
             ->end()
         ;

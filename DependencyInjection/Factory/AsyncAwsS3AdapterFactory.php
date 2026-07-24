@@ -15,7 +15,7 @@ class AsyncAwsS3AdapterFactory implements AdapterFactoryInterface
      */
     public function create(ContainerBuilder $container, string $id, array $config): void
     {
-        $childDefinition = class_exists('\Symfony\Component\DependencyInjection\ChildDefinition')
+        $childDefinition = class_exists(\Symfony\Component\DependencyInjection\ChildDefinition::class)
             ? new ChildDefinition('knp_gaufrette.adapter.async_aws_s3')
             : new DefinitionDecorator('knp_gaufrette.adapter.async_aws_s3');
 

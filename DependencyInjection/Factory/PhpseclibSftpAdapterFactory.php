@@ -18,7 +18,7 @@ class PhpseclibSftpAdapterFactory implements AdapterFactoryInterface
      */
     public function create(ContainerBuilder $container, string $id, array $config): void
     {
-        $childDefinition = class_exists('\Symfony\Component\DependencyInjection\ChildDefinition')
+        $childDefinition = class_exists(\Symfony\Component\DependencyInjection\ChildDefinition::class)
             ? new ChildDefinition('knp_gaufrette.adapter.phpseclib_sftp')
             : new DefinitionDecorator('knp_gaufrette.adapter.phpseclib_sftp');
 

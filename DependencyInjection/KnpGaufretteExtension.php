@@ -96,7 +96,7 @@ class KnpGaufretteExtension extends Extension
         $adapter = $adapters[$config['adapter']];
         $id      = sprintf('gaufrette.%s_filesystem', $name);
 
-        $definition = class_exists('\Symfony\Component\DependencyInjection\ChildDefinition')
+        $definition = class_exists(\Symfony\Component\DependencyInjection\ChildDefinition::class)
             ? new ChildDefinition('knp_gaufrette.filesystem')
             : new DefinitionDecorator('knp_gaufrette.filesystem');
 
