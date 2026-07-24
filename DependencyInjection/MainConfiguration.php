@@ -13,16 +13,13 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
  */
 class MainConfiguration implements ConfigurationInterface
 {
-    private $factories;
-
     /**
      * Constructor
      *
      * @param  array $factories
      */
-    public function __construct(array $factories)
+    public function __construct(private array $factories)
     {
-        $this->factories = $factories;
     }
 
     /**
@@ -94,12 +91,8 @@ class MainConfiguration implements ConfigurationInterface
                         ->scalarNode('protocol')->defaultValue('gaufrette')->treatNullLike('gaufrette')->end()
                         ->arrayNode('filesystems')
                             ->beforeNormalization()
-                                ->ifTrue(function ($array) {
-                                    return !(bool)count(array_filter(array_keys($array), 'is_string'));
-                                })
-                                ->then(function ($array) {
-                                    return array_combine($array, $array);
-                                })
+                                ->ifTrue(fn($array) => !(bool)count(array_filter(array_keys($array), 'is_string')))
+                                ->then(fn($array) => array_combine($array, $array))
                             ->end()
                             ->useAttributeAsKey('key')
                             ->prototype('scalar')

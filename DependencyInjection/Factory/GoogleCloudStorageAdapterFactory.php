@@ -2,10 +2,9 @@
 
 namespace Knp\Bundle\GaufretteBundle\DependencyInjection\Factory;
 
-use Symfony\Component\Config\Definition\Builder\NodeDefinition;
+use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\DependencyInjection\ChildDefinition;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\DefinitionDecorator;
 use Symfony\Component\DependencyInjection\Reference;
 
 class GoogleCloudStorageAdapterFactory implements AdapterFactoryInterface
@@ -14,11 +13,9 @@ class GoogleCloudStorageAdapterFactory implements AdapterFactoryInterface
     /**
      * {@inheritDoc}
      */
-    public function create(ContainerBuilder $container, $id, array $config): void
+    public function create(ContainerBuilder $container, string $id, array $config): void
     {
-        $childDefinition = class_exists('\Symfony\Component\DependencyInjection\ChildDefinition')
-            ? new ChildDefinition('knp_gaufrette.adapter.google_cloud_storage')
-            : new DefinitionDecorator('knp_gaufrette.adapter.google_cloud_storage');
+        $childDefinition = new ChildDefinition('knp_gaufrette.adapter.google_cloud_storage');
 
         $container
             ->setDefinition($id, $childDefinition)
@@ -40,7 +37,7 @@ class GoogleCloudStorageAdapterFactory implements AdapterFactoryInterface
     /**
      * {@inheritDoc}
      */
-    public function addConfiguration(NodeDefinition $builder): void
+    public function addConfiguration(ArrayNodeDefinition $builder): void
     {
         $builder
             ->children()

@@ -21,11 +21,11 @@ class AdapterManagerPass implements CompilerPassInterface
 
         $definition = $container->getDefinition('knp_gaufrette.adapter_manager');
         $calls = $definition->getMethodCalls();
-        $definition->setMethodCalls(array());
+        $definition->setMethodCalls([]);
 
         foreach ($container->findTaggedServiceIds('gaufrette.adapter') as $id => $attributes) {
             if (!empty($attributes['alias'])) {
-                $definition->addMethodCall('set', array($attributes['alias'], new Reference($id)));
+                $definition->addMethodCall('set', [$attributes['alias'], new Reference($id)]);
             }
         }
 

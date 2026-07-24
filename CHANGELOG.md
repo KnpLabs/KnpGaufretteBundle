@@ -1,5 +1,35 @@
 # Changelog
 
+## [Unreleased] — PHP 8.0–8.5 compatibility (MAJOR)
+
+### ⚠ BREAKING CHANGES
+
+* **`AdapterFactoryInterface::create()`** now declares `string $id` as an explicit parameter type.
+  Any class implementing this interface must update its `create()` signature accordingly:
+  ```php
+  // Before
+  public function create(ContainerBuilder $container, $id, array $config): void { … }
+  // After
+  public function create(ContainerBuilder $container, string $id, array $config): void { … }
+  ```
+
+### Features
+
+* Full PHP 8.0–8.5 support: `composer install` resolves cleanly and all tests pass on all six versions.
+* Expand `symfony/phpunit-bridge` constraint to `^6.0|^7.0|^8.0` (previously `^7.0|^8.0`,
+  which blocked PHP 8.0/8.1 since Bridge 7.x requires PHP 8.2).
+
+### Internal Changes
+
+* Add explicit type declarations to class properties in `FilesystemMap`, `KnpGaufretteExtension`,
+  and `FilesystemKeysCommand`.
+* Remove dead `use DefinitionDecorator` import from `KnpGaufretteExtension`.
+* Replace legacy `array()` literals with `[]` short syntax in `KnpGaufretteExtension` and
+  both compiler passes.
+* Update `phpunit.xml.dist` schema reference from PHPUnit 9.3 to PHPUnit 10.5.
+
+---
+
 ## [0.10.0](https://github.com/KnpLabs/KnpGaufretteBundle/compare/v0.9.0...v0.10.0) (2026-07-18)
 
 ### Features

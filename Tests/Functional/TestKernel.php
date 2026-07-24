@@ -14,9 +14,7 @@ class TestKernel extends Kernel
 
     public function registerBundles(): iterable
     {
-        return array(
-            new \Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
-        );
+        return [new \Knp\Bundle\GaufretteBundle\KnpGaufretteBundle()];
     }
 
     public function registerContainerConfiguration(LoaderInterface $loader): void

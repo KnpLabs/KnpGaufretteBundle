@@ -7,7 +7,6 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Output\OutputInterface;
 use Gaufrette\FilesystemMapInterface;
-use Gaufrette\Glob;
 
 /**
  * Command that lists the file keys of a filesystem
@@ -16,15 +15,8 @@ use Gaufrette\Glob;
  */
 class FilesystemKeysCommand extends Command
 {
-    /**
-     * @var FilesystemMapInterface
-     */
-    private $filesystemMap;
-
-    public function __construct(FilesystemMapInterface $filesystemMap)
+    public function __construct(private FilesystemMapInterface $filesystemMap)
     {
-        $this->filesystemMap = $filesystemMap;
-
         parent::__construct();
     }
     /**
@@ -36,15 +28,10 @@ class FilesystemKeysCommand extends Command
             ->setName('gaufrette:filesystem:keys')
             ->setDescription('List all the file keys of a filesystem')
             ->addArgument('filesystem', InputArgument::REQUIRED, 'The filesystem to use')
-            ->addArgument('glob', InputArgument::OPTIONAL, 'An optional glob pattern')
             ->setHelp(<<<EOT
 The <info>%command.name%</info> command lists all the file keys of the specified filesystem:
 
     <info>php %command.full_name% my_filesystem</info>
-
-You can also optionaly specify a glob pattern to filter the results:
-
-    <info>php %command.full_name% my_filesystem media_*</info>
 EOT
             );
     }
@@ -55,7 +42,6 @@ EOT
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $filesystemName = $input->getArgument('filesystem');
-        $glob = $input->getArgument('glob');
 
         if (!$this->filesystemMap->has($filesystemName)) {
             throw new \RuntimeException(sprintf('There is no \'%s\' filesystem defined.', $filesystemName));
@@ -63,11 +49,6 @@ EOT
 
         $filesystem = $this->filesystemMap->get($filesystemName);
         $keys       = $filesystem->keys();
-
-        if (!empty($glob)) {
-            $glob = new Glob($glob);
-            $keys = $glob->filter($keys);
-        }
 
         $count = count($keys);
 

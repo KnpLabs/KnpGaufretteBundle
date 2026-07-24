@@ -2,10 +2,9 @@
 
 namespace Knp\Bundle\GaufretteBundle\DependencyInjection\Factory;
 
-use Symfony\Component\Config\Definition\Builder\NodeDefinition;
+use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\DependencyInjection\ChildDefinition;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\DefinitionDecorator;
 
 /**
  * Ftp Adapter Factory
@@ -15,11 +14,9 @@ class FtpAdapterFactory implements AdapterFactoryInterface
     /**
      * {@inheritDoc}
      */
-    public function create(ContainerBuilder $container, $id, array $config): void
+    public function create(ContainerBuilder $container, string $id, array $config): void
     {
-        $childDefinition = class_exists('\Symfony\Component\DependencyInjection\ChildDefinition')
-            ? new ChildDefinition('knp_gaufrette.adapter.ftp')
-            : new DefinitionDecorator('knp_gaufrette.adapter.ftp');
+        $childDefinition = new ChildDefinition('knp_gaufrette.adapter.ftp');
 
         $container
             ->setDefinition($id, $childDefinition)
@@ -40,7 +37,7 @@ class FtpAdapterFactory implements AdapterFactoryInterface
     /**
      * {@inheritDoc}
      */
-    public function addConfiguration(NodeDefinition $builder): void
+    public function addConfiguration(ArrayNodeDefinition $builder): void
     {
         $builder
             ->children()
@@ -58,7 +55,7 @@ class FtpAdapterFactory implements AdapterFactoryInterface
                     ->defaultValue(defined('FTP_ASCII') ? FTP_ASCII : null)
                     ->beforeNormalization()
                     ->ifString()
-                    ->then(function($v) { return constant($v); })
+                    ->then(fn($v) => constant($v))
                 ->end()
             ->end()
         ;

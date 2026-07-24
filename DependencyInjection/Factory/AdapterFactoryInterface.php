@@ -2,7 +2,7 @@
 
 namespace Knp\Bundle\GaufretteBundle\DependencyInjection\Factory;
 
-use Symfony\Component\Config\Definition\Builder\NodeDefinition;
+use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
@@ -19,7 +19,7 @@ interface AdapterFactoryInterface
      * @param  string           $id         The id of the service
      * @param  array            $config     An array of configuration
      */
-    public function create(ContainerBuilder $container, $id, array $config): void;
+    public function create(ContainerBuilder $container, string $id, array $config): void;
 
     /**
      * Returns the key for the factory configuration
@@ -31,7 +31,7 @@ interface AdapterFactoryInterface
     /**
      * Adds configuration nodes for the factory
      *
-     * @param  NodeDefinition $builder
+     * @param  ArrayNodeDefinition $builder
      */
-    public function addConfiguration(NodeDefinition $builder): void;
+    public function addConfiguration(ArrayNodeDefinition $builder): void;
 }
