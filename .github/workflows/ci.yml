@@ -34,5 +34,8 @@ jobs:
           composer update --no-progress --ansi
           composer update --no-progress --ansi ${{ matrix.dependency-version }}
 
+      - name: Validate PHP syntax
+        run: find . -name '*.php' -not -path '*/vendor/*' -print0 | xargs -0 -n1 -P4 php -l
+
       - name: Run PHPUnit tests
         run: vendor/bin/simple-phpunit --coverage-text
