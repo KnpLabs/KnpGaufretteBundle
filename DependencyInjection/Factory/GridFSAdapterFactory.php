@@ -2,10 +2,9 @@
 
 namespace Knp\Bundle\GaufretteBundle\DependencyInjection\Factory;
 
-use Symfony\Component\Config\Definition\Builder\NodeDefinition;
+use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\DependencyInjection\ChildDefinition;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\DefinitionDecorator;
 use Symfony\Component\DependencyInjection\Reference;
 
 /**
@@ -20,9 +19,7 @@ class GridFSAdapterFactory implements AdapterFactoryInterface
      */
     public function create(ContainerBuilder $container, string $id, array $config): void
     {
-        $childDefinition = class_exists(\Symfony\Component\DependencyInjection\ChildDefinition::class)
-            ? new ChildDefinition('knp_gaufrette.adapter.gridfs')
-            : new DefinitionDecorator('knp_gaufrette.adapter.gridfs');
+        $childDefinition = new ChildDefinition('knp_gaufrette.adapter.gridfs');
 
         $container
             ->setDefinition($id, $childDefinition)
@@ -41,7 +38,7 @@ class GridFSAdapterFactory implements AdapterFactoryInterface
     /**
      * {@inheritDoc}
      */
-    public function addConfiguration(NodeDefinition $node): void
+    public function addConfiguration(ArrayNodeDefinition $node): void
     {
         $node
         ->children()

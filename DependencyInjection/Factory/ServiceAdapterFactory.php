@@ -2,7 +2,7 @@
 
 namespace Knp\Bundle\GaufretteBundle\DependencyInjection\Factory;
 
-use Symfony\Component\Config\Definition\Builder\NodeDefinition;
+use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
@@ -31,7 +31,7 @@ class ServiceAdapterFactory implements AdapterFactoryInterface
     /**
      * {@inheritDoc}
      */
-    public function addConfiguration(NodeDefinition $builder): void
+    public function addConfiguration(ArrayNodeDefinition $builder): void
     {
         $builder
             ->children()

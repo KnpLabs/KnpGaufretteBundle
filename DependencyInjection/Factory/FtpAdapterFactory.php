@@ -2,10 +2,9 @@
 
 namespace Knp\Bundle\GaufretteBundle\DependencyInjection\Factory;
 
-use Symfony\Component\Config\Definition\Builder\NodeDefinition;
+use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\DependencyInjection\ChildDefinition;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\DefinitionDecorator;
 
 /**
  * Ftp Adapter Factory
@@ -17,9 +16,7 @@ class FtpAdapterFactory implements AdapterFactoryInterface
      */
     public function create(ContainerBuilder $container, string $id, array $config): void
     {
-        $childDefinition = class_exists(\Symfony\Component\DependencyInjection\ChildDefinition::class)
-            ? new ChildDefinition('knp_gaufrette.adapter.ftp')
-            : new DefinitionDecorator('knp_gaufrette.adapter.ftp');
+        $childDefinition = new ChildDefinition('knp_gaufrette.adapter.ftp');
 
         $container
             ->setDefinition($id, $childDefinition)
@@ -40,7 +37,7 @@ class FtpAdapterFactory implements AdapterFactoryInterface
     /**
      * {@inheritDoc}
      */
-    public function addConfiguration(NodeDefinition $builder): void
+    public function addConfiguration(ArrayNodeDefinition $builder): void
     {
         $builder
             ->children()
