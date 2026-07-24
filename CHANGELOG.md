@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.0.0](https://github.com/KnpLabs/KnpGaufretteBundle/compare/v0.10.0...v1.0.0) (2026-07-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* AdapterFactoryInterface::create() now declares `string $id`. Any class implementing this interface must update its create() signature to add the `string` type declaration on the $id parameter.
+* drop PHP 7.4 support
+
+### Features
+
+* add full PHP 8.0–8.5 support ([#298](https://github.com/KnpLabs/KnpGaufretteBundle/issues/298)) ([f96eb67](https://github.com/KnpLabs/KnpGaufretteBundle/commit/f96eb678a88c9457311f3a48f3b09e926b96b671))
+* update gaufrette ([#295](https://github.com/KnpLabs/KnpGaufretteBundle/issues/295)) ([ec11a84](https://github.com/KnpLabs/KnpGaufretteBundle/commit/ec11a8461656885c2065870fb54dc37aa4a30a02))
+
+
+### Miscellaneous Chores
+
+* update actions/checkout to v7 in CI workflow ([#297](https://github.com/KnpLabs/KnpGaufretteBundle/issues/297)) ([2ceca45](https://github.com/KnpLabs/KnpGaufretteBundle/commit/2ceca459b47283e88f6fac01c5a18703bc55b059))
+
 ## [Unreleased] — PHP 8.0–8.5 compatibility (MAJOR)
 
 ### ⚠ BREAKING CHANGES
